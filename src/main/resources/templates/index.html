@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<!-- This is for using Thymeleaf -->
+
+
+    
+<head>
+<meta charset="UTF-8">
+<html lang="en-US" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<title>Glycan Management System</title>
+<!-- Compiled and minified CSS -->
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+
+<!-- Compiled and minified JavaScript -->
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+</head>
+<body style="max-width: 960px; margin: 16px auto; padding: 16px">
+    <center> <img width="600px" height="300px" th:src="@{13682.png}"/> </center>
+
+	<h3>Glycan List</h3>
+	<!-- The link which sends GET request to "/showNewEmployeeForm"  -->
+	<a th:href="@{/showNewGlycanForm}"
+		class="waves-effect waves-light btn">Add New Glycan</a>
+	<div align="center" style="margin-top: 20px">
+		<table class="responsive-table striped highlight centered">
+			<thead>
+				<tr>
+                                    <th>GlycanPhoto</th>
+					<th>Oxford</th>
+					<th>database ID</th>
+					<th>Neutral mass</th>
+					<th>Observed m/z</th>
+                                        <th>CS [M+2H] charge 2</th>
+					<th>Observed m/z 2</th>
+					<th>CCS [M+H+Na] charge 2</th>
+
+				</tr>
+			</thead>
+
+			<tbody>
+			<!-- You can access model attributes which are added in a Controller(EmployeeController.java) with ${attributeName}.
+				 In this case, it is "${listEmployees}".
+			     To show all employees data in this table, you need to use "th:each" in the thymeleaf template and iterate the employee of listEmployees -->	
+                        <tr th:each="glycan: ${listGlycans}">
+                            <td><img th:src="${glycan.GlycanPhoto}" style="width: 150px" /></td> <!-- test if this is get or not. Add header for photo, get to show. -->
+					<td th:text="${glycan.Oxford}"></td>
+					<td th:text="${glycan.DatabaseID}"></td>
+					<td th:text="${glycan.NeutralMass}"></td>
+                                        <td th:text="${glycan.ObservedMZ}"></td>
+					<td th:text="${glycan.CS_M_Plus_2H_Charge_2}"></td>
+					<td th:text="${glycan.ObservedMZ2}"></td>
+                                        <td th:text="${glycan.CCS_M_Plus_H_Plus_Na_Charge_2}"></td>
+					<td>
+						<!-- The link which sends GET request to "/showFormForUpdate/{id}" (id is employee.id) -->
+						<a th:href="@{/showGlycanFormForUpdate/{id}(id=${glycan.id})}"
+							class="waves-effect waves-light btn">Update</a>
+					</td>
+					<td>
+						<!-- The link which sends GET request to "/delete/{id}" (id is employee.id)  -->
+						<a th:href="@{/delete/{id}(id=${glycan.id})}"
+							class="waves-effect waves-light btn red litghten-2">Delete</a>
+					</td>
+				</tr>
+                        </table>
+			</tbody>
+                    
+	</div>
+</body>
+<br>
+</br>
+<center><font size="+1"><a th:href="@{/GlycanApp2022}"
+                           class="blue-text">Back</a></font></center>
+</html>

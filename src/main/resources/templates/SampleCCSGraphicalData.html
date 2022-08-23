@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+<html lang="en-US" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+
+<link rel="stylesheet" href="style.css" type="text/css"/>
+<head>
+<title>Resources</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+* {
+  box-sizing: border-box;
+}
+
+
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+/* Style the header */
+.header {
+  background-color: #ffffff;
+  padding: 30px;
+  text-align: center;
+  font-size: 35px;
+}
+
+/* Create three equal columns that floats next to each other */
+.column {
+  float: left;
+  width: 33.33%;
+  padding: 30px;
+  height: 300px; /* Should be removed. Only for demonstration */
+}
+
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+/* Style the footer */
+.footer {
+  background-color: #ffffff;
+  padding: 10px;
+  text-align: center;
+}
+
+/* Responsive layout - makes the three columns stack on top of each other instead of next to each other */
+@media (max-width: 600px) {
+  .column {
+    width: 100%;
+  }
+  
+  
+}
+
+</style>
+</head>
+<body>
+
+    <center><h2>Resource Contents</h2></center>
+    <center><p>1. Core sequences and common modifications of N-linked and O-linked glycans</p></center>
+<center><p>2. Explanation of Collision Cross Section in IMS experiments</p></center>
+<center><p>3. Derivation of Collision Cross Section</p></center>
+<center><p>4. Links to Papers</p></center>
+
+
+<div class="header">
+    <center><h2>Videos</h2></center>
+</div>
+
+<div class="row">
+  <div class="column" style="background-color:#fff;"> <iframe width="560" height="315" src="https://www.youtube.com/embed/RorGifz6C2Y" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe> </div>
+  <div class="column" style="background-color:#fff;"> <iframe width="560" height="315" src="https://www.youtube.com/embed/PPZnq033uWY" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
+  <div class="column" style="background-color:#fff;"> <iframe width="560" height="315" src="https://www.youtube.com/embed/J5r2ksBLhkE" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe> </div>
+</div>
+<br>
+</br>
+<br>
+</br>
+<div class="footer">
+    <p>Construction of a Database of Collision Cross Section Values for Glycans: <a href="https://pubs.acs.org/doi/10.1021/acs.analchem.6b04146">https://pubs.acs.org/doi/10.1021/acs.analchem.6b04146</a></p>
+    <p>Glycans have clear potential as therapy targets: <a href="https://pubmed.ncbi.nlm.nih.gov/32381431/">https://pubmed.ncbi.nlm.nih.gov/32381431/</a></p>
+</div>
+<center><font size="+1"><a th:href="@{/GlycanApp2022}"
+                           class="blue-text">Back</a></font></center>
+</body>
+</html>

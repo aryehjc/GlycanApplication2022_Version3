@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<!--
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this template
+-->
+
+
+<html>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+<html lang="en-US" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+
+
+    <head>
+        <title>Glycan 3D Viewer</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+    <!-- <center><img src="https://i.imgur.com/jpnX2Ld.gif" alt="SampleGlycan"></center> -->
+    <center><iframe allowFullScreen="true" src="https://www.ncbi.nlm.nih.gov/Structure/icn3d/full.html?mmdbid=3gwj&width=800&height=800&showcommand=0&shownote=0&mobilemenu=1&showtitle=0" width="800" height="800" style="border:none"></iframe></center>
+    <br> 
+    </br>
+    <center><font size="+1"><ul>
+                
+                <li><em>Antheraea pernyi</em> silkworm (APA) contains arylhphorin, a hexameric protein synthesized in the larval body, serving as amino acid storage for growth and development.</li>
+<li>As displayed on crystal structure 3GWJ of APA, the N196-glycan  is important for structural stability of arylphorin storage protein.</li> 
+<li>Analytical ultracentrifugation and guanidinium chloride unfolding experiments revealed... [N196-glycan] is important for stabilizing the hexameric state and overall stability of APA.</li>
+<br> </br>
+  <div class="sidetext">
+Sources:
+  <li>https://pubmed.ncbi.nlm.nih.gov/19358695/</li>
+  <li>https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3430242/</li>
+  </div>
+            </ul></font></center>
+    </body>
+
+    <center><font size="+1"><a th:href="@{/GlycanApp2022}"
+               class="blue-text">Back</a></font></center>
+               
+ <style>
+  .sidetext
+                   {   
+  position: fixed;
+  left: 15%;
+  bottom: 450px;
+  transform: translate(-50%, -50%);
+  margin: 0 auto;
+                   }
+                   
+   .myglycan {
+  position: fixed;
+  left: 85%;
+  bottom: -70px;
+  transform: translate(-50%, -50%);
+  margin: 0 auto;
+                   }
+                   
+                   .mymenu {
+  position: fixed;
+  left: 84%;
+  bottom: 750px;
+  transform: translate(-50%, -50%);
+  margin: 0 auto;
+                   }
+                   .Step1OfGlycanTxt{
+                        position: fixed;
+  left: 84%;
+  bottom: 770px;
+  transform: translate(-50%, -50%);
+  margin: 0 auto;
+                   }
+                   .Step2OfGlycanTxt
+                   {
+                         position: fixed;
+  left: 84%;
+  bottom: 150px;
+  transform: translate(-50%, -50%);
+  margin: 0 auto;
+                   }
+                   .blue-text
+                   {
+                         position: fixed;
+  left: 5%;
+  top: 50px;
+  transform: translate(-50%, -50%);
+  margin: 0 auto;
+
+                   }
+                   
+               </style>
+               <div class="myglycan">
+               <img src="https://i.imgur.com/hJZAQHR.png">
+               </div>
+    <div class="mymenu">
+                   <img src="https://i.imgur.com/tmoGlds.png">
+    </div>
+        <div class="Step1OfGlycanTxt">
+            <ul><font size ="2">
+            <li>1)Menu&#8594;Style&#8594;Proteins&#8594;Hide</li>
+            <li>2)Menu&#8594;Style&#8594;Glycans&#8594;Show Cartoon</li>
+                </font>
+            </ul>
+    </div>
+        <div class="Step2OfGlycanTxt">
+            <ul><font size ="2">
+            <li>3)Mouse over selected Glycan Structure</li>
+            <li>4)N196 Glycan Selected</li>
+            </ul>
+        </div><!-- comment -->
+        
+</html>

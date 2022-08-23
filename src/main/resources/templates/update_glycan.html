@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<!-- This is for using Thymeleaf -->
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+    <html lang="en-US" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<title>Glycan Management System</title>
+<!-- Compiled and minified CSS -->
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+
+<!-- Compiled and minified JavaScript -->
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+</head>
+<body style="max-width: 960px; margin: 16px auto; padding: 16px">
+	<h3>Update Glycan</h3>
+	<!-- The th:action="@{/saveEmployee}" expression directs the form to POST to the /saveEmployee endpoint.
+		 The th:object="${employee}" expression declares the model object to use for collecting the form data.
+		 The three form fields, expressed with th:field, correspond to the fields in the Employee object. -->
+	<form th:action="@{/saveGlycan}" th:object="${glycan}" method="post" enctype="multipart/form-data">
+		<div class="row">
+		<input type="hidden" id="id"
+					th:field="*{id}">
+                                        	<div class="image entry">
+    <input type="file" name="image" accept="image/png, image/jpeg" > <label for="GlycanPhoto">GlycanPhoto</label>
+			</div>
+			<div class="input-field col s6">
+				<input id="Oxford" type="text" class="validate"
+					th:field="*{Oxford}"> <label for="Oxford">Oxford</label>
+			</div>
+                   <div class="input-field col s6">
+                        <input id="DatabaseID" type="number" class="validate" value="0.000000" min="0" max="999999.999999" step="0.000001"
+                               th:field="*{DatabaseID}"> <label for="DatabaseID">database ID</label>
+                    </div>
+                    <div class="input-field col s6">
+                        <input id="NeutralMass" type="number" class="validate" value="0.000000" min="0" max="999999.999999" step="0.000001"
+                               th:field="*{NeutralMass}"> <label for="NeutralMass">Neutral mass</label>
+                    </div> 
+                    <div class="input-field col s6">
+                        <input id="ObservedMZ" type="number" class="validate" value="0.000000" min="0" max="999999.999999" step="0.000001"
+                               th:field="*{ObservedMZ}"> <label for="ObservedMZ">Observed m/z</label>
+                    </div> 
+                    <div class="input-field col s6">
+                        <input id="CS_M_Plus_2H_Charge_2" type="number" class="validate" value="0.000000" min="0" max="999999.999999" step="0.000001"
+                               th:field="*{CS_M_Plus_2H_Charge_2}"> <label for="CS_M_Plus_2H_Charge_2">CS [M+2H] charge 2</label>
+                    </div> 
+                    <div class="input-field col s6">
+                        <input id="ObservedMZ2" type="number" class="validate" value="0.000000" min="0" max="999999.999999" step="0.000001"
+                               th:field="*{ObservedMZ2}"> <label for="ObservedMZ2">Observed m/z 2</label>
+                    </div> 
+                    <div class="input-field col s6">
+                        <input id="CCS_M_Plus_H_Plus_Na_Charge_2" type="number" class="validate" value="0.000000" min="0" max="999999.999999" step="0.000001"
+                               th:field="*{CCS_M_Plus_H_Plus_Na_Charge_2}"> <label for="CCS_M_Plus_H_Plus_Na_Charge_2">CCS [M+H+Na] charge 2</label>
+                    </div>  
+		</div>
+
+		<button type="submit" class="waves-effect waves-light btn">Update
+			Glycan</button>
+	</form>
+	<br>
+	<!-- The link which sends GET request to "/"  -->
+	<a th:href="@{/MySQLTableForGlycansAndCCS}"
+		class="blue-text">Back</a>
+</body>
+</html>
