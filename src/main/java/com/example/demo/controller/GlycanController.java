@@ -65,6 +65,7 @@ public class GlycanController {
           // need to user SavedUser? see https://www.codejava.net/frameworks/spring-boot/spring-boot-file-upload-tutorial
  
             String uploadDir = "/home/aryeh/db_images" + "/" + glycan.getId();
+            //uploads to a directory with ID name inside my db_images folder.
             
             FileUploadUtil.saveFile(uploadDir, fileName, multipartFile);
             glycanService.saveGlycan(glycan); 
