@@ -15,6 +15,8 @@
 </head>
 <body style="max-width: 960px; margin: 16px auto; padding: 16px">
 	<h3>Update Glycan</h3>
+                                <div class=mydiv><button class="waves-effect waves-light btn" style="float:right;" onclick="showDiv()">Upload Selected
+                                Glycan Image</button></div>
 	<!-- The th:action="@{/saveEmployee}" expression directs the form to POST to the /saveEmployee endpoint.
 		 The th:object="${employee}" expression declares the model object to use for collecting the form data.
 		 The three form fields, expressed with th:field, correspond to the fields in the Employee object. -->
@@ -23,7 +25,7 @@
 		<input type="hidden" id="id"
 					th:field="*{id}">
                                         	<div class="image entry">
-    <input type="file" name="image" accept="image/png, image/jpeg" > <label for="GlycanPhoto">GlycanPhoto</label>
+    <input type="file" name="image" accept="image/png, image/jpeg" > <label for="GlycanPhoto">Select Image and Click Upload</label>
 			</div>
 			<div class="input-field col s6">
 				<input id="Oxford" type="text" class="validate"
@@ -63,4 +65,157 @@
 	<a th:href="@{/MySQLTableForGlycansAndCCS}"
 		class="blue-text">Back</a>
 </body>
+    
+    <style>
+    
+
+#container {
+  margin: 0 auto;
+  width: 460px;
+  padding: 2em;
+  background: #FFF;
+
+}
+
+.ui-progress-bar {
+  margin-top: 2em;
+  margin-bottom: 2em;
+} 
+
+.ui-progress span.ui-label {
+  font-size: 1.2em;
+  position: absolute;
+  right: 0;
+  line-height: 33px;
+  padding-right: 12px;
+  color: rgba(0,128,0,1);
+  text-shadow: rgba(255,255,255, 0.45) 0 1px 0px;
+  white-space: nowrap;
+}
+
+.ui-progress {
+  position: relative;
+  display: block;
+  height: 10px;
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+  border-radius: 5px;
+    -webkit-box-shadow:0 1px 5px #000 inset, 0 1px 0 #fff;
+-moz-box-shadow:0 1px 5px #000 inset, 0 1px 0 #fff;
+-o-box-shadow:0 1px 5px #000 inset, 0 1px 0 #fff;
+box-shadow:0 1px 5px #000 inset, 0 1px 0 #fff;
+ background: linear-gradient(left , rgb(255,0,0) 0%, rgb(255,255,0) 50%, rgb(16,240,0) 100%);
+background: -o-linear-gradient(left , rgb(255,0,0) 0%, rgb(255,255,0) 50%, rgb(16,240,0) 100%);
+background: -moz-linear-gradient(left , rgb(255,0,0) 0%, rgb(255,255,0) 50%, rgb(16,240,0) 100%);
+background: -webkit-linear-gradient(left , rgb(255,0,0) 0%, rgb(255,255,0) 50%, rgb(16,240,0) 100%);
+background: -ms-linear-gradient(left , rgb(255,0,0) 0%, rgb(255,255,0) 50%, rgb(16,240,0) 100%);
+background:-webkit-gradient(
+    linear,
+    left top,
+    right top,
+    color-stop(0, rgb(255,0,0)),
+    color-stop(0.5, rgb(255,255,0)),
+    color-stop(1, rgb(16,240,0))
+);
+  -webkit-box-shadow: inset 0px 1px 0px 0px #dbf383, inset 0px -1px 1px #58c43a;
+  -moz-box-shadow: inset 0px 1px 0px 0px #dbf383, inset 0px -1px 1px #58c43a;
+  box-shadow: inset 0px 1px 0px 0px #dbf383, inset 0px -1px 1px #58c43a;
+  border: 1px solid #4c8932;
+}
+
+
+.content {
+  color: rgba(0,128,0,1);
+}
+.ui-progress-nice {
+    width:100%;
+    height:100%;
+background-image: -webkit-repeating-linear-gradient(45deg, rgba(0, 0, 0, .08), rgba(0, 0, 0, .08) 35px, rgba(255, 255, 255, .05) 35px, rgba(255, 255, 255, .05) 70px);
+    background-image: -moz-repeating-linear-gradient(45deg, rgba(0, 0, 0, .08), rgba(0, 0, 0, .08) 35px, rgba(255, 255, 255, .05) 35px, rgba(255, 255, 255, .05) 70px);
+}
+#​loadingbar {
+    
+display: none; 
+}
+​
+</style>
+    
+        <div id="loadingbar">
+        <div id="progress_bar" class="ui-progress-bar ui-container">
+            <div class="ui-progress" style="width: 79%;">
+                <div class="ui-progress-nice"></div>
+                <span class="ui-label" style="display:none;">Uploading Glycan...<b class="value">79%</b></span>
+              </div><!-- .ui-progress -->
+        </div><!-- #progress_bar -->  
+
+        <div class="content" id="main_content" style="display: none;">
+            <p>Glycan Updated!</p>
+          </div><!-- #main_content -->
+    </div><!-- #container -->
+    
+    <script>
+$(document).ready(function() {
+ $("#loadingbar").hide(); 
+  $("#mydiv").click(function() {
+     $("#loadingbar").toggle();
+    $('#progress_bar .ui-progress .ui-label').hide();
+    $('#progress_bar .ui-progress').css('width', '7%');
+
+    $('#progress_bar .ui-progress').animateProgress(43, function() {
+        $(this).animateProgress(79, function() {
+            setTimeout(function() {
+                $('#progress_bar .ui-progress').animateProgress(100, function() {
+                    $('#main_content').slideDown();
+                });
+            }, 2000);
+        });
+    });
+
+});
+  });
+
+
+    
+(function($) {
+    $.fn.animateProgress = function(progress, callback) {
+        return this.each(function() {
+            $(this).animate({
+                width: progress + '%'
+            }, {
+                duration: 2000,
+
+                easing: 'swing',
+
+                step: function(progress) {
+                    var labelEl = $('.ui-label', this),
+                        valueEl = $('.value', labelEl);
+
+                    if (Math.ceil(progress) < 20 && $('.ui-label', this).is(":visible")) {
+                        labelEl.hide();
+                    } else {
+                        if (labelEl.is(":hidden")) {
+                            labelEl.fadeIn();
+                        };
+                    }
+
+                    if (Math.ceil(progress) == 100) {
+                        labelEl.text('Done');
+                        setTimeout(function() {
+                            labelEl.fadeOut();
+                        }, 1000);
+                    } else {
+                        valueEl.text(Math.ceil(progress) + '%');
+                    }
+                },
+                complete: function(scope, i, elem) {
+                    if (callback) {
+                        callback.call(this, i, elem);
+                    };
+                }
+            });
+        });
+    };
+})(jQuery);
+    
+    </script>
 </html>
