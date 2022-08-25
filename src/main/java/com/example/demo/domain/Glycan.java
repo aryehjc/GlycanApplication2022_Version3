@@ -6,7 +6,6 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.Lob;
 // import java.util.Arrays;
 
 
@@ -31,7 +30,9 @@ import javax.persistence.Lob;
         
         @Column(nullable = true, length = 64)
         private String GlycanPhoto;
-        
+        // was already associated with column 'glycan_photo' when I created it in table, so i can't change that name.
+        // alongside this i created 'glycan_photo' before 'GlycanPhoto' and therefore deleting 'glycan_photo'
+        //causes a 'could not execute statement'.
 
 
     
@@ -174,7 +175,13 @@ import javax.persistence.Lob;
     public String getPhotosImagePath() {
         return "file:///home/aryeh/db_images/" + GlycanPhoto;
     }
-
+    
+    //although not called in thymeleaf, it's part of my method to link to controller as a getter.
+    //in contrast to the tutorial https://www.codejava.net/frameworks/spring-boot/spring-boot-file-upload-tutorial, 
+    //i do glycan.GlycanPhoto in thymeleaf, as this is the photo string. he made a mistake.
+    // my controller still runs to put the string in the column.
+    // the 'getphotosimagepath' is interpreted as a string literal and not the GlycanPhoto string.
+// needed or 'Uncompilable code - cannot find symbol symbol: method getPhotosImagePath() location: variable gly of type com.example.demo.domain.Glycan'
     /**
      * @param PhotosImagePath the PhotosImagePath to set
      */
