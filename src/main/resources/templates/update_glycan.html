@@ -15,8 +15,7 @@
 </head>
 <body style="max-width: 960px; margin: 16px auto; padding: 16px">
 	<h3>Update Glycan</h3>
-                                <div id=mydiv><button class="waves-effect waves-light btn" style="float:right;" onclick="showDiv()">Upload Selected
-                                Glycan Image</button></div>
+
 	<!-- The th:action="@{/saveEmployee}" expression directs the form to POST to the /saveEmployee endpoint.
 		 The th:object="${employee}" expression declares the model object to use for collecting the form data.
 		 The three form fields, expressed with th:field, correspond to the fields in the Employee object. -->
@@ -25,7 +24,7 @@
 		<input type="hidden" id="id"
 					th:field="*{id}">
                                         	<div class="image entry">
-    <input type="file" name="image" accept="image/png, image/jpeg" > <label for="GlycanPhoto">Select Image and Click Upload</label>
+    <input type="file" id="fileid" name="image" accept="image/png, image/jpeg" > <label for="GlycanPhoto">Select Image and Click Upload</label>
 			</div>
 			<div class="input-field col s6">
 				<input id="Oxford" type="text" class="validate"
@@ -157,7 +156,7 @@ display: none;
     <script>
 $(document).ready(function() {
  $("#loadingbar").hide(); 
-  $("#mydiv").click(function() {
+    $("#fileid").on('change',function(){
      $("#loadingbar").toggle();
     $('#progress_bar .ui-progress .ui-label').hide();
     $('#progress_bar .ui-progress').css('width', '7%');
