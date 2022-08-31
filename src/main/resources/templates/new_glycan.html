@@ -78,7 +78,7 @@
           </div><!-- #main_content -->
           
                   <div class="content2" id="main_content2" style="display: none;">
-            <p>Glycan File Changed Successfully</p>
+            <p>Uploading..Please Wait</p>
           </div><!-- #main_content -->
     </div><!-- #container -->
     
@@ -177,7 +177,7 @@ $(document).ready(function() {
             setTimeout(function() {
                 $('#progress_bar .ui-progress').animateProgress(100, function() {
                     $('#main_content').slideDown();
-                         $(this).fadeOut(4000, function() {
+                         $(this).fadeOut(2000, function() {
                              
                             location.reload();
                          });
