@@ -16,9 +16,9 @@
 <body style="max-width: 960px; margin: 16px auto; padding: 16px">
 	<h3>Add New Glycan</h3>
 
-	<!-- The th:action="@{/saveEmployee}" expression directs the form to POST to the /saveEmployee endpoint.
+	<!-- The th:action="@{/saveGlycan}" expression directs the form to POST to the /saveGlycan endpoint.
 		 The th:object="${glycan}" expression declares the model object to use for collecting the form data.
-		 The three form fields, expressed with th:field, correspond to the fields in the Employee object. -->
+		 The three form fields, expressed with th:field, correspond to the fields in the Glycan object. -->
         <form th:action="@{/saveGlycan}" th:object="${glycan}" method="post" enctype="multipart/form-data">
 		<div class="row">
                     	<div class="image entry">
