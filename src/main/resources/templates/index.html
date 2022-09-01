@@ -19,7 +19,7 @@
   <!--  <center> <img width="600px" height="300px" th:src="@{13682.png}"/> </center> , this is how to insert static.-->
 
 	<h3>Glycan List</h3>
-	<!-- The link which sends GET request to "/showNewEmployeeForm"  -->
+	<!-- The link which sends GET request to "/showNewGlycanForm"  -->
 	<a th:href="@{/showNewGlycanForm}"
 		class="waves-effect waves-light btn">Add New Glycan</a>
 	<div align="center" style="margin-top: 20px">
@@ -39,9 +39,9 @@
 			</thead>
 
 			<tbody>
-			<!-- You can access model attributes which are added in a Controller(EmployeeController.java) with ${attributeName}.
-				 In this case, it is "${listEmployees}".
-			     To show all glycans data in this table, you need to use "th:each" in the thymeleaf template and iterate the glycan of listEmployees -->	
+			<!-- You can access model attributes which are added in a Controller(GlycanController.java) with ${attributeName}.
+				 In this case, it is "${listGlycans}".
+			     To show all glycans data in this table, you need to use "th:each" in the thymeleaf template and iterate the glycan of listGlycans -->	
                         <tr th:each="glycan: ${listGlycans}">
                             <td><img th:src="${glycan.GlycanPhoto}" style="width: 300px" /></td> <!-- test if this is get or not. Add header for photo, get to show. -->
 					<td th:text="${glycan.Oxford}"></td>
