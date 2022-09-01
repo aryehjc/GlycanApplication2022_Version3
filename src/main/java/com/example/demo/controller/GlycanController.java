@@ -30,18 +30,18 @@ public class GlycanController {
 	// In our case, "http://localhost:8080/"
 	public String viewHomePage(Model model) {
 
-		//	We can use this attribute "listEmployees" to perform server-side rendering of the HTML with using Thymeleaf.
-		//	We set all glycans data to "listEmployees"
+		//	We can use this attribute "listGlycans" to perform server-side rendering of the HTML with using Thymeleaf.
+		//	We set all glycans data to "listGlycans"
 		model.addAttribute("listGlycans", glycanService.getAllGlycans());
 
 		//		shows the index.html template:
 		return "index";
 	}
 
-	//	showNewEmployeeForm
+	//	showNewGlycanForm
 	@GetMapping("/showNewGlycanForm")
-	// This means that this method will be executed when user sends GET Requests to "/showNewEmployeeForm"
-	// In our case,  "http://localhost:8080/showNewEmployeeForm"
+	// This means that this method will be executed when user sends GET Requests to "/showNewGlycanForm"
+	// In our case,  "http://localhost:8080/showNewGlycanForm"
 	public String showNewGlycanForm(Model model) {
 		Glycan glycan = new Glycan();
 
@@ -54,11 +54,11 @@ public class GlycanController {
 
 	//	add an glycan - from codejava net tutorial start here for image upload.
         @PostMapping("/saveGlycan")
-	// This means that this method will be executed when user sends POST Requests to "/saveEmployee"
-	// In our case, "http://localhost:8080/saveEmployee"
+	// This means that this method will be executed when user sends POST Requests to "/saveGlycan"
+	// In our case, "http://localhost:8080/saveGlycan"
 	public String saveGlycan(@ModelAttribute("glycan") Glycan glycan,
             @RequestParam("image") MultipartFile multipartFile) throws IOException {
-		//	@ModelAttribute  binds the object called "glycan" of request body from the POST request into the glycan parameter of the saveEmployee() method.
+		//	@ModelAttribute  binds the object called "glycan" of request body from the POST request into the glycan parameter of the saveGlycan() method.
                 
             String fileName = StringUtils.cleanPath(multipartFile.getOriginalFilename());
             glycan.setGlycanPhoto(fileName);
