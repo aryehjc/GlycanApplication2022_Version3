@@ -41,7 +41,7 @@
 			<tbody>
 			<!-- You can access model attributes which are added in a Controller(EmployeeController.java) with ${attributeName}.
 				 In this case, it is "${listEmployees}".
-			     To show all employees data in this table, you need to use "th:each" in the thymeleaf template and iterate the employee of listEmployees -->	
+			     To show all glycans data in this table, you need to use "th:each" in the thymeleaf template and iterate the glycan of listEmployees -->	
                         <tr th:each="glycan: ${listGlycans}">
                             <td><img th:src="${glycan.GlycanPhoto}" style="width: 300px" /></td> <!-- test if this is get or not. Add header for photo, get to show. -->
 					<td th:text="${glycan.Oxford}"></td>
@@ -52,12 +52,12 @@
 					<td th:text="${glycan.ObservedMZ2}"></td>
                                         <td th:text="${glycan.CCS_M_Plus_H_Plus_Na_Charge_2}"></td>
 					<td>
-						<!-- The link which sends GET request to "/showFormForUpdate/{id}" (id is employee.id) -->
+						<!-- The link which sends GET request to "/showFormForUpdate/{id}" (id is glycan.id) -->
 						<a th:href="@{/showGlycanFormForUpdate/{id}(id=${glycan.id})}"
 							class="waves-effect waves-light btn">Update</a>
 					</td>
 					<td>
-						<!-- The link which sends GET request to "/delete/{id}" (id is employee.id)  -->
+						<!-- The link which sends GET request to "/delete/{id}" (id is glycan.id)  -->
 						<a th:href="@{/delete/{id}(id=${glycan.id})}"
 							class="waves-effect waves-light btn red litghten-2">Delete</a>
 					</td>
