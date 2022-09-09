@@ -56,18 +56,9 @@ public class GlycanController {
         @PostMapping("/saveGlycan")
 	// This means that this method will be executed when user sends POST Requests to "/saveGlycan"
 	// In our case, "http://localhost:8080/saveGlycan"
-	public String saveGlycan(@ModelAttribute("glycan") Glycan glycan,
-            @RequestParam("image") MultipartFile multipartFile) throws IOException {
+	public String saveGlycan(@ModelAttribute("glycan") Glycan glycan) {
 		//	@ModelAttribute  binds the object called "glycan" of request body from the POST request into the glycan parameter of the saveGlycan() method.
                 
-            String fileName = StringUtils.cleanPath(multipartFile.getOriginalFilename());
-            glycan.setGlycanPhoto(fileName);
-          // need to user SavedUser? see https://www.codejava.net/frameworks/spring-boot/spring-boot-file-upload-tutorial
- 
-            String uploadDir = "/home/aryeh/db_images" + "/" + glycan.getId();
-            //uploads to a directory with ID name inside my db_images folder.
-            
-            FileUploadUtil.saveFile(uploadDir, fileName, multipartFile);
             glycanService.saveGlycan(glycan); 
            
 		// after save the glycan data to database, redirect to "/"
