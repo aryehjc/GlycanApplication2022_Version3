@@ -37,13 +37,12 @@
 
 				</tr>
 			</thead>
-
 			<tbody>
 			<!-- You can access model attributes which are added in a Controller(GlycanController.java) with ${attributeName}.
 				 In this case, it is "${listGlycans}".
 			     To show all glycans data in this table, you need to use "th:each" in the thymeleaf template and iterate the glycan of listGlycans -->	
                         <tr th:each="glycan: ${listGlycans}">
-                            <td><img th:src="${glycan.GlycanPhoto}" style="width: 300px" /></td> <!-- test if this is get or not. Add header for photo, get to show. -->
+                            <td><img th:src="@{${glycan.Oxford} + '.png'}" style="width: 300px" /></td> <!-- Dynamically displays image based on oxford number!, just match property to imgname in static -->
 					<td th:text="${glycan.Oxford}"></td>
 					<td th:text="${glycan.DatabaseID}"></td>
 					<td th:text="${glycan.NeutralMass}"></td>
@@ -74,6 +73,7 @@
 img:hover {
     -webkit-transform:scale(1.5);
     transform:scale(1.5);
+    
 }
         </style>
 </body>
