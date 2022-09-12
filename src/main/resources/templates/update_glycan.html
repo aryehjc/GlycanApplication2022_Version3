@@ -24,15 +24,16 @@
 		<input type="hidden" id="id"
                        th:field="*{id}">
 		
+                               <div class="input-field col s6">
+                        <input id="DatabaseID" type="number" class="validate"
+                               th:field="*{DatabaseID}"> <label for="DatabaseID">database ID</label>
+                    </div>
 			<div class="input-field col s6">
  
 				<input id="Oxford" type="text" class="validate"
 					th:field="*{Oxford}"> <label for="Oxford">Oxford</label>
 			</div>
-                   <div class="input-field col s6">
-                        <input id="DatabaseID" type="number" class="validate" value="0.000000" min="0" max="999999.999999" step="0.000001"
-                               th:field="*{DatabaseID}"> <label for="DatabaseID">database ID</label>
-                    </div>
+       
                     <div class="input-field col s6">
                         <input id="NeutralMass" type="number" class="validate" value="0.000000" min="0" max="999999.999999" step="0.000001"
                                th:field="*{NeutralMass}"> <label for="NeutralMass">Neutral mass</label>
@@ -64,23 +65,6 @@
 		class="blue-text">Back</a>
 </body>
     
-            <div id="loadingbar">
-        <div id="progress_bar" class="ui-progress-bar ui-container">
-            <div class="ui-progress" style="width: 79%;">
-                <div class="ui-progress-nice"></div>
-                <span class="ui-label" style="display:none;">Uploading Glycan...<b class="value">79%</b></span>
-              </div><!-- .ui-progress -->
-        </div><!-- #progress_bar -->  
 
-        <div class="content" id="main_content" style="display: none;">
-            <p>Glycan Updated!</p>
-          </div><!-- #main_content -->
-    </div><!-- #container -->
-    
-                      <div class="content2" id="main_content2" style="display: none;">
-            <p>Uploading..Please Wait</p>
-          </div><!-- #main_content -->
-    </div><!-- #container -->
-    
     
 </html>
