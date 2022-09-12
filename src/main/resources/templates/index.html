@@ -12,8 +12,10 @@
 	href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
 
 <!-- Compiled and minified JavaScript -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <script
 	src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+
 </head>
 <body style="max-width: 960px; margin: 16px auto; padding: 16px">
   <!--  <center> <img width="600px" height="300px" th:src="@{13682.png}"/> </center> , this is how to insert static.-->
@@ -23,6 +25,30 @@
 	<!-- The link which sends GET request to "/showNewGlycanForm"  -->
 	<a th:href="@{/showNewGlycanForm}"
 		class="waves-effect waves-light btn">Add New Glycan</a>
+ <!-- Modal Trigger -->
+  <a class="waves-effect waves-light btn red modal-trigger" href="#modal1">View Supported Glycans</a>
+
+  <!-- Modal Structure -->
+  <div id="modal1" class="modal">
+    <div class="modal-content">
+      <h4>Supported Glycans</h4>
+      <p>The following Glycans are supported. When updating Glycan or adding new Glycan, enter Database ID to generate corresponding Oxford. </p>
+      <center> <ul>
+  <li>A2</li><!-- comment -->
+  <li>A2[3]G(4)1</li><!-- comment -->
+  <li>A2[6]G(4)1</li>
+  <li>F(6)A2</li>
+  <li>F(6)A2B</li>
+  <li>F(6)A2[3]G(4)1</li>
+  <li>F(6)A2[6]BG(4)1</li>
+  <li>F(6)A2[6]G(4)1</li>
+</ul> 
+      </center>
+    </div>
+    <div class="modal-footer">
+      <a href="#!" class="modal-close waves-effect waves-green btn-flat">Close</a>
+    </div>
+  </div>
 	<div align="center" style="margin-top: 20px">
 		<table class="responsive-table striped highlight centered">
 			<thead>
@@ -43,7 +69,7 @@
 				 In this case, it is "${listGlycans}".
 			     To show all glycans data in this table, you need to use "th:each" in the thymeleaf template and iterate the glycan of listGlycans -->	
                         <tr th:each="glycan: ${listGlycans}">
-                            <td><img th:src="@{${glycan.Oxford} + '.png'}" style="width: 300px" /></td> <!-- Dynamically displays image based on oxford number!, just match property to imgname in static, removed column glycan_photo from sql, add back if needed. -->
+                            <td><img th:src="@{${glycan.DatabaseID} + '.png'}" style="width: 300px" /></td> <!-- Dynamically displays image based on oxford number!, just match property to imgname in static, removed column glycan_photo from sql, add back if needed. -->
 					<td th:text="${glycan.Oxford}"></td>
 					<td th:text="${glycan.DatabaseID}"></td>
 					<td th:text="${glycan.NeutralMass}"></td>
@@ -82,5 +108,12 @@ img:hover {
 </body>
 <br>
 </br>
+<script>
+$(document).ready(function(){
+   // the "href" attribute of the modal trigger must specify the modal ID that wants to be triggered
+   $('.modal').modal();
 
+ });
+
+    </script>
 </html>
