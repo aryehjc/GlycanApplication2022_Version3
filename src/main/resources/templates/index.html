@@ -17,7 +17,8 @@
 </head>
 <body style="max-width: 960px; margin: 16px auto; padding: 16px">
   <!--  <center> <img width="600px" height="300px" th:src="@{13682.png}"/> </center> , this is how to insert static.-->
-
+<center><font size="+1"><a th:href="@{/GlycanApp2022}"
+                           class="blue-text">Back</a></font></center>
 	<h3>Glycan List</h3>
 	<!-- The link which sends GET request to "/showNewGlycanForm"  -->
 	<a th:href="@{/showNewGlycanForm}"
@@ -42,7 +43,7 @@
 				 In this case, it is "${listGlycans}".
 			     To show all glycans data in this table, you need to use "th:each" in the thymeleaf template and iterate the glycan of listGlycans -->	
                         <tr th:each="glycan: ${listGlycans}">
-                            <td><img th:src="@{${glycan.Oxford} + '.png'}" style="width: 300px" /></td> <!-- Dynamically displays image based on oxford number!, just match property to imgname in static -->
+                            <td><img th:src="@{${glycan.Oxford} + '.png'}" style="width: 300px" /></td> <!-- Dynamically displays image based on oxford number!, just match property to imgname in static, removed column glycan_photo from sql, add back if needed. -->
 					<td th:text="${glycan.Oxford}"></td>
 					<td th:text="${glycan.DatabaseID}"></td>
 					<td th:text="${glycan.NeutralMass}"></td>
@@ -75,10 +76,11 @@ img:hover {
     transform:scale(1.5);
     
 }
+
+
         </style>
 </body>
 <br>
 </br>
-<center><font size="+1"><a th:href="@{/GlycanApp2022}"
-                           class="blue-text">Back</a></font></center>
+
 </html>
