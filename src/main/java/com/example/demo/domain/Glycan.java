@@ -19,8 +19,8 @@ import javax.persistence.Id;
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	//	By @GeneratedValue, JPA makes a unique key automatically and applies the key to the field having @Id
 	private long id;
+        private int DatabaseID;
         private String Oxford;
-	private float DatabaseID;
 	private float NeutralMass;
         private float ObservedMZ;
         private float CS_M_Plus_2H_Charge_2;
@@ -74,14 +74,14 @@ import javax.persistence.Id;
     /**
      * @return the DatabaseID
      */
-    public float getDatabaseID() {
+    public int getDatabaseID() {
         return DatabaseID;
     }
 
     /**
      * @param DatabaseID the DatabaseID to set
      */
-    public void setDatabaseID(float DatabaseID) {
+    public void setDatabaseID(int DatabaseID) {
         this.DatabaseID = DatabaseID;
     }
 
@@ -179,7 +179,7 @@ import javax.persistence.Id;
 	//			+ CS_M_Plus_2H_Charge_2 + ", ObservedMZ2="
 	//			+ ObservedMZ2 + ", CCS_M_Plus_H_Plus_Na_Charge_2="
 	//			+ CCS_M_Plus_H_Plus_Na_Charge_2 + ", PhotosImagePath="
-	//			+ Arrays.toString(PhotosImagePath) + "]"; updated sep 12 2022
+	//			+ Arrays.toString(PhotosImagePath) + "]";
 	//}
 
 
