@@ -6,7 +6,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-// import java.util.Arrays;
+
 
 
 
@@ -32,7 +32,7 @@ import javax.persistence.Id;
         private String GlycanPhoto;
         // was already associated with column 'glycan_photo' when I created it in table, so i can't change that name.
         // alongside this i created 'glycan_photo' before 'GlycanPhoto' and therefore deleting 'glycan_photo'
-        //causes a 'could not execute statement'.
+        //causes a 'could not execute statement'. In the future observe in sql where the values are input, and then choose correct column
 
 
     
@@ -53,21 +53,9 @@ import javax.persistence.Id;
 		this.id = id;
 	}
         
-        
-            /**
-     * @return the GlycanPhoto
-     */
-        
-    public String getGlycanPhoto() {
-    return GlycanPhoto;
-    }
 
-    /**
-     * @param GlycanPhoto the GlycanPhoto to set
-     */
-    public void setGlycanPhoto(String GlycanPhoto) {
-        this.GlycanPhoto = GlycanPhoto;
-    }
+
+
 
     /**
      * @return the Oxford
@@ -172,9 +160,7 @@ import javax.persistence.Id;
      * @return the PhotosImagePath
      */
     
-    public String getPhotosImagePath() {
-        return "file:///home/aryeh/db_images/" + GlycanPhoto;
-    }
+
     
     //although not called in thymeleaf, it's part of my method to link to controller as a getter.
     //in contrast to the tutorial https://www.codejava.net/frameworks/spring-boot/spring-boot-file-upload-tutorial, 
