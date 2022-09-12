@@ -11,10 +11,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import com.example.demo.domain.Glycan;
 import com.example.demo.service.GlycanService;
 
-import java.io.IOException;
-import org.springframework.util.StringUtils;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.multipart.MultipartFile;
 
 @Controller // This means that this class is a Controller
 public class GlycanController {
