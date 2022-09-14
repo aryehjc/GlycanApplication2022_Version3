@@ -19,16 +19,17 @@
 	<!-- The th:action="@{/saveGlycan}" expression directs the form to POST to the /saveGlycan endpoint.
 		 The th:object="${glycan}" expression declares the model object to use for collecting the form data.
 		 The three form fields, expressed with th:field, correspond to the fields in the Glycan object. -->
-	<form th:action="@{/saveGlycan}" th:object="${glycan}" method="post" enctype="multipart/form-data">
+	<form th:action="@{/saveGlycan}" th:object="${glycan}" method="post">
 		<div class="row">
 		<input type="hidden" id="id"
                        th:field="*{id}">
 		
-                               <div class="input-field col s6">
-                        <input id="DatabaseID" type="number" class="validate"
+
+                                                   <div class="input-field col s6">
+                        <input id="DatabaseID" type="text" class="validate"
                                th:field="*{DatabaseID}"> <label for="DatabaseID">database ID</label>
                     </div>
-			<div class="input-field col s6">
+                    			<div class="input-field col s6">
  
 				<input id="Oxford" type="text" class="validate"
 					th:field="*{Oxford}"> <label for="Oxford">Oxford</label>
