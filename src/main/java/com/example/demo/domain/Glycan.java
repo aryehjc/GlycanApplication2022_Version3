@@ -1,7 +1,6 @@
 package com.example.demo.domain;
 
 import java.io.Serializable;
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -19,7 +18,7 @@ import javax.persistence.Id;
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	//	By @GeneratedValue, JPA makes a unique key automatically and applies the key to the field having @Id
 	private long id;
-        private int DatabaseID;
+        private String DatabaseID; // maybe convert this to string. 
         private String Oxford;
 	private float NeutralMass;
         private float ObservedMZ;
@@ -28,8 +27,8 @@ import javax.persistence.Id;
         private float CCS_M_Plus_H_Plus_Na_Charge_2;
         
         
-        @Column(nullable = true, length = 64)
-        private String GlycanPhoto;
+      //  @Column(nullable = true, length = 64)
+      //  private String GlycanPhoto;
         // was already associated with column 'glycan_photo' when I created it in table, so i can't change that name.
         // alongside this i created 'glycan_photo' before 'GlycanPhoto' and therefore deleting 'glycan_photo'
         //causes a 'could not execute statement'. In the future observe in sql where the values are input, and then choose correct column
@@ -52,12 +51,25 @@ import javax.persistence.Id;
 	public void setId(long id) {
 		this.id = id;
 	}
-        
-
-
-
+       
 
     /**
+     * @return the DatabaseID
+     */
+    public String getDatabaseID() {
+        return DatabaseID;
+    }
+
+    /**
+     * @param DatabaseID the DatabaseID to set
+     */
+    public void setDatabaseID(String DatabaseID) {
+        this.DatabaseID = DatabaseID;
+        
+    }
+
+    
+        /**
      * @return the Oxford
      */
     public String getOxford() {
@@ -70,21 +82,7 @@ import javax.persistence.Id;
     public void setOxford(String Oxford) {
         this.Oxford = Oxford;
     }
-
-    /**
-     * @return the DatabaseID
-     */
-    public int getDatabaseID() {
-        return DatabaseID;
-    }
-
-    /**
-     * @param DatabaseID the DatabaseID to set
-     */
-    public void setDatabaseID(int DatabaseID) {
-        this.DatabaseID = DatabaseID;
-    }
-
+    
     /**
      * @return the NeutralMass
      */
