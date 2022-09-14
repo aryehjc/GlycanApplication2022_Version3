@@ -8,60 +8,36 @@
 <html lang="en-US" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
 <title>Glycan Management System</title>
 <!-- Compiled and minified CSS -->
-<link rel="stylesheet"
-	href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
 
 <!-- Compiled and minified JavaScript -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-<script
-	src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 </head>
-<body style="max-width: 960px; margin: 16px auto; padding: 16px">
   <!--  <center> <img width="600px" height="300px" th:src="@{13682.png}"/> </center> , this is how to insert static.-->
 <center><font size="+1"><a th:href="@{/GlycanApp2022}"
                            class="blue-text">Back</a></font></center>
-	<h3>Glycan List</h3>
+                           <center><h3>Glycan Management System</h3></center>
 	<!-- The link which sends GET request to "/showNewGlycanForm"  -->
-	<a th:href="@{/showNewGlycanForm}"
-		class="waves-effect waves-light btn">Add New Glycan</a>
- <!-- Modal Trigger -->
-  <a class="waves-effect waves-light btn red modal-trigger" href="#modal1">View Supported Glycans</a>
+        <center><a th:href="@{/showNewGlycanForm}"
+                   class="waves-effect waves-light btn">Add New Glycan</a></center>
 
-  <!-- Modal Structure -->
-  <div id="modal1" class="modal">
-    <div class="modal-content">
-      <h4>Supported Glycans</h4>
-      <p>The following Glycans are supported. When updating Glycan or adding new Glycan, enter Database ID to generate corresponding Oxford. </p>
-      <center> <ul>
-  <li>A2</li><!-- comment -->
-  <li>A2[3]G(4)1</li><!-- comment -->
-  <li>A2[6]G(4)1</li>
-  <li>F(6)A2</li>
-  <li>F(6)A2B</li>
-  <li>F(6)A2[3]G(4)1</li>
-  <li>F(6)A2[6]BG(4)1</li>
-  <li>F(6)A2[6]G(4)1</li>
-</ul> 
-      </center>
-    </div>
-    <div class="modal-footer">
-      <a href="#!" class="modal-close waves-effect waves-green btn-flat">Close</a>
-    </div>
-  </div>
-	<div align="center" style="margin-top: 20px">
-		<table class="responsive-table striped highlight centered">
+	<div align="left" style="margin-top: 20px">
+		<table class="table table-bordered border-primary">
 			<thead>
 				<tr>
-                                    <th>Glycan Image</th>
-					<th>Oxford</th>
-					<th>database ID</th>
-					<th>Neutral mass</th>
-					<th>Observed m/z</th>
-                                        <th>CS [M+2H] charge 2</th>
-					<th>Observed m/z 2</th>
-					<th>CCS [M+H+Na] charge 2</th>
-
+                                    <th class="not_mapped_style" style="text-align:center">Glycan Image</th>
+					<th class="not_mapped_style" style="text-align:center">database ID</th>
+                                        <th class="not_mapped_style" style="text-align:center">Oxford</th>
+					<th class="not_mapped_style" style="text-align:center">Neutral mass</th>
+					<th class="not_mapped_style" style="text-align:center">Observed m/z</th>
+                                        <th class="not_mapped_style" style="text-align:center">CS [M+2H] charge 2</th>
+					<th class="not_mapped_style" style="text-align:center">Observed m/z 2</th>
+					<th class="not_mapped_style" style="text-align:center">CCS [M+H+Na] charge 2</th>
+					<th class="not_mapped_style" style="text-align:center">Update Entry</th>
+					<th class="not_mapped_style" style="text-align:center">Delete Entry</th>
 				</tr>
 			</thead>
 			<tbody>
@@ -70,8 +46,8 @@
 			     To show all glycans data in this table, you need to use "th:each" in the thymeleaf template and iterate the glycan of listGlycans -->	
                         <tr th:each="glycan: ${listGlycans}">
                             <td><img th:src="@{${glycan.DatabaseID} + '.png'}" style="width: 300px" /></td> <!-- Dynamically displays image based on oxford number!, just match property to imgname in static, removed column glycan_photo from sql, add back if needed. -->
-					<td th:text="${glycan.Oxford}"></td>
-					<td th:text="${glycan.DatabaseID}"></td>
+										<td th:text="${glycan.DatabaseID}"></td>
+                            <td th:text="${glycan.Oxford}"></td>
 					<td th:text="${glycan.NeutralMass}"></td>
                                         <td th:text="${glycan.ObservedMZ}"></td>
 					<td th:text="${glycan.CS_M_Plus_2H_Charge_2}"></td>
@@ -98,9 +74,15 @@
 }
 
 img:hover {
-    -webkit-transform:scale(1.5);
-    transform:scale(1.5);
+    -webkit-transform:scale(1.2);
+    transform:scale(1.2);
     
+    
+td 
+{
+     text-align:center;
+}
+
 }
 
 
@@ -109,11 +91,8 @@ img:hover {
 <br>
 </br>
 <script>
-$(document).ready(function(){
-   // the "href" attribute of the modal trigger must specify the modal ID that wants to be triggered
-   $('.modal').modal();
 
- });
+
 
     </script>
 </html>
