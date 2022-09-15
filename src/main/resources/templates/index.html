@@ -8,21 +8,123 @@
 <html lang="en-US" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
 <title>Glycan Management System</title>
 <!-- Compiled and minified CSS -->
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
 
 <!-- Compiled and minified JavaScript -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 </head>
+
+
   <!--  <center> <img width="600px" height="300px" th:src="@{13682.png}"/> </center> , this is how to insert static.-->
 <center><font size="+1"><a th:href="@{/GlycanApp2022}"
                            class="blue-text">Back</a></font></center>
                            <center><h3>Glycan Management System</h3></center>
 	<!-- The link which sends GET request to "/showNewGlycanForm"  -->
         <center><a th:href="@{/showNewGlycanForm}"
-                   class="waves-effect waves-light btn">Add New Glycan</a></center>
+                   class="btn btn-success">Add New Glycan</a>
+                   <!-- Modal Trigger -->
+                  <button data-target="modal1" class="btn btn-primary modal-trigger">View Supported Glycan IDs</button>
+                  </center>
+
+<!-- Modal Structure -->
+<div id="modal1" class="modal">
+    <br>
+    </br><!-- comment -->
+    <center><p>The following Glycan IDs are supported:</p></center>
+    <table class="table table-bordered border-primary">
+  <tr>
+    <th>Database ID</th>
+    <th>Image</th>
+  </tr>
+  <tr>
+    <td>50</td>
+    <td><img width="100px" th:src="@{50.png}"/></td>
+  </tr>
+  <tr>
+    <td>135</td>
+    <td><img width="100px" th:src="@{135.png}"/></td>
+  </tr>
+          <tr>
+    <td>141</td>
+    <td><img width="100px" th:src="@{141.png}"/></td>
+  </tr>
+  <tr>
+    <td>160</td>
+    <td><img width="200px" th:src="@{160.png}"/></td>
+  </tr>
+          <tr>
+    <td>John</td>
+    <td>Doe</td>
+  </tr>
+  <tr>
+    <td>Jane</td>
+    <td>Doe</td>
+  </tr>
+          <tr>
+    <td>John</td>
+    <td>Doe</td>
+  </tr>
+  <tr>
+    <td>Jane</td>
+    <td>Doe</td>
+  </tr>
+          <tr>
+    <td>John</td>
+    <td>Doe</td>
+  </tr>
+  <tr>
+    <td>Jane</td>
+    <td>Doe</td>
+  </tr>
+          <tr>
+    <td>John</td>
+    <td>Doe</td>
+  </tr>
+  <tr>
+    <td>Jane</td>
+    <td>Doe</td>
+  </tr>
+          <tr>
+    <td>John</td>
+    <td>Doe</td>
+  </tr>
+  <tr>
+    <td>Jane</td>
+    <td>Doe</td>
+  </tr>
+          <tr>
+    <td>John</td>
+    <td>Doe</td>
+  </tr>
+  <tr>
+    <td>Jane</td>
+    <td>Doe</td>
+  </tr>
+          <tr>
+    <td>John</td>
+    <td>Doe</td>
+  </tr>
+  <tr>
+    <td>Jane</td>
+    <td>Doe</td>
+  </tr>
+          <tr>
+    <td>John</td>
+    <td>Doe</td>
+  </tr>
+  <tr>
+    <td>Jane</td>
+    <td>Doe</td>
+  </tr>
+        
+</table>
+
+        <center> <a href="#!" class="modal-close waves-effect waves-green btn-flat">Agree</a></center>
+  </div>
+
 
 	<div align="left" style="margin-top: 20px">
 		<table class="table table-bordered border-primary">
@@ -74,16 +176,21 @@
 }
 
 img:hover {
-    -webkit-transform:scale(1.2);
-    transform:scale(1.2);
+    -webkit-transform:scale(1.15);
+    transform:scale(1.15);
     
     
 td 
 {
      text-align:center;
 }
-
+.modal-body {
+    max-height: 80vh;
+    overflow-y: scroll;
 }
+}
+
+
 
 
         </style>
@@ -92,7 +199,11 @@ td
 </br>
 <script>
 
-
+document.addEventListener('DOMContentLoaded', function() {
+    $('.modal').css('overflow-y', 'scroll');
+  var elems = document.querySelectorAll('.modal');
+  var instances = M.Modal.init(elems);
+});
 
     </script>
 </html>
