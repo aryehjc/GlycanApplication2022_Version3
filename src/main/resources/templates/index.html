@@ -26,101 +26,12 @@
         <center><a th:href="@{/showNewGlycanForm}"
                    class="btn btn-success">Add New Glycan</a>
                    <!-- Modal Trigger -->
-                  <button data-target="modal1" class="btn btn-primary modal-trigger">View Supported Glycan IDs</button>
+                   <a th:href="@{/GlycanDictionary}"
+                      class="btn btn-danger">View Supported Glycan IDs</a>
                   </center>
 
 <!-- Modal Structure -->
-<div id="modal1" class="modal">
-    <br>
-    </br><!-- comment -->
-    <center><p>The following Glycan IDs are supported:</p></center>
-    <table class="table table-bordered border-primary">
-  <tr>
-    <th>Database ID</th>
-    <th>Image</th>
-  </tr>
-  <tr>
-    <td>50</td>
-    <td><img width="100px" th:src="@{50.png}"/></td>
-  </tr>
-  <tr>
-    <td>135</td>
-    <td><img width="100px" th:src="@{135.png}"/></td>
-  </tr>
-          <tr>
-    <td>141</td>
-    <td><img width="100px" th:src="@{141.png}"/></td>
-  </tr>
-  <tr>
-    <td>160</td>
-    <td><img width="200px" th:src="@{160.png}"/></td>
-  </tr>
-          <tr>
-    <td>John</td>
-    <td>Doe</td>
-  </tr>
-  <tr>
-    <td>Jane</td>
-    <td>Doe</td>
-  </tr>
-          <tr>
-    <td>John</td>
-    <td>Doe</td>
-  </tr>
-  <tr>
-    <td>Jane</td>
-    <td>Doe</td>
-  </tr>
-          <tr>
-    <td>John</td>
-    <td>Doe</td>
-  </tr>
-  <tr>
-    <td>Jane</td>
-    <td>Doe</td>
-  </tr>
-          <tr>
-    <td>John</td>
-    <td>Doe</td>
-  </tr>
-  <tr>
-    <td>Jane</td>
-    <td>Doe</td>
-  </tr>
-          <tr>
-    <td>John</td>
-    <td>Doe</td>
-  </tr>
-  <tr>
-    <td>Jane</td>
-    <td>Doe</td>
-  </tr>
-          <tr>
-    <td>John</td>
-    <td>Doe</td>
-  </tr>
-  <tr>
-    <td>Jane</td>
-    <td>Doe</td>
-  </tr>
-          <tr>
-    <td>John</td>
-    <td>Doe</td>
-  </tr>
-  <tr>
-    <td>Jane</td>
-    <td>Doe</td>
-  </tr>
-          <tr>
-    <td>John</td>
-    <td>Doe</td>
-  </tr>
-  <tr>
-    <td>Jane</td>
-    <td>Doe</td>
-  </tr>
-        
-</table>
+
 
         <center> <a href="#!" class="modal-close waves-effect waves-green btn-flat">Agree</a></center>
   </div>
