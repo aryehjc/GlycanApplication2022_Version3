@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 
 import com.example.demo.domain.Glycan;
 import com.example.demo.service.GlycanService;
+import org.springframework.web.bind.annotation.RequestMapping;
 
 
 @Controller // This means that this class is a Controller
@@ -88,4 +89,10 @@ public class GlycanController {
 	//	after delete the glycan data from database, redirect to "/"
 		return "redirect:/MySQLTableForGlycansAndCCS";
 	}
+        
+      @RequestMapping("/GlycanDictionary")
+public String RedirectGlycan() {
+return "GlycanDictionary";
+    // make the htmls as usual and then just put them in the controller. and then add it to te 
+}
 }
