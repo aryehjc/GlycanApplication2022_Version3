@@ -3651,6 +3651,14 @@
     
 <style>
     
+    body {
+  overflow: hidden;
+}
+
+body.loaded {
+  overflow: auto;
+}
+    
 
 #container {
   margin: 0 auto;
@@ -3753,6 +3761,7 @@ $(document).ready(function() {
                              
                              $('#main_content2').fadeOut();
                              $('#main_content').fadeOut();
+                             $("body").addClass("loaded");
                              $('#loadingMask').fadeOut();
                          });
                                  // location.reload(); , do a condition for end animation, referesh.
