@@ -2,7 +2,6 @@
 <!-- This is for using Thymeleaf -->
 
 
-    
 <head>
 <meta charset="UTF-8">
 <html lang="en-US" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
@@ -23,11 +22,21 @@
                            class="blue-text">Back</a></font></center>
                            <center><h3>Glycan Management System</h3></center>
 	<!-- The link which sends GET request to "/showNewGlycanForm"  -->
+
         <center><a th:href="@{/showNewGlycanForm}"
                    class="btn btn-success">Add New Glycan</a>
-                   <!-- Modal Trigger -->
+                
+
                    <a th:href="@{/GlycanDictionary}"
                       class="btn btn-danger">View Supported Glycan IDs</a>
+                      
+                              <div id="modal">
+                                  <br>
+                                  </br>
+        <img src="http://i.stack.imgur.com/FhHRx.gif"/> 
+        <p> Generating Database...</p>
+</div>
+               
                   </center>
 
 
@@ -85,18 +94,38 @@
 img:hover {
     -webkit-transform:scale(1.15);
     transform:scale(1.15);
-    
+}
     
 td 
 {
      text-align:center;
 }
-.modal-body {
-    max-height: 80vh;
-    overflow-y: scroll;
-}
-}
 
+
+    tr:hover {
+      background-color: #ffff99;
+    }
+
+
+  	.hoverTable{
+		width:100%; 
+		border-collapse:collapse; 
+	}
+	.hoverTable td{ 
+		padding:7px; border:#4e95f4 1px solid;
+	}
+	/* Define the default color for all the table rows */
+	.hoverTable tr{
+		background: #b8d1f3;
+	}
+	/* Define the hover highlight color for the table row */
+    .hoverTable tr:hover {
+          background-color: #ffff99;
+    }
+
+modal {
+  display: inline-block;
+}
 
 
 
@@ -106,11 +135,11 @@ td
 </br>
 <script>
 
-document.addEventListener('DOMContentLoaded', function() {
-    $('.modal').css('overflow-y', 'scroll');
-  var elems = document.querySelectorAll('.modal');
-  var instances = M.Modal.init(elems);
-});
+setTimeout(function() {
+  $('#modal').fadeOut();
+}, 1000);
 
-    </script>
+
+    
+</script>
 </html>
