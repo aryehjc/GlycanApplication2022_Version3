@@ -34,7 +34,8 @@
             <p>Loading Database..Please Wait</p>
           </div><!-- #main_content -->
     </div><!-- #container --> 
-
+<font size="+1"><a th:href="@{/MySQLTableForGlycansAndCCS}"
+                           class="blue-text">Back</a></font>
     <center><p>The following Glycan IDs are supported:</p></center>
     <table class="table table-bordered border-primary">
    <tr>
@@ -3738,6 +3739,27 @@ margin-left: -800px;
 width: 1550px;
 
 }
+    tr:hover {
+      background-color: #ffff99;
+    }
+
+
+  	.hoverTable{
+		width:100%; 
+		border-collapse:collapse; 
+	}
+	.hoverTable td{ 
+		padding:7px; border:#4e95f4 1px solid;
+	}
+	/* Define the default color for all the table rows */
+	.hoverTable tr{
+		background: #b8d1f3;
+	}
+	/* Define the hover highlight color for the table row */
+    .hoverTable tr:hover {
+          background-color: #ffff99;
+    }
+
 </style>
 
     <script>
