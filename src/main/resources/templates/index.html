@@ -16,7 +16,7 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 </head>
 
-
+	<!-- <div id="loadingMask" onclick="return false;" style="width: 100%; height: 100%; position: absolute; background-color: rgba(0,0,0,0);"></div> -->
   <!--  <center> <img width="600px" height="300px" th:src="@{13682.png}"/> </center> , this is how to insert static.-->
 <center><font size="+1"><a th:href="@{/GlycanApp2022}"
                            class="blue-text">Back</a></font></center>
@@ -73,19 +73,24 @@
                                         <td th:text="${glycan.CCS_M_Plus_H_Plus_Na_Charge_2}"></td>
 					<td>
 						<!-- The link which sends GET request to "/showFormForUpdate/{id}" (id is glycan.id) -->
+                                                <div class="myupdate">
 						<a th:href="@{/showGlycanFormForUpdate/{id}(id=${glycan.id})}"
 							class="waves-effect waves-light btn">Update</a>
+                                                </div>
 					</td>
 					<td>
 						<!-- The link which sends GET request to "/delete/{id}" (id is glycan.id)  -->
+                                                <div class="mydelete">
 						<a th:href="@{/delete/{id}(id=${glycan.id})}"
-							class="waves-effect waves-light btn red litghten-2">Delete</a>
+							data-confirm="Delete Glycan entry?" class="waves-effect waves-light btn red litghten-2">Delete</a>
+                                                        </div>
 					</td>
 				</tr>
                         </table>
 			</tbody>
                     
 	</div>
+ 
         <style>
             img {
     transition:transform 0.25s ease;
@@ -99,11 +104,16 @@ img:hover {
 td 
 {
      text-align:center;
+     z-index: 1;
 }
 
 
-    tr:hover {
+    tr {
       background-color: #ffff99;
+    }
+    
+    tr:hover {
+        background-color: #bddd9c;
     }
 
 
@@ -120,25 +130,40 @@ td
 	}
 	/* Define the hover highlight color for the table row */
     .hoverTable tr:hover {
-          background-color: #ffff99;
+          background-color: #bddd9c;
     }
 
-modal {
-  display: inline-block;
+.modal-body {
+  top: 50px;
+  right: 800px;
 }
-
-
 
         </style>
 </body>
+
 <br>
 </br>
 <script>
 
+    
 setTimeout(function() {
   $('#modal').hide();
 }, 2000);
 
+        
+$(document).ready(function() {
+    $('a[data-confirm]').click(function(ev) {
+        var href = $(this).attr('href');
+
+        if (!$('#dataConfirmModal').length) {
+            $('body').append('<div id="dataConfirmModal" style=width:250px;height:150px; class="modal" role="dialog" aria-labelledby="dataConfirmLabel" aria-hidden="true"><div><br></br><center><p> Delete Glycan Entry? </p><a class="btn btn-primary" id="dataConfirmOK">Yes</a>  <button class="btn" data-dismiss="modal" aria-hidden="true">No</button></center></div>');
+        } 
+        $('#dataConfirmModal').find('.modal-body').text($(this).attr('data-confirm'));
+        $('#dataConfirmOK').attr('href', href);
+        $('#dataConfirmModal').modal({show:true});
+        return false;
+    });
+});
 
     
 </script>
