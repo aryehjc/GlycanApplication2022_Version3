@@ -6,12 +6,14 @@
 <meta charset="UTF-8">
 <title>Glycan Management System</title>
 <!-- Compiled and minified CSS -->
-<link rel="stylesheet"
-	href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+
 
 <!-- Compiled and minified JavaScript -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 </head>
 <body style="max-width: 960px; margin: 16px auto; padding: 16px">
 	<h3>Add New Glycan</h3>
@@ -55,18 +57,34 @@
                     </div>  
 		</div>
 
-		<button type="submit" class="waves-effect waves-light btn">Add
-			Glycan</button>
+            <center><button type="submit" class="waves-effect waves-light btn">Add
+                    Glycan</button></center>
 	</form>
 
 	<br>
 	<!-- The link which sends GET request to "/"  -->
-	<a th:href="@{/MySQLTableForGlycansAndCCS}"
-		class="blue-text">Back</a>
+        <center><a th:href="@{/MySQLTableForGlycansAndCCS}"
+           class="blue-text">Back</a></center>
 </body>
 
+        <center>
+                              <div id="modal">
+                                  <br>
+                                  </br>
+        <img src="http://i.stack.imgur.com/FhHRx.gif"/> 
+        <p> Linking Database...</p>
+</div>
+        </center>
+
+    <script>
+
+setTimeout(function() {
+  $('#modal').hide();
+}, 2000);
 
 
+    
+</script>
 
 </html>
     
