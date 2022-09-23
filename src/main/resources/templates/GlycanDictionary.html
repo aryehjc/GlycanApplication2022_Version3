@@ -34,13 +34,13 @@
             <p>Loading Database..Please Wait</p>
           </div><!-- #main_content -->
     </div><!-- #container --> 
-<font size="+1"><a th:href="@{/MySQLTableForGlycansAndCCS}"
-                           class="blue-text">Back</a></font>
+<div class="backbutton" style="text-align:center"><font size="+1"><a th:href="@{/MySQLTableForGlycansAndCCS}"
+                   class="blue-text">Back</a></font></div>
     <center><p>The following Glycan IDs are supported:</p></center>
     <table class="table table-bordered border-primary">
    <tr>
-    <th>Database ID</th>
-    <th>Image</th>
+    <th style="text-align:center">Database ID</th>
+    <th style="text-align:center">Image</th>
   </tr>
   <tr>
     <td>50</td>
@@ -3657,6 +3657,9 @@
 
 }
 
+blue-text {
+         text-align:center;
+}
     
 td 
 {
