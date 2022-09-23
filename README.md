@@ -1,6 +1,6 @@
 # GlycanApplication2022_Version2
 Version 2 of Glycan App with Dynamic Images and Graphics
-
+File upload of Glycan removed, glycan can be submitted on ID to display image. CSV upload added and fragmentation being developed
 
 14/9 - Updated index, new, update, glycan class, also table changed databaseid from float to varchar(255) and then string in class
 <br>
