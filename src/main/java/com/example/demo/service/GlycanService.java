@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+
 import com.example.demo.domain.Glycan;
 import com.example.demo.repository.GlycanRepository;
 
@@ -24,13 +25,12 @@ public class GlycanService {
 
 	// save an glycan
 	public void saveGlycan(Glycan gly) {
-            String image = gly.getPhotosImagePath();
-            if (image != null) {
+
       		glycanRepository.save(gly);
             }
 		//		save glycan data to database
 
-	}
+	
 
 	//	get glycan by id
 	public Glycan getGlycanById(Long id) {
@@ -56,11 +56,13 @@ public class GlycanService {
 
         //		delete an glycan who has the id from the database 
         glycanRepository.deleteById(id);
-        return "Deleted: " + gly.getPhotosImagePath() + " " + gly.getOxford() + " " + gly.getDatabaseID()+ " " 
+        return "Deleted: " + gly.getDatabaseID()+ " " + gly.getOxford()+ " " 
                 + gly.getNeutralMass()+ " " + gly.getObservedMZ()+ " " + gly.getCS_M_Plus_2H_Charge_2()+ " " 
                 + gly.getObservedMZ()+ " " + gly.getCCS_M_Plus_H_Plus_Na_Charge_2();
     }
+       
 }
+
 
 // might need to add one more for photo.
 // 		return "Deleted: " + gly.getGlycanName() + " " + gly.getProtons();
