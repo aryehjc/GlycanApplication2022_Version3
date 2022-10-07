@@ -2,7 +2,7 @@
 Version 2 of Glycan App with Dynamic Images and Graphics
 <br>
 </br>
-File upload of Glycan removed, glycan can be submitted on ID to display image. CSV/Excel upload and fragmentation being currently developed
+File upload of Glycan removed, glycan can instead be submitted on ID to display image. CSV/Excel upload and fragmentation being currently developed
 as of Oct 7 2022.
 
 14/9 - Updated index, new, update, glycan class, also table changed databaseid from float to varchar(255) and then string in class
