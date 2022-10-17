@@ -18,3 +18,5 @@ as of Oct 17 2022.
 <br>
 </br>
 17/10 - Added CSV file upload (amending page direct)
+
+Headers must be same as listed classes headings in whitelist error for CSV upload.
