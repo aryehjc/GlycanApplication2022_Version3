@@ -95,4 +95,10 @@ public String RedirectGlycan() {
 return "GlycanDictionary";
     // make the htmls as usual and then just put them in the controller. and then add it to te 
 }
+	
+	      @RequestMapping("/uploadPage")
+public String RedirectGlycanNew() {
+return "uploadPage";
+    // make the htmls as usual and then just put them in the controller. and then add it to te 
+}
 }
