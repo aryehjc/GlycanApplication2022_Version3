@@ -3,7 +3,7 @@ Version 2 of Glycan App with Dynamic Images and Graphics
 <br>
 </br>
 File upload of Glycan removed, glycan can instead be submitted on ID to display image. Fragmentation and CCS graphics being currently developed
-as of Oct 7 2022.
+as of Oct 17 2022.
 
 
 <strong> 2022 Updates </strong>
