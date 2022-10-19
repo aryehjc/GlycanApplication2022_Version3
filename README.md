@@ -2,7 +2,7 @@
 Version 2 of Glycan App with Dynamic Images and Graphics
 <br>
 </br>
-File upload of Glycan removed, glycan can instead be submitted on ID to display image. Fragmentation and CCS graphics being currently developed
+File upload of Glycan removed, glycan can instead be submitted on ID to display image. Fragmentation and CCS graphics (D3 JS) being currently developed
 as of Oct 17 2022.
 
 
@@ -17,6 +17,6 @@ as of Oct 17 2022.
 21/9 - Added database loading animations
 <br>
 </br>
-19/10 - Added CSV file upload, amending file validation
+19/10 - Added CSV file upload, amending file validation and error pages
 
 Headers must be same as listed classes headings in whitelist error for CSV upload.
