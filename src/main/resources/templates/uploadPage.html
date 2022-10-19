@@ -14,72 +14,203 @@
 
     <div class="mydiv" style="text-align:center">
 <form th:action="@{/upload}" method="POST" enctype="multipart/form-data">
-    <div>
-<label for="file" class="drop-container">
-  <span class="drop-title">Drop files here</span>
-  or
-  <input class="myfileupload" name="file" id="file" type="file" accept=".csv*" required>
-</label>
-</div>
-    
-    <br>
-    </br>
-    <input type="submit" name="submit" value="Submit" />
-</form>
+   <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="form-group">
+            <label class="control-label">Upload File</label>
+            <div class="preview-zone hidden">
+              <div class="box box-solid">
+                <div class="box-header with-border">
+                 
+                  <div class="box-tools pull-right">
+                    <button type="button" class="btn btn-danger btn-xs remove-preview">
+                      <i class="fa fa-times"></i> Reset This Form
+                    </button>
+                  </div>
+                </div>
+                <div class="box-body"></div>
+              </div>
+            </div>
+            <div class="dropzone-wrapper">
+              <div class="dropzone-desc">
+                <i class="glyphicon glyphicon-download-alt"></i>
+                <p>Choose a CSV file or drag it here.</p>
+              </div>
+              <input class="dropzone" type="file" name="file" id="file" accept=".csv*" required>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-12">
+          <button type="submit" class="btn btn-primary">Upload</button>
+        </div>
+                                        <div id="modal">
+                                  <br>
+                                  </br>
+                                                                              <br>
+                                  </br>
+        <img src="http://i.stack.imgur.com/FhHRx.gif"/> 
+        <p> Preparing CSV...</p>
+                                        </div><!-- comment -->
+      </div>
+       
+      </div>
     </div>
-    
-    
+  </form>
+    </div>
+
+    <div style=text-align:center;><a th:href="@{/MySQLTableForGlycansAndCCS}"
+                    class="blue-text">Back</a></center></div>
     <style>
         
-
-        input[type=file]::file-selector-button {
-  margin-right: 20px;
-  border: none;
-  background: #084cdf;
-  padding: 10px 20px;
-  border-radius: 10px;
-  color: #fff;
-  cursor: pointer;
-  transition: background .2s ease-in-out;
+.container {
+  padding: 50px 10%;
 }
 
-input[type=file]::file-selector-button:hover {
-  background: #0d45a5;
-}
-.drop-container {
+.box {
   position: relative;
-  display: flex;
-  gap: 10px;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  height: 200px;
-  padding: 20px;
-  border-radius: 10px;
-  border: 2px dashed #555;
-  color: #444;
-  cursor: pointer;
-  transition: background .2s ease-in-out, border .2s ease-in-out;
+  background: #ffff99;
+  width: 100%;
 }
 
-.drop-container:hover {
-  background: #eee;
-  border-color: #111;
+.box-header {
+  color: #ffff99;
+  display: block;
+  padding: 10px;
+  position: relative;
+  border-bottom: 1px solid #ffff99;
+  margin-bottom: 10px;
 }
 
-.drop-container:hover .drop-title {
-  color: #222;
+.box-tools {
+  position: absolute;
+  right: 10px;
+  top: 5px;
 }
 
-.drop-title {
-  color: #444;
-  font-size: 20px;
-  font-weight: bold;
+.dropzone-wrapper {
+  border: 2px dashed #91b0b3;
+  color: #92b0b3;
+  position: relative;
+  height: 150px;
+}
+
+.dropzone-desc {
+  position: absolute;
+  margin: 0 auto;
+  left: 0;
+  right: 0;
   text-align: center;
-  transition: color .2s ease-in-out;
+  width: 40%;
+  top: 50px;
+  font-size: 16px;
 }
 
+.dropzone,
+.dropzone:focus {
+  position: absolute;
+  outline: none !important;
+  width: 100%;
+  height: 150px;
+  cursor: pointer;
+  opacity: 0;
+}
+
+.dropzone-wrapper:hover,
+.dropzone-wrapper.dragover {
+  background: #ecf0f5;
+}
+
+.preview-zone {
+  text-align: center;
+}
+
+
+            body
+            {
+                
+                background-color: #ffff99;
+            }
+
+
+.preview-zone .box {
+                    background-color: #ffff99;
+  box-shadow: none;
+  border-radius: 0;
+  margin-bottom: 0;
+}
+
+modal {
+    display:none;
+}
 
         </style>
 </body>
+
+<script>
+    
+    $("#modal").hide();
+    
+    function readFile(input) {
+  if (input.files && input.files[0]) {
+    var reader = new FileReader();
+
+    reader.onload = function(e) {
+      var htmlPreview =
+        '<img width="100" src="https://icons.veryicon.com/png/o/file-type/doctype/gsheet.png" />' +
+        '<p>' + input.files[0].name + '</p>';
+      var wrapperZone = $(input).parent();
+      var previewZone = $(input).parent().parent().find('.preview-zone');
+      var boxZone = $(input).parent().parent().find('.preview-zone').find('.box').find('.box-body');
+
+      wrapperZone.removeClass('dragover');
+      previewZone.removeClass('hidden');
+      boxZone.empty();
+      boxZone.append(htmlPreview);
+    };
+
+    reader.readAsDataURL(input.files[0]);
+  }
+}
+
+function reset(e) {
+  e.wrap('<form>').closest('form').get(0).reset();
+  e.unwrap();
+}
+
+$(".dropzone").change(function() {
+  readFile(this);
+  $("#modal").show();
+      setTimeout(function() {
+        $("#modal").hide();
+    }, 2000);
+});
+
+$('.dropzone-wrapper').on('dragover', function(e) {
+  e.preventDefault();
+  e.stopPropagation();
+  $(this).addClass('dragover');
+});
+
+$('.dropzone-wrapper').on('dragleave', function(e) {
+  e.preventDefault();
+  e.stopPropagation();
+  $(this).removeClass('dragover');
+});
+
+$('.remove-preview').on('click', function() {
+  var boxZone = $(this).parents('.preview-zone').find('.box-body');
+  var previewZone = $(this).parents('.preview-zone');
+  var dropzone = $(this).parents('.form-group').find('.dropzone');
+  boxZone.empty();
+  previewZone.addClass('hidden');
+  reset(dropzone);
+});
+
+
+    </script>
+
 </html>
