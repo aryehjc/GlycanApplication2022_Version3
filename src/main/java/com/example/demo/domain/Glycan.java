@@ -1,8 +1,9 @@
 package com.example.demo.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import java.io.Serializable;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
+import javax.persistence.GeneratedValue;    
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
@@ -12,7 +13,8 @@ import javax.persistence.Id;
 // We want the image in database so we don't use javax.
 
 
-@Entity // This tells Hibernate to create a table of this class
+@Entity // This tells Hibernate to create a table of this class.
+@JsonIgnoreProperties(ignoreUnknown = true)
     public class Glycan implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -179,7 +181,25 @@ import javax.persistence.Id;
 	//			+ CCS_M_Plus_H_Plus_Na_Charge_2 + ", PhotosImagePath="
 	//			+ Arrays.toString(PhotosImagePath) + "]";
 	//}
+	 // @Override
+	  //public String toString() {
+	    //return "Table [id=" + id + ", DatabaseID=" + DatabaseID + ", Oxford=" + Oxford + ", NeutralMass=" + NeutralMass + ", "
+              //      + "ObservedMZ=" + ObservedMZ + ", CS_M_Plus_2H_Charge_2=" + CS_M_Plus_2H_Charge_2 + ", "
+                //    + "ObservedMZ2=" + ObservedMZ2 + ", CCS_M_Plus_H_Plus_Na_Charge_2=" + CCS_M_Plus_H_Plus_Na_Charge_2 + "]";  
+                    
+	 // }
 
-
-
+	//public Glycan(Long id, String DatabaseID, String Oxford, Float NeutralMass, Float ObservedMZ, Float CS_M_Plus_2H_Charge_2,
+          //      Float ObservedMZ2, Float CCS_M_Plus_H_Plus_Na_Charge_2) {
+	//	super();
+	//	this.id = id;
+	//	this.DatabaseID = DatabaseID;
+	//	this.Oxford = Oxford;
+	//	this.NeutralMass = NeutralMass;
+	//	this.ObservedMZ = ObservedMZ;
+          //      this.CS_M_Plus_2H_Charge_2 = CS_M_Plus_2H_Charge_2;
+            //    this.ObservedMZ2 = ObservedMZ2;
+              //  this.CCS_M_Plus_H_Plus_Na_Charge_2 = CCS_M_Plus_H_Plus_Na_Charge_2;
+     
+//	}
 }
