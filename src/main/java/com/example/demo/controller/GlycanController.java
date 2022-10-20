@@ -10,6 +10,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 
 import com.example.demo.domain.Glycan;
 import com.example.demo.service.GlycanService;
+import javax.servlet.RequestDispatcher;
+import javax.servlet.http.HttpServletRequest;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 
@@ -57,6 +60,8 @@ public class GlycanController {
 		//	@ModelAttribute  binds the object called "glycan" of request body from the POST request into the glycan parameter of the saveGlycan() method.
                 
             glycanService.saveGlycan(glycan); 
+            
+            
            
 		// after save the glycan data to database, redirect to "/"
 		return "redirect:/MySQLTableForGlycansAndCCS";
@@ -95,10 +100,13 @@ public String RedirectGlycan() {
 return "GlycanDictionary";
     // make the htmls as usual and then just put them in the controller. and then add it to te 
 }
-	
-	      @RequestMapping("/uploadPage")
+
+      @RequestMapping("/uploadPage")
 public String RedirectGlycanNew() {
 return "uploadPage";
     // make the htmls as usual and then just put them in the controller. and then add it to te 
 }
+
+
+
 }
