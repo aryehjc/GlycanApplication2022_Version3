@@ -22,11 +22,11 @@ import javax.persistence.Id;
 	private long id;
         private String DatabaseID; // maybe convert this to string. 
         private String Oxford;
-	private float NeutralMass;
-        private float ObservedMZ;
-        private float CS_M_Plus_2H_Charge_2;
-        private float ObservedMZ2;
-        private float CCS_M_Plus_H_Plus_Na_Charge_2;
+	private String NeutralMass;
+        private String ObservedMZ;
+        private String CS_M_Plus_2H_Charge_2;
+        private String ObservedMZ2;
+        private String CCS_M_Plus_H_Plus_Na_Charge_2;
         
         
       //  @Column(nullable = true, length = 64)
@@ -88,63 +88,63 @@ import javax.persistence.Id;
     /**
      * @return the NeutralMass
      */
-    public float getNeutralMass() {
+    public String getNeutralMass() {
         return NeutralMass;
     }
 
     /**
      * @param NeutralMass the NeutralMass to set
      */
-    public void setNeutralMass(float NeutralMass) {
+    public void setNeutralMass(String NeutralMass) {
         this.NeutralMass = NeutralMass;
     }
 
     /**
      * @return the ObservedMZ
      */
-    public float getObservedMZ() {
+    public String getObservedMZ() {
         return ObservedMZ;
     }
 
     /**
      * @param ObservedMZ the ObservedMZ to set
      */
-    public void setObservedMZ(float ObservedMZ) {
+    public void setObservedMZ(String ObservedMZ) {
         this.ObservedMZ = ObservedMZ;
     }
 
     /**
      * @return the CS_M_Plus_2H_Charge
      */
-    public float getCS_M_Plus_2H_Charge_2() {
+    public String getCS_M_Plus_2H_Charge_2() {
         return CS_M_Plus_2H_Charge_2;
     }
 
     /**
      * @param CS_M_Plus_2H_Charge the CS_M_Plus_2H_Charge to set
      */
-    public void setCS_M_Plus_2H_Charge_2(float CS_M_Plus_2H_Charge_2) {
+    public void setCS_M_Plus_2H_Charge_2(String CS_M_Plus_2H_Charge_2) {
         this.CS_M_Plus_2H_Charge_2 = CS_M_Plus_2H_Charge_2;
     }
 
     /**
      * @return the ObservedMZ2
      */
-    public float getObservedMZ2() {
+    public String getObservedMZ2() {
         return ObservedMZ2;
     }
 
     /**
      * @param ObservedMZ2 the ObservedMZ2 to set
      */
-    public void setObservedMZ2(float ObservedMZ2) {
+    public void setObservedMZ2(String ObservedMZ2) {
         this.ObservedMZ2 = ObservedMZ2;
     }
 
     /**
      * @return the CCS_M_Plus_H_Plus_Na_Charge_2
      */
-    public float getCCS_M_Plus_H_Plus_Na_Charge_2() {
+    public String getCCS_M_Plus_H_Plus_Na_Charge_2() {
         return CCS_M_Plus_H_Plus_Na_Charge_2;
     }
 
@@ -152,7 +152,7 @@ import javax.persistence.Id;
      * @param CCS_M_Plus_H_Plus_Na_Charge_2 the CCS_M_Plus_H_Plus_Na_Charge_2 to set
      */
     public void setCCS_M_Plus_H_Plus_Na_Charge_2(
-            float CCS_M_Plus_H_Plus_Na_Charge_2) {
+            String CCS_M_Plus_H_Plus_Na_Charge_2) {
         this.CCS_M_Plus_H_Plus_Na_Charge_2 = CCS_M_Plus_H_Plus_Na_Charge_2;
     }
 
