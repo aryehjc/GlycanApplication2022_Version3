@@ -24,4 +24,4 @@ public class UserService {
     public void saveAll(@Valid List<Glycan> users) {
         repoupload.saveAll(users);
     }
-}
+} 
