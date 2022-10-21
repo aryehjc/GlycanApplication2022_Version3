@@ -95,6 +95,20 @@ public class GlycanController {
 		return "redirect:/MySQLTableForGlycansAndCCS";
 	}
         
+        
+    
+	//	delete the glycan by id
+	@GetMapping("/deleteAll")
+	// This means that this method will be executed when user sends GET Requests to "/delete/{glycan's id}"
+	//	In our case, "http://localhost:8080/delete/{glycan's id}"
+	public String deleteAllGlycans() {
+		glycanService.deleteAllGlycans();
+
+	//	after delete the glycan data from database, redirect to "/"
+		return "redirect:/MySQLTableForGlycansAndCCS";
+	}
+        
+        
       @RequestMapping("/GlycanDictionary")
 public String RedirectGlycan() {
 return "GlycanDictionary";
