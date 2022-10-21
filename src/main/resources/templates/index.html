@@ -28,16 +28,16 @@
                 
 
                    <a th:href="@{/GlycanDictionary}"
-                      class="btn btn-danger">View Supported Glycan IDs</a>
+                      class="btn btn-primary">View Supported Glycan IDs</a>
                       
                       
                                          <a th:href="@{/uploadPage}"
                       class="btn btn-info">Upload CSV File</a>
                       
                       
-
+                      <div class="mydelete">
 					<a th:href="@{/deleteAll}"
-                        class="btn btn-primary">Delete All Entries</a>
+                        data-confirm="Delete Glycan entries?" class="btn btn-danger">Delete All Entries</a>
                                                         </div>
                       
                    <!--   <a th:href="@{/MyCSVUploadPage}"
@@ -181,7 +181,7 @@ $(document).ready(function() {
         var href = $(this).attr('href');
 
         if (!$('#dataConfirmModal').length) {
-            $('body').append('<div id="dataConfirmModal" style=width:250px;height:150px; class="modal" role="dialog" aria-labelledby="dataConfirmLabel" aria-hidden="true"><div><br></br><center><p> Delete Glycan Entry? </p><a class="btn btn-primary" id="dataConfirmOK">Yes</a>  <button class="btn" data-dismiss="modal" aria-hidden="true">No</button></center></div>');
+            $('body').append('<div id="dataConfirmModal" style=width:250px;height:150px; class="modal" role="dialog" aria-labelledby="dataConfirmLabel" aria-hidden="true"><div><br></br><center><p> Are you sure you want to delete? </p><a class="btn btn-primary" id="dataConfirmOK">Yes</a>  <button class="btn" data-dismiss="modal" aria-hidden="true">No</button></center></div>');
         } 
         $('#dataConfirmModal').find('.modal-body').text($(this).attr('data-confirm'));
         $('#dataConfirmOK').attr('href', href);
