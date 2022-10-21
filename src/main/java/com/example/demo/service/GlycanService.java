@@ -61,7 +61,16 @@ public class GlycanService {
                 + gly.getObservedMZ()+ " " + gly.getCCS_M_Plus_H_Plus_Na_Charge_2();
     }
         
-       
+        
+        	//	delete ALL glycan by id
+	public void deleteAllGlycans() {
+		//		find an glycan by id
+		glycanRepository.deleteAll();
+
+		//		if there is not an glycan who has the id, throw the error.
+
+}
+        
 }
 
 
