@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 public class AdditionController {
 
-    @RequestMapping("/GlycanApp2022")
+    @RequestMapping("/GlycanDatabaseApp")
     public String viewForm(@ModelAttribute Addition addition,
             BindingResult result,
             Model model) {
@@ -26,7 +26,7 @@ public class AdditionController {
         // addition.TotalAmountOfCharge();
         System.out.println("My Total is " + addition.Total());
        // System.out.println("My Charge is " + addition.TotalAmountOfCharge());
-        return "GlycanApp2022";
+        return "GlycanDatabaseApp";
     }
     
     @RequestMapping("/SampleCCSGraphicalData")
