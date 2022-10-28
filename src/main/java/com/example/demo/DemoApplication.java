@@ -1,16 +1,11 @@
 
 package com.example.demo;
 
-import java.io.PrintWriter;
 import org.apache.catalina.Container;
 import org.apache.catalina.core.StandardHost;
-import org.apache.catalina.valves.ErrorReportValve;
-import org.apache.coyote.Response;
-import org.slf4j.LoggerFactory;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.boot.autoconfigure.cassandra.CassandraProperties.Request;
 import org.springframework.boot.autoconfigure.web.ServerProperties;
 import org.springframework.boot.autoconfigure.web.embedded.TomcatWebServerFactoryCustomizer;
 import org.springframework.boot.autoconfigure.web.servlet.error.ErrorMvcAutoConfiguration;
