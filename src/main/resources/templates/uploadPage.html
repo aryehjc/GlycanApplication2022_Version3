@@ -11,6 +11,9 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 </head>
 <body>
+    
+        <div style=text-align:center;><a th:href="@{/MySQLTableForGlycansAndCCS}"
+                    class="blue-text">Back</a></center></div>
 
     <div class="mydiv" style="text-align:center">
 <form th:action="@{/upload}" method="POST" enctype="multipart/form-data">
@@ -50,8 +53,7 @@
                                         <div id="modal">
                                   <br>
                                   </br>
-                                                                              <br>
-                                  </br>
+
         <img src="http://i.stack.imgur.com/FhHRx.gif"/> 
         <p> Preparing CSV...</p>
                                         </div><!-- comment -->
@@ -62,9 +64,9 @@
   </form>
     </div>
 
-    <div style=text-align:center;><a th:href="@{/MySQLTableForGlycansAndCCS}"
-                    class="blue-text">Back</a></center></div>
-                    
+
+    <br><!-- comment -->
+    </br>
 
                     <div id="manipulate" style=text-align:center;>
                                             <img width="170px" th:src="@{clipart1500880.png}"/>
