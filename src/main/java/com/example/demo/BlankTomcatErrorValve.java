@@ -20,7 +20,7 @@ public class BlankTomcatErrorValve extends ErrorReportValve {
 			// Write a more friendly, less technical message to the user
 			BufferedWriter out = new BufferedWriter(new OutputStreamWriter(response.getOutputStream()));
 			out.write("<html><head><title>Oops</title><body>");
-			out.write("<h1>Oops</h1>");
+			out.write("<h1>Error</h1>");
 			out.write("<p>Wrong file type uploaded!</p>");
 			out.write("<p>Please return to previous page and resubmit a CSV file.</p>");
 			out.write("</body></html>");
