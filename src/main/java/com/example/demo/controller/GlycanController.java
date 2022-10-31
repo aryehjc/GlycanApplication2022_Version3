@@ -10,9 +10,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 
 import com.example.demo.domain.Glycan;
 import com.example.demo.service.GlycanService;
-import javax.servlet.RequestDispatcher;
-import javax.servlet.http.HttpServletRequest;
-import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 
