@@ -170,6 +170,11 @@ td
 </br>
 <script>
 
+$('body').on('dragstart drop', function(e){
+    e.preventDefault();
+    return false;
+});
+
     
 setTimeout(function() {
   $('#modal').hide();
