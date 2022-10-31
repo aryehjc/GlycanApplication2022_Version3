@@ -12,7 +12,7 @@ import org.apache.catalina.valves.ErrorReportValve;
 public class BlankTomcatErrorValve extends ErrorReportValve {
 
 	// Create a simple logger
-	Logger log = Logger.getLogger(BlankTomcatErrorValve.class.getName());
+	static final Logger log = Logger.getLogger(BlankTomcatErrorValve.class.getName());
 
 	@Override
 	protected void report(Request request, Response response, Throwable t) {
@@ -21,8 +21,8 @@ public class BlankTomcatErrorValve extends ErrorReportValve {
 			BufferedWriter out = new BufferedWriter(new OutputStreamWriter(response.getOutputStream()));
 			out.write("<html><head><title>Oops</title><body>");
 			out.write("<h1>Error</h1>");
-			out.write("<p>Wrong file type uploaded!</p>");
-			out.write("<p>Please return to previous page and resubmit a CSV file.</p>");
+			out.write("<p>If you are seeing this message, you are on an undefined page or have submitted the wrong file type in CSV Upload.</p>");
+			out.write("<p>Please return to the previous page with Back and follow instructions on page.</p>");
 			out.write("</body></html>");
 			out.close();
 
