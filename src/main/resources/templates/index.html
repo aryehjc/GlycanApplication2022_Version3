@@ -186,15 +186,19 @@ $(document).ready(function() {
         var href = $(this).attr('href');
 
         if (!$('#dataConfirmModal').length) {
-            $('body').append('<div id="dataConfirmModal" style=width:250px;height:150px; class="modal" role="dialog" aria-labelledby="dataConfirmLabel" aria-hidden="true"><div><br></br><center><p> Are you sure you want to delete? </p><a class="btn btn-primary" id="dataConfirmOK">Yes</a>  <button class="btn" data-dismiss="modal" aria-hidden="true">No</button></center></div>');
+            $('body').append('<div id="dataConfirmModal" style=width:250px;height:150px; class="modal" role="dialog" aria-labelledby="dataConfirmLabel" aria-hidden="true"><div><br></br><center><p> Are you sure you want to delete? </p><a class="btn btn-primary" id="dataConfirmOK" onclick="$(this).prop("disabled",true)">Yes</a>  <button class="btn" data-dismiss="modal" aria-hidden="true">No</button></center></div>');
         } 
-        $('#dataConfirmModal').find('.modal-body').text($(this).attr('data-confirm'));
-        $('#dataConfirmOK').attr('href', href);
-        $('#dataConfirmModal').modal({show:true});
-        return false;
+        $('#dataConfirmModal').find('.modal-body').text($(this).attr('data-confirm')); // not needed for some reason
+        $('#dataConfirmOK').attr('href', href); // must be present for refresh
+        $('#dataConfirmModal').modal({show:true}); // allows href to work (delete all enttry red button)
+        return false; // allows href to work
+        
+        
+        
     });
+    
 });
 
-    
+
 </script>
 </html>
