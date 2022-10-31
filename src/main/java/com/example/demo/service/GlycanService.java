@@ -65,9 +65,9 @@ public class GlycanService {
         	//	delete ALL glycan by id
 	public void deleteAllGlycans() {
 		//		find an glycan by id
-		glycanRepository.deleteAll();
+		glycanRepository.deleteAllInBatch();
 
-		//		if there is not an glycan who has the id, throw the error.
+		// server side prevents 404 on multiple button press,.	if there is not an glycan who has the id, throw the error.
 
 }
         
