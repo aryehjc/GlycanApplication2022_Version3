@@ -171,6 +171,29 @@ td
   right: 800px;
 }
 
+    .dataTables_filter {
+        float: left !important;
+    }
+ 
+    .dataTables_filter input {
+        width: 250px;
+        height: 32px;
+        background: #fcfcfc;
+        border: 1px solid #aaa;
+        border-radius: 5px;
+        box-shadow: 0 0 3px #ccc, 0 10px 15px #ebebeb inset;
+        text-indent: 10px;
+    }
+ 
+    .dataTables_filter .fa-search {
+        position: absolute;
+        top: 10px;
+        left: auto;
+        right: 10px;
+    }
+
+
+
         </style>
 </body>
 
@@ -178,7 +201,7 @@ td
 </br>
 <script>
 
-
+$.fn.DataTable.ext.classes.sFilterInput = "form-control form-control-lg";
 
 $('body').on('dragstart drop', function(e){
     e.preventDefault();
@@ -193,11 +216,21 @@ setTimeout(function() {
         
 $(document).ready(function() {
     
+        $.extend(true, $.fn.dataTable.defaults, {
+        language: {
+            search: ""
+        }
+    });
+    
         $('#MyTable').DataTable({
             
-            dom: 'ptrip',
+            dom: 'pftrip',
         });
         
+            $('[type=search]').each(function () {
+        $(this).attr("placeholder", "Search...");
+        $(this).before('<span class="fa fa-search"></span>');
+    });
         
     $('a[data-confirm]').click(function(ev) {
         var href = $(this).attr('href');
