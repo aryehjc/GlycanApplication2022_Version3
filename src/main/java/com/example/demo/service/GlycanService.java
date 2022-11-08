@@ -17,8 +17,10 @@ public class GlycanService {
 	GlycanRepository glycanRepository;
 
 	//	get all glycans
-	public List<Glycan> getAllGlycans() {
-
+	public List<Glycan> getAllGlycans(String keyword) {
+	if (keyword != null) {
+	return glycanRepository.findAll(keyword);
+	}
 		//		find all glycans data, then return it
 		return glycanRepository.findAll();
 	}
