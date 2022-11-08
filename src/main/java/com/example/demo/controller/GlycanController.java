@@ -10,6 +10,10 @@ import org.springframework.web.bind.annotation.PostMapping;
 
 import com.example.demo.domain.Glycan;
 import com.example.demo.service.GlycanService;
+import java.util.List;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.repository.query.Param;
+import org.springframework.data.web.SortDefault;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 
@@ -25,11 +29,12 @@ public class GlycanController {
 	@GetMapping("/MySQLTableForGlycansAndCCS")
 	// This means that this method will be executed when user sends GET Requests to "/"
 	// In our case, "http://localhost:8080/"
-	public String viewHomePage(Model model) {
-
+	public String viewHomePage(Model model,@Param("keyword") String keyword, @SortDefault("glycanname") Pageable pageable) {
 		//	We can use this attribute "listGlycans" to perform server-side rendering of the HTML with using Thymeleaf.
 		//	We set all glycans data to "listGlycans"
-		model.addAttribute("listGlycans", glycanService.getAllGlycans());
+		model.addAttribute("listGlycans", glycanService.getAllGlycans(keyword));
+                model.addAttribute("keyword", keyword);
+
 
 		//		shows the index.html template:
 		return "index";
