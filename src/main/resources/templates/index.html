@@ -45,6 +45,18 @@
 					<a th:href="@{/deleteAll}"
                         data-confirm="Delete Glycan entries?" class="btn btn-danger">Delete All Entries</a>
                                                         </div>
+            <br>
+                <br>
+                </br><!-- comment -->
+
+    
+            <form th:action="@{/MySQLTableForGlycansAndCCS}">
+    Filter: <input type="text" name="keyword" id="keyword" autofocus style="text-align: center; width: 100%" placeholder="Type here to filter by values..." size="50" th:value="${keyword}" required />
+    &nbsp;
+    <input type="submit" value="Search" />
+    &nbsp;
+    <input type="button" value="Clear" id="btnClear" onclick="clearSearch()" />
+</form>
                       
                    <!--   <a th:href="@{/MyCSVUploadPage}"
                          class="btn btn-warning">Upload CSV</a> see the controller for mapping-->
@@ -82,7 +94,7 @@
 				 In this case, it is "${listGlycans}".
 			     To show all glycans data in this table, you need to use "th:each" in the thymeleaf template and iterate the glycan of listGlycans -->	
                         <tr th:each="glycan: ${listGlycans}">
-                            <td><img th:src="@{${glycan.DatabaseID} + '.png'}" style="width: 300px" /></td> <!-- Dynamically displays image based on oxford number!, just match property to imgname in static, removed column glycan_photo from sql, add back if needed. -->
+                            <td><img th:src="@{${glycan.DatabaseID} + '.png'}" style="width: 150px" /></td> <!-- Dynamically displays image based on oxford number!, just match property to imgname in static, removed column glycan_photo from sql, add back if needed. -->
 										<td th:text="${glycan.DatabaseID}"></td>
                             <td th:text="${glycan.Oxford}"></td>
 					<td th:text="${glycan.NeutralMass}"></td>
@@ -111,6 +123,31 @@
 	</div>
  
         <style>
+            
+            ::placeholder {
+  color: red;
+  opacity: 1; /* Firefox */
+}
+
+:-ms-input-placeholder { /* Internet Explorer 10-11 */
+ color: red;
+}
+
+::-ms-input-placeholder { /* Microsoft Edge */
+ color: red;
+}
+            
+table td 
+{
+  table-layout:fixed;
+  width:60px;
+  min-width:60px;
+  max-width:60px;
+  overflow:hidden;
+  word-wrap:break-word;
+}
+
+
             
             body
             {
@@ -201,8 +238,10 @@ td
 <br>
 </br>
 <script>
-
-$.fn.DataTable.ext.classes.sFilterInput = "form-control form-control-lg";
+    
+        function clearSearch() {
+        window.location = "[[@{/MySQLTableForGlycansAndCCS}]]";
+    }
 
 $('body').on('dragstart drop', function(e){
     e.preventDefault();
@@ -232,22 +271,6 @@ $(document).ready(function() {
         
     });
     
-        $.extend(true, $.fn.dataTable.defaults, {
-        language: {
-            search: ""
-        }
-    });
-    
-        $('#MyTable').DataTable({
-            
-            dom: 'pftrip',
-        });
-        
-            $('[type=search]').each(function () {
-        $(this).attr("placeholder", "Search...");
-        $(this).before('<span class="fa fa-search"></span>');
-    });
-        
 
     
 });
