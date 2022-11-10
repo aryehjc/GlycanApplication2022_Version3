@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import com.example.demo.domain.Glycan;
 import com.example.demo.service.GlycanService;
 import java.util.List;
+import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.repository.query.Param;
 import org.springframework.data.web.SortDefault;
@@ -29,16 +30,47 @@ public class GlycanController {
 	@GetMapping("/MySQLTableForGlycansAndCCS")
 	// This means that this method will be executed when user sends GET Requests to "/"
 	// In our case, "http://localhost:8080/"
-	public String viewHomePage(Model model,@Param("keyword") String keyword, @SortDefault("glycanname") Pageable pageable) {
+	public String viewHomePage(Model model) {
 		//	We can use this attribute "listGlycans" to perform server-side rendering of the HTML with using Thymeleaf.
 		//	We set all glycans data to "listGlycans"
-		model.addAttribute("listGlycans", glycanService.getAllGlycans(keyword));
-                model.addAttribute("keyword", keyword);
+                String keyword = null;
+                return listByPage(model, 1, "id", "asc", keyword);
 
 
 		//		shows the index.html template:
-		return "index";
+		// return "index";
 	}
+        
+        @GetMapping("/MySQLTableForGlycansAndCCS/{pageNumber}")
+        public String listByPage(Model model,
+                @PathVariable("pageNumber") int currentPage,
+                @Param("sortField") String sortField,
+                @Param("sortDir") String sortDir,
+                @Param("keyword") String keyword) {
+            
+            Page<Glycan> page = glycanService.listAll(currentPage, sortField, sortDir, keyword);
+            
+            
+            //long totalItems = page.getTotalElements();
+            //  int totalPages = page.getTotalPages();
+            
+            List<Glycan> listGlycans = page.getContent(); 
+            
+            model.addAttribute("currentPage", currentPage);
+            model.addAttribute("totalPages", page.getTotalPages());
+            model.addAttribute("totalItems", page.getTotalElements());
+            
+            model.addAttribute("sortField", sortField);
+            model.addAttribute("sortDir", sortDir);
+            model.addAttribute("keyword", keyword);
+            
+            model.addAttribute("reverseSortDir", sortDir.equals("asc") ? "desc" : "asc");
+            
+            model.addAttribute("listGlycans", listGlycans);
+            
+            return "index";
+            
+        }
 
 	//	showNewGlycanForm
 	@GetMapping("/showNewGlycanForm")
