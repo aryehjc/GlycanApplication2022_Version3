@@ -8,6 +8,10 @@ import org.springframework.stereotype.Service;
 
 import com.example.demo.domain.Glycan;
 import com.example.demo.repository.GlycanRepository;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 
 @Service // This means that this class is a service
 public class GlycanService {
@@ -17,12 +21,18 @@ public class GlycanService {
 	GlycanRepository glycanRepository;
 
 	//	get all glycans
-	public List<Glycan> getAllGlycans(String keyword) {
-	if (keyword != null) {
-	return glycanRepository.findAll(keyword);
-	}
+	public Page<Glycan> listAll(int pageNumber, String sortField, String sortDir, String keyword) {
+            Sort sort = Sort.by(sortField);
+            sort = sortDir.equals("asc") ? sort.ascending() : sort.descending();
+            
+            Pageable pageable = PageRequest.of(pageNumber - 1, 6, sort);
+            
+            if (keyword != null) { 
+                return glycanRepository.findAll(keyword, pageable);
+            }
+            
 		//		find all glycans data, then return it
-		return glycanRepository.findAll();
+		return glycanRepository.findAll(pageable);
 	}
 
 	// save an glycan
