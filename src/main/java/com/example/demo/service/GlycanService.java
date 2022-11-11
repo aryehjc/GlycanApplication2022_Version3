@@ -1,6 +1,6 @@
 package com.example.demo.service;
 
-import java.util.List;
+// import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -69,8 +69,8 @@ public class GlycanService {
         //		delete an glycan who has the id from the database 
         glycanRepository.deleteById(id);
         return "Deleted: " + gly.getDatabaseID()+ " " + gly.getOxford()+ " " 
-                + gly.getNeutralMass()+ " " + gly.getObservedMZ()+ " " + gly.getCS_M_Plus_2H_Charge_2()+ " " 
-                + gly.getObservedMZ()+ " " + gly.getCCS_M_Plus_H_Plus_Na_Charge_2();
+                + gly.getNeutralmass()+ " " + gly.getObservedmz()+ " " + gly.getCcs1()+ " " 
+                + gly.getObservedmz2()+ " " + gly.getCcs2();
     }
         
         
