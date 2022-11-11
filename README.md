@@ -33,3 +33,5 @@ Remaining steps-
 Add login, security etc, fix CSS
 
 Headers must be same as listed classes headings in whitelist error for CSV upload.
+Adding dynamic headers!
+getters and setters have to be capital (first letter) even with lowercase java classes. 
