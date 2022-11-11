@@ -23,7 +23,7 @@ as of Oct 17 2022.
 
 Remaining steps-
 
-1) Allow CSV to be uploaded with spaces in headers
+1) Allow CSV to be uploaded with spaces in headers, dynamic columns
 (Latest by Start Jan)
 <br>
 2) Fragmentation function (Latest by Mid Jan)
