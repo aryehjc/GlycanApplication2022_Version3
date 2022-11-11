@@ -22,13 +22,13 @@ import javax.persistence.Id;
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	//	By @GeneratedValue, JPA makes a unique key automatically and applies the key to the field having @Id
 	private long id;
-        private String DatabaseID; // maybe convert this to string. 
-        private String Oxford;
-	private String NeutralMass;
-        private String ObservedMZ;
-        private String CS_M_Plus_2H_Charge_2;
-        private String ObservedMZ2;
-        private String CCS_M_Plus_H_Plus_Na_Charge_2;
+        private String databaseID; // maybe convert this to string. 
+        private String oxford;
+	private String neutralmass;
+        private String observedmz;
+        private String ccs1;
+        private String observedmz2;
+        private String ccs2;
         
         
       //  @Column(nullable = true, length = 64)
@@ -46,122 +46,121 @@ import javax.persistence.Id;
 	public Glycan() {
 
     }
-	
-
-	public long getId() {
-		return id;
-	}
-
-	public void setId(long id) {
-		this.id = id;
-	}
-       
 
     /**
-     * @return the DatabaseID
+     * @return the id
+     */
+    public long getId() {
+        return id;
+    }
+
+    /**
+     * @param id the id to set
+     */
+    public void setId(long id) {
+        this.id = id;
+    }
+
+    /**
+     * @return the databaseID
      */
     public String getDatabaseID() {
-        return DatabaseID;
+        return databaseID;
     }
 
     /**
-     * @param DatabaseID the DatabaseID to set
+     * @param databaseID the databaseID to set
      */
-    public void setDatabaseID(String DatabaseID) {
-        this.DatabaseID = DatabaseID;
-        
+    public void setDatabaseID(String databaseID) {
+        this.databaseID = databaseID;
     }
 
-    
-        /**
-     * @return the Oxford
+    /**
+     * @return the oxford
      */
     public String getOxford() {
-        return Oxford;
+        return oxford;
     }
 
     /**
-     * @param Oxford the Oxford to set
+     * @param oxford the oxford to set
      */
-    public void setOxford(String Oxford) {
-        this.Oxford = Oxford;
-    }
-    
-    /**
-     * @return the NeutralMass
-     */
-    public String getNeutralMass() {
-        return NeutralMass;
+    public void setOxford(String oxford) {
+        this.oxford = oxford;
     }
 
     /**
-     * @param NeutralMass the NeutralMass to set
+     * @return the neutralmass
      */
-    public void setNeutralMass(String NeutralMass) {
-        this.NeutralMass = NeutralMass;
+    public String getNeutralmass() {
+        return neutralmass;
     }
 
     /**
-     * @return the ObservedMZ
+     * @param neutralmass the neutralmass to set
      */
-    public String getObservedMZ() {
-        return ObservedMZ;
+    public void setNeutralmass(String neutralmass) {
+        this.neutralmass = neutralmass;
     }
 
     /**
-     * @param ObservedMZ the ObservedMZ to set
+     * @return the observedmz
      */
-    public void setObservedMZ(String ObservedMZ) {
-        this.ObservedMZ = ObservedMZ;
+    public String getObservedmz() {
+        return observedmz;
     }
 
     /**
-     * @return the CS_M_Plus_2H_Charge
+     * @param observedmz the observedmz to set
      */
-    public String getCS_M_Plus_2H_Charge_2() {
-        return CS_M_Plus_2H_Charge_2;
+    public void setObservedmz(String observedmz) {
+        this.observedmz = observedmz;
     }
 
     /**
-     * @param CS_M_Plus_2H_Charge the CS_M_Plus_2H_Charge to set
+     * @return the ccs1
      */
-    public void setCS_M_Plus_2H_Charge_2(String CS_M_Plus_2H_Charge_2) {
-        this.CS_M_Plus_2H_Charge_2 = CS_M_Plus_2H_Charge_2;
+    public String getCcs1() {
+        return ccs1;
     }
 
     /**
-     * @return the ObservedMZ2
+     * @param ccs1 the ccs1 to set
      */
-    public String getObservedMZ2() {
-        return ObservedMZ2;
+    public void setCcs1(String ccs1) {
+        this.ccs1 = ccs1;
     }
 
     /**
-     * @param ObservedMZ2 the ObservedMZ2 to set
+     * @return the observedmz2
      */
-    public void setObservedMZ2(String ObservedMZ2) {
-        this.ObservedMZ2 = ObservedMZ2;
+    public String getObservedmz2() {
+        return observedmz2;
     }
 
     /**
-     * @return the CCS_M_Plus_H_Plus_Na_Charge_2
+     * @param observedmz2 the observedmz2 to set
      */
-    public String getCCS_M_Plus_H_Plus_Na_Charge_2() {
-        return CCS_M_Plus_H_Plus_Na_Charge_2;
+    public void setObservedmz2(String observedmz2) {
+        this.observedmz2 = observedmz2;
     }
 
     /**
-     * @param CCS_M_Plus_H_Plus_Na_Charge_2 the CCS_M_Plus_H_Plus_Na_Charge_2 to set
+     * @return the ccs2
      */
-    public void setCCS_M_Plus_H_Plus_Na_Charge_2(
-            String CCS_M_Plus_H_Plus_Na_Charge_2) {
-        this.CCS_M_Plus_H_Plus_Na_Charge_2 = CCS_M_Plus_H_Plus_Na_Charge_2;
+    public String getCcs2() {
+        return ccs2;
     }
 
     /**
-     * @return the PhotosImagePath
+     * @param ccs2 the ccs2 to set
      */
-    
+    public void setCcs2(String ccs2) {
+        this.ccs2 = ccs2;
+    }
+	
+
+
 
     
     //although not called in thymeleaf, it's part of my method to link to controller as a getter.
@@ -176,33 +175,32 @@ import javax.persistence.Id;
 
 	//@Override
 	//public String toString() {
-	//	return "Product [id=" + id + ", Oxford=" + Oxford + ", DatabaseID=" + DatabaseID + ", NeutralMass=" + NeutralMass + ", ObservedMZ="
-	//			+ ObservedMZ + ", CS_M_Plus_2H_Charge_2="
-	//			+ CS_M_Plus_2H_Charge_2 + ", ObservedMZ2="
-	//			+ ObservedMZ2 + ", CCS_M_Plus_H_Plus_Na_Charge_2="
-	//			+ CCS_M_Plus_H_Plus_Na_Charge_2 + ", PhotosImagePath="
+	//	return "Product [id=" + id + ", oxford=" + oxford + ", databaseID=" + databaseID + ", neutralmass=" + neutralmass + ", observedmz="
+	//			+ observedmz + ", ccs1="
+	//			+ ccs1 + ", observedmz2="
+	//			+ observedmz2 + ", ccs2="
+	//			+ ccs2 + ", PhotosImagePath="
 	//			+ Arrays.toString(PhotosImagePath) + "]";
 	//}
 	 // @Override
 	  //public String toString() {
-	    //return "Table [id=" + id + ", DatabaseID=" + DatabaseID + ", Oxford=" + Oxford + ", NeutralMass=" + NeutralMass + ", "
-              //      + "ObservedMZ=" + ObservedMZ + ", CS_M_Plus_2H_Charge_2=" + CS_M_Plus_2H_Charge_2 + ", "
-                //    + "ObservedMZ2=" + ObservedMZ2 + ", CCS_M_Plus_H_Plus_Na_Charge_2=" + CCS_M_Plus_H_Plus_Na_Charge_2 + "]";  
+	    //return "Table [id=" + id + ", databaseID=" + databaseID + ", oxford=" + oxford + ", neutralmass=" + neutralmass + ", "
+              //      + "observedmz=" + observedmz + ", ccs1=" + ccs1 + ", "
+                //    + "observedmz2=" + observedmz2 + ", ccs2=" + ccs2 + "]";  
                     
 	 // }
 
-	//public Glycan(Long id, String DatabaseID, String Oxford, Float NeutralMass, Float ObservedMZ, Float CS_M_Plus_2H_Charge_2,
-          //      Float ObservedMZ2, Float CCS_M_Plus_H_Plus_Na_Charge_2) {
+	//public Glycan(Long id, String databaseID, String oxford, Float neutralmass, Float observedmz, Float ccs1,
+          //      Float observedmz2, Float ccs2) {
 	//	super();
 	//	this.id = id;
-	//	this.DatabaseID = DatabaseID;
-	//	this.Oxford = Oxford;
-	//	this.NeutralMass = NeutralMass;
-	//	this.ObservedMZ = ObservedMZ;
-          //      this.CS_M_Plus_2H_Charge_2 = CS_M_Plus_2H_Charge_2;
-            //    this.ObservedMZ2 = ObservedMZ2;
-              //  this.CCS_M_Plus_H_Plus_Na_Charge_2 = CCS_M_Plus_H_Plus_Na_Charge_2;
+	//	this.databaseID = databaseID;
+	//	this.oxford = oxford;
+	//	this.neutralmass = neutralmass;
+	//	this.observedmz = observedmz;
+          //      this.ccs1 = ccs1;
+            //    this.observedmz2 = observedmz2;
+              //  this.ccs2 = ccs2;
      
 //	}
 }
- 
