@@ -80,13 +80,13 @@
 			<thead>
 				<tr>
                                     <th class="not_mapped_style" style="text-align:center">Glycan Image</th>
-					<th class="not_mapped_style" style="text-align:center"><a th:href="@{'/MySQLTableForGlycansAndCCS/' + ${currentPage} + '?sortField=DatabaseID&sortDir=' + ${reverseSortDir}  + ${keyword != null ? '&keyword=' + keyword : ''}}">database ID</a></th>
-                                        <th class="not_mapped_style" style="text-align:center"><a th:href="@{'/MySQLTableForGlycansAndCCS/' + ${currentPage} + '?sortField=Oxford&sortDir=' + ${reverseSortDir}  + ${keyword != null ? '&keyword=' + keyword : ''}}">Oxford</a></th>
-					<th class="not_mapped_style" style="text-align:center"><a th:href="@{'/MySQLTableForGlycansAndCCS/' + ${currentPage} + '?sortField=NeutralMass&sortDir=' + ${reverseSortDir}  + ${keyword != null ? '&keyword=' + keyword : ''}}">Neutral mass</a></th>
-					<th class="not_mapped_style" style="text-align:center"><a th:href="@{'/MySQLTableForGlycansAndCCS/' + ${currentPage} + '?sortField=ObservedMZ&sortDir=' + ${reverseSortDir} + ${keyword != null ? '&keyword=' + keyword : ''}}">Observed m/z</a></th>
-                                        <th class="not_mapped_style" style="text-align:center"><a th:href="@{'/MySQLTableForGlycansAndCCS/' + ${currentPage} + '?sortField=CS_M_Plus_2H_Charge_2&sortDir=' + ${reverseSortDir} + ${keyword != null ? '&keyword=' + keyword : ''}}">CS [M+2H] charge 2</a></th>
-					<th class="not_mapped_style" style="text-align:center"><a th:href="@{'/MySQLTableForGlycansAndCCS/' + ${currentPage} + '?sortField=ObservedMZ2&sortDir=' + ${reverseSortDir} + ${keyword != null ? '&keyword=' + keyword : ''}}">Observed m/z 2</a></th>
-					<th class="not_mapped_style" style="text-align:center"><a th:href="@{'/MySQLTableForGlycansAndCCS/' + ${currentPage} + '?sortField=CCS_M_Plus_H_Plus_Na_Charge_2&sortDir=' + ${reverseSortDir} + ${keyword != null ? '&keyword=' + keyword : ''}}">CCS [M+H+Na] charge 2</a></th>
+					<th class="not_mapped_style" style="text-align:center"><a th:href="@{'/MySQLTableForGlycansAndCCS/' + ${currentPage} + '?sortField=databaseID&sortDir=' + ${reverseSortDir}}">database ID</a></th>
+                                        <th class="not_mapped_style" style="text-align:center"><a th:href="@{'/MySQLTableForGlycansAndCCS/' + ${currentPage} + '?sortField=oxford&sortDir=' + ${reverseSortDir}}">oxford</a></th>
+					<th class="not_mapped_style" style="text-align:center"><a th:href="@{'/MySQLTableForGlycansAndCCS/' + ${currentPage} + '?sortField=neutralmass&sortDir=' + ${reverseSortDir}}">Neutral mass</a></th>
+					<th class="not_mapped_style" style="text-align:center"><a th:href="@{'/MySQLTableForGlycansAndCCS/' + ${currentPage} + '?sortField=observedmz&sortDir=' + ${reverseSortDir}}">Observed m/z</a></th>
+                                        <th class="not_mapped_style" style="text-align:center"><a th:href="@{'/MySQLTableForGlycansAndCCS/' + ${currentPage} + '?sortField=ccs1&sortDir=' + ${reverseSortDir}}">CS [M+2H] charge 2</a></th>
+					<th class="not_mapped_style" style="text-align:center"><a th:href="@{'/MySQLTableForGlycansAndCCS/' + ${currentPage} + '?sortField=observedmz2&sortDir=' + ${reverseSortDir}}">Observed m/z 2</a></th>
+					<th class="not_mapped_style" style="text-align:center"><a th:href="@{'/MySQLTableForGlycansAndCCS/' + ${currentPage} + '?sortField=ccs2&sortDir=' + ${reverseSortDir}}">CCS [M+H+Na] charge 2</a></th>
 					<th class="not_mapped_style" style="text-align:center">Update Entry</th>
 					<th class="not_mapped_style" style="text-align:center">Delete Entry</th>
 				</tr>
@@ -96,15 +96,15 @@
 				 In this case, it is "${listGlycans}".
 			     To show all glycans data in this table, you need to use "th:each" in the thymeleaf template and iterate the glycan of listGlycans -->	
                         <tr th:each="glycan: ${listGlycans}">
-                            <td><img th:src="@{'/img/glycans/' + ${glycan.DatabaseID} + '.png'}" style="width: 150px" /></td> <!-- This manages to bypass the pagination error where images not pathed properly. Dynamically displays image based on oxford number!, just match property to imgname in static, removed column glycan_photo from sql, add back if needed. Either this or 
-                            <td> <a th:href="@{'/img/glycans/' + ${glycan.DatabaseID} + '.png'}"></a></td> -->
-										<td th:text="${glycan.DatabaseID}"></td>
-                            <td th:text="${glycan.Oxford}"></td>
-					<td th:text="${glycan.NeutralMass}"></td>
-                                        <td th:text="${glycan.ObservedMZ}"></td>
-					<td th:text="${glycan.CS_M_Plus_2H_Charge_2}"></td>
-					<td th:text="${glycan.ObservedMZ2}"></td>
-                                        <td th:text="${glycan.CCS_M_Plus_H_Plus_Na_Charge_2}"></td>
+                            <td><img th:src="@{'/img/glycans/' + ${glycan.databaseID} + '.png'}" style="width: 150px" /></td> <!-- This manages to bypass the pagination error where images not pathed properly. Dynamically displays image based on oxford number!, just match property to imgname in static, removed column glycan_photo from sql, add back if needed. Either this or 
+                            <td> <a th:href="@{'/img/glycans/' + ${glycan.databaseID} + '.png'}"></a></td> -->
+										<td th:text="${glycan.databaseID}"></td>
+                            <td th:text="${glycan.oxford}"></td>
+					<td th:text="${glycan.neutralmass}"></td>
+                                        <td th:text="${glycan.observedmz}"></td>
+					<td th:text="${glycan.ccs1}"></td>
+					<td th:text="${glycan.observedmz2}"></td>
+                                        <td th:text="${glycan.ccs2}"></td>
 					<td>
 						<!-- The link which sends GET request to "/showFormForUpdate/{id}" (id is glycan.id) -->
                                                 <div class="myupdate">
