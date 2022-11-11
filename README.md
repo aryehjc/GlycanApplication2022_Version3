@@ -19,4 +19,17 @@ as of Oct 17 2022.
 </br>
 19/10 - Added CSV file upload, amending file validation and error pages
 
+11/11 - Added pagination and filtering currently being amended.
+
+Remaining steps-
+
+1) Allow CSV to be uploaded with spaces in headers
+(Latest by Start Jan)
+<br>
+2) Fragmentation function (Latest by Mid Jan)
+<br> 
+3)D3 JS graphs (Latest by 1st week March)
+
+Add login, security etc, fix CSS
+
 Headers must be same as listed classes headings in whitelist error for CSV upload.
