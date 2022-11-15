@@ -45,9 +45,73 @@
 					<a th:href="@{/deleteAll}"
                         data-confirm="Delete Glycan entries?" class="btn btn-danger">Delete All Entries</a>
                                                         </div>
-            <br>
-                <br>
-                </br><!-- comment -->
+            
+                    		                         <div class="totalpages" th:if="${totalPages > 1}" style="text-align:center">
+                                                             <br><!-- comment -->
+                                                              <div class="TotalPagination" style="text-align:center">   Total Items: [[${totalItems}]] </div>
+                    
+  <ul class="pagination">
+      <li th:class="${currentPage > 1 ?  'page-item': 'page-item disabled'}">
+          <a class="page-link" th:if="${currentPage > 1}" th:href="@{'/MySQLTableForGlycansAndCCS/1' + '?sortField=' + ${sortField} + '&sortDir=' + ${sortDir}  + ${keyword != null ? '&keyword=' + keyword : ''}}">First</a>
+          <span th:unless="${currentPage > 1}">First</span>
+      </li>
+    
+      <li th:class="${currentPage > 1 ?  'page-item': 'page-item disabled'}">
+        <a class="page-link" th:if="${currentPage > 1}" th:href="@{'/MySQLTableForGlycansAndCCS/' + ${currentPage - 1} + '?sortField=' + ${sortField} + '&sortDir=' + ${sortDir}  + ${keyword != null ? '&keyword=' + keyword : ''}}">Previous</a>
+    <span th:unless="${currentPage > 1}">Previous</span>
+          </li>
+      
+      
+      <th:block th:if="${totalPages <= 10}">
+    <li th:each="i: ${#numbers.sequence(1, totalPages)}" th:class="${currentPage != i ? 'page-item': 'page-item active'}">
+        <a class="page-link" th:if="${currentPage != i}" th:href="@{'/MySQLTableForGlycansAndCCS/' + ${i} + '?sortField=' + ${sortField} + '&sortDir=' + ${sortDir} + ${keyword != null ? '&keyword=' + keyword : ''}}">[[${i}]]</a>
+    <span th:unless="${currentPage != i}">[[${i}]]</span>
+    </li>
+      </th:block>
+      
+      <th:block th:if="${totalPages > 10}">
+          <th:block th:if="${currentPage <= 5 || currentPage > totalPages - 4}">
+              <li th:each="i: ${#numbers.sequence(1, 5)}" th:class="${currentPage != i ? 'page-item': 'page-item active'}">
+        <a class="page-link" th:if="${currentPage != i}" th:href="@{'/MySQLTableForGlycansAndCCS/' + ${i} + '?sortField=' + ${sortField} + '&sortDir=' + ${sortDir} + ${keyword != null ? '&keyword=' + keyword : ''}}">[[${i}]]</a>
+    <span th:unless="${currentPage != i}">[[${i}]]</span>
+    </li> 
+              <li>
+                  <a class="page-link" th:if="${currentPage != i}" th:href="@{'/MySQLTableForGlycansAndCCS/' + 6 + '?sortField=' + ${sortField} + '&sortDir=' + ${sortDir} + ${keyword != null ? '&keyword=' + keyword : ''}}">...</a>
+         
+                        <li th:each="i: ${#numbers.sequence(totalPages - 4, totalPages)}" th:class="${currentPage != i ? 'page-item': 'page-item active'}">
+        <a class="page-link" th:if="${currentPage != i}" th:href="@{'/MySQLTableForGlycansAndCCS/' + ${i} + '?sortField=' + ${sortField} + '&sortDir=' + ${sortDir} + ${keyword != null ? '&keyword=' + keyword : ''}}">[[${i}]]</a>
+    <span th:unless="${currentPage != i}">[[${i}]]</span>
+    </li> 
+          
+          </th:block>
+          
+         
+          <th:block th:if="${currentPage > 5 && currentPage < totalPages - 4}">
+              <li><a class="page-link" th:if="${currentPage != i}" th:href="@{'/MySQLTableForGlycansAndCCS/' + ${currentPage - 5} + '?sortField=' + ${sortField} + '&sortDir=' + ${sortDir} + ${keyword != null ? '&keyword=' + keyword : ''}}">...</a></li>
+              
+                                      <li th:each="i: ${#numbers.sequence(currentPage - 4, currentPage + 4)}" th:class="${currentPage != i ? 'page-item': 'page-item active'}">
+        <a class="page-link" th:if="${currentPage != i}" th:href="@{'/MySQLTableForGlycansAndCCS/' + ${i} + '?sortField=' + ${sortField} + '&sortDir=' + ${sortDir} + ${keyword != null ? '&keyword=' + keyword : ''}}">[[${i}]]</a>
+    <span th:unless="${currentPage != i}">[[${i}]]</span>
+    </li> 
+              <li><a class="page-link" th:if="${currentPage != i}" th:href="@{'/MySQLTableForGlycansAndCCS/' + ${currentPage + 5} + '?sortField=' + ${sortField} + '&sortDir=' + ${sortDir} + ${keyword != null ? '&keyword=' + keyword : ''}}">...</a></li>
+          
+          </th:block>
+</th:block>
+    
+    <li th:class="${currentPage < totalPages ?  'page-item': 'page-item disabled'}">
+        <a class="page-link" th:if="${currentPage < totalPages}" th:href="@{'/MySQLTableForGlycansAndCCS/' + ${currentPage + 1} + '?sortField=' + ${sortField} + '&sortDir=' + ${sortDir}  + ${keyword != null ? '&keyword=' + keyword : ''}}">Next</a>
+    <span th:unless="${currentPage < totalPages}">Next</span>
+    </li>
+    
+       <li th:class="${currentPage < totalPages ?  'page-item': 'page-item disabled'}">
+        <a class="page-link" th:if="${currentPage < totalPages}" th:href="@{'/MySQLTableForGlycansAndCCS/' + ${totalPages} + '?sortField=' + ${sortField} + '&sortDir=' + ${sortDir}  + ${keyword != null ? '&keyword=' + keyword : ''}}">Last</a>
+    <span th:unless="${currentPage < totalPages}">Last</span>
+    </li>
+    
+  </ul>
+                        
+                                                 </div>
+            
 
     
             <form th:action="@{/MySQLTableForGlycansAndCCS/1}">
@@ -123,8 +187,8 @@
                         </table>
 			</tbody>
                     
-                    	<div>&nbsp;</div>
-	<!-- <div><i>Sorted by [[${sortField}]] in [[${sortDir}]] order</i></div> -->
+                   <!-- 	<div>&nbsp;</div>
+	 <div><i>Sorted by [[${sortField}]] in [[${sortDir}]] order</i></div> 
 	<div>&nbsp;</div>
 	<div th:if="${totalPages > 1}">
 		Total Items: [[${totalItems}]]
@@ -151,10 +215,75 @@
 		
 		<a th:if="${currentPage < totalPages}" th:href="@{'/MySQLTableForGlycansAndCCS/' + ${totalPages} + '?sortField=' + ${sortField} + '&sortDir=' + ${sortDir}  + ${keyword != null ? '&keyword=' + keyword : ''}}">Last</a>
 		<span th:unless="${currentPage < totalPages}">Last</span>
-	</div>
+	</div> --> 
                     
 	</div>
  
+         
+        		                         <div class="totalpages" th:if="${totalPages > 1}" style="text-align:center">
+                                                     <div class="TotalPagination" style="text-align:center">   Total Items: [[${totalItems}]] </div>
+                    
+  <ul class="pagination">
+      <li th:class="${currentPage > 1 ?  'page-item': 'page-item disabled'}">
+          <a class="page-link" th:if="${currentPage > 1}" th:href="@{'/MySQLTableForGlycansAndCCS/1' + '?sortField=' + ${sortField} + '&sortDir=' + ${sortDir}  + ${keyword != null ? '&keyword=' + keyword : ''}}">First</a>
+          <span th:unless="${currentPage > 1}">First</span>
+      </li>
+    
+      <li th:class="${currentPage > 1 ?  'page-item': 'page-item disabled'}">
+        <a class="page-link" th:if="${currentPage > 1}" th:href="@{'/MySQLTableForGlycansAndCCS/' + ${currentPage - 1} + '?sortField=' + ${sortField} + '&sortDir=' + ${sortDir}  + ${keyword != null ? '&keyword=' + keyword : ''}}">Previous</a>
+    <span th:unless="${currentPage > 1}">Previous</span>
+          </li>
+      
+      
+      <th:block th:if="${totalPages <= 10}">
+    <li th:each="i: ${#numbers.sequence(1, totalPages)}" th:class="${currentPage != i ? 'page-item': 'page-item active'}">
+        <a class="page-link" th:if="${currentPage != i}" th:href="@{'/MySQLTableForGlycansAndCCS/' + ${i} + '?sortField=' + ${sortField} + '&sortDir=' + ${sortDir} + ${keyword != null ? '&keyword=' + keyword : ''}}">[[${i}]]</a>
+    <span th:unless="${currentPage != i}">[[${i}]]</span>
+    </li>
+      </th:block>
+      
+      <th:block th:if="${totalPages > 10}">
+          <th:block th:if="${currentPage <= 5 || currentPage > totalPages - 4}">
+              <li th:each="i: ${#numbers.sequence(1, 5)}" th:class="${currentPage != i ? 'page-item': 'page-item active'}">
+        <a class="page-link" th:if="${currentPage != i}" th:href="@{'/MySQLTableForGlycansAndCCS/' + ${i} + '?sortField=' + ${sortField} + '&sortDir=' + ${sortDir} + ${keyword != null ? '&keyword=' + keyword : ''}}">[[${i}]]</a>
+    <span th:unless="${currentPage != i}">[[${i}]]</span>
+    </li> 
+              <li>
+                  <a class="page-link" th:if="${currentPage != i}" th:href="@{'/MySQLTableForGlycansAndCCS/' + 6 + '?sortField=' + ${sortField} + '&sortDir=' + ${sortDir} + ${keyword != null ? '&keyword=' + keyword : ''}}">...</a>
+         
+                        <li th:each="i: ${#numbers.sequence(totalPages - 4, totalPages)}" th:class="${currentPage != i ? 'page-item': 'page-item active'}">
+        <a class="page-link" th:if="${currentPage != i}" th:href="@{'/MySQLTableForGlycansAndCCS/' + ${i} + '?sortField=' + ${sortField} + '&sortDir=' + ${sortDir} + ${keyword != null ? '&keyword=' + keyword : ''}}">[[${i}]]</a>
+    <span th:unless="${currentPage != i}">[[${i}]]</span>
+    </li> 
+          
+          </th:block>
+          
+         
+          <th:block th:if="${currentPage > 5 && currentPage < totalPages - 4}">
+              <li><a class="page-link" th:if="${currentPage != i}" th:href="@{'/MySQLTableForGlycansAndCCS/' + ${currentPage - 5} + '?sortField=' + ${sortField} + '&sortDir=' + ${sortDir} + ${keyword != null ? '&keyword=' + keyword : ''}}">...</a></li>
+              
+                                      <li th:each="i: ${#numbers.sequence(currentPage - 4, currentPage + 4)}" th:class="${currentPage != i ? 'page-item': 'page-item active'}">
+        <a class="page-link" th:if="${currentPage != i}" th:href="@{'/MySQLTableForGlycansAndCCS/' + ${i} + '?sortField=' + ${sortField} + '&sortDir=' + ${sortDir} + ${keyword != null ? '&keyword=' + keyword : ''}}">[[${i}]]</a>
+    <span th:unless="${currentPage != i}">[[${i}]]</span>
+    </li> 
+              <li><a class="page-link" th:if="${currentPage != i}" th:href="@{'/MySQLTableForGlycansAndCCS/' + ${currentPage + 5} + '?sortField=' + ${sortField} + '&sortDir=' + ${sortDir} + ${keyword != null ? '&keyword=' + keyword : ''}}">...</a></li>
+          
+          </th:block>
+</th:block>
+    
+    <li th:class="${currentPage < totalPages ?  'page-item': 'page-item disabled'}">
+        <a class="page-link" th:if="${currentPage < totalPages}" th:href="@{'/MySQLTableForGlycansAndCCS/' + ${currentPage + 1} + '?sortField=' + ${sortField} + '&sortDir=' + ${sortDir}  + ${keyword != null ? '&keyword=' + keyword : ''}}">Next</a>
+    <span th:unless="${currentPage < totalPages}">Next</span>
+    </li>
+    
+       <li th:class="${currentPage < totalPages ?  'page-item': 'page-item disabled'}">
+        <a class="page-link" th:if="${currentPage < totalPages}" th:href="@{'/MySQLTableForGlycansAndCCS/' + ${totalPages} + '?sortField=' + ${sortField} + '&sortDir=' + ${sortDir}  + ${keyword != null ? '&keyword=' + keyword : ''}}">Last</a>
+    <span th:unless="${currentPage < totalPages}">Last</span>
+    </li>
+    
+  </ul>
+                        
+                                                 </div>
         <style>
             
             ::placeholder {
