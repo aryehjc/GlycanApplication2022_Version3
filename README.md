@@ -21,6 +21,8 @@ as of Oct 17 2022.
 
 11/11 - Added pagination and filtering currently being amended.
 
+15/11 - Filtering done, pagination done (tweaking UI)
+
 Remaining steps-
 
 1) Allow CSV to be uploaded with spaces in headers, dynamic columns
