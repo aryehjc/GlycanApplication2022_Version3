@@ -159,10 +159,7 @@
 				 In this case, it is "${listGlycans}".
 			     To show all glycans data in this table, you need to use "th:each" in the thymeleaf template and iterate the glycan of listGlycans -->	
                         <tr th:each="glycan: ${listGlycans}">
-                            <td>
-                                <a id="pop" th:href="@{'/img/glycans/' + ${glycan.databaseID} + '.png'}">
-                                <img th:src="@{'/img/glycans/' + ${glycan.databaseID} + '.png'}" style="width: 150px" />
-                                </a><!-- comment -->
+                            <td><img th:src="@{'/img/glycans/' + ${glycan.databaseID} + '.png'}" style="width: 150px" />
                             </td> <!-- This manages to bypass the pagination error where images not pathed properly. Dynamically displays image based on oxford number!, just match property to imgname in static, removed column glycan_photo from sql, add back if needed. Either this or 
                             <td> <a th:href="@{'/img/glycans/' + ${glycan.databaseID} + '.png'}"></a></td> -->
 										<td th:text="${glycan.databaseID}"></td>
@@ -305,9 +302,9 @@
 table td 
 {
   table-layout:fixed;
-  width:100px;
-  min-width:100px;
-  max-width:100px;
+  width:60px;
+  min-width:60px;
+  max-width:60px;
   overflow:hidden;
   word-wrap:break-word;
 }
@@ -381,44 +378,11 @@ td
 
 <br>
 </br>
-
-
-
-
-<!-- Creates the bootstrap modal where the image will appear 
-<div class="modal fade" id="imagemodal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-        <h4 class="modal-title" id="myModalLabel">Image preview</h4>
-      </div>
-      <div class="modal-body">
-        <img src="" id="imagepreview" style="width: 400px; height: 264px;" >
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-      </div>
-    </div>
-  </div>
-</div> -->
-
-
-
 <script>
-    
-   // $("#pop").on("click", function(event) {
-   //     event.preventDefault();
-  // $('#imagepreview').attr('src', $('#imageresource').attr('src')); // here asign the image to the modal when the user click the enlarge link
-  // $('#imagemodal').modal('show'); // imagemodal is the id attribute assigned to the bootstrap modal, then i use the show function
-//});
-    
     
         function clearSearch() {
         window.location = "[[@{/MySQLTableForGlycansAndCCS}]]";
     }
-    
-    
 
 $('body').on('dragstart drop', function(e){
     e.preventDefault();
@@ -444,20 +408,13 @@ $(document).ready(function() {
         $('#dataConfirmModal').modal({show:true}); // allows href to work (delete all enttry red button)
         return false; // allows href to work
         
-                       
-    
+        
         
     });
     
 
     
-        
-    });
-    
-      
-    
-
-    
+});
 
 
 </script>
