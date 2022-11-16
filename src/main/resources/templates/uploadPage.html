@@ -12,7 +12,7 @@
 </head>
 <body>
     
-        <div style=text-align:center;><a th:href="@{/MySQLTableForGlycansAndCCS}"
+        <div id="BackButton" style=text-align:center;><a th:href="@{/MySQLTableForGlycansAndCCS}"
                     class="blue-text">Back</a></center></div>
 
     <div class="mydiv" style="text-align:center">
@@ -176,14 +176,13 @@ modal {
 
 <script>
     
-  $('body').on('dragstart drop', function(e){
+  $("#BackButton").on('dragstart drop', function(e){
     e.preventDefault();
     return false;
 });
 
 
-    
-    $("#modal").hide();
+   
      $("#modal1").hide();
     
         $("#btnFetch").click(function() {
