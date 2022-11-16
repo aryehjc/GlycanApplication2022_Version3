@@ -159,7 +159,7 @@
 				 In this case, it is "${listGlycans}".
 			     To show all glycans data in this table, you need to use "th:each" in the thymeleaf template and iterate the glycan of listGlycans -->	
                         <tr th:each="glycan: ${listGlycans}">
-                            <td><img th:src="@{'/img/glycans/' + ${glycan.databaseID} + '.png'}" style="width: 150px" />
+                            <td><img th:src="@{'/img/glycans/' + ${glycan.databaseID} + '.png'}" style="width: 250px" />
                             </td> <!-- This manages to bypass the pagination error where images not pathed properly. Dynamically displays image based on oxford number!, just match property to imgname in static, removed column glycan_photo from sql, add back if needed. Either this or 
                             <td> <a th:href="@{'/img/glycans/' + ${glycan.databaseID} + '.png'}"></a></td> -->
 										<td th:text="${glycan.databaseID}"></td>
@@ -302,9 +302,9 @@
 table td 
 {
   table-layout:fixed;
-  width:60px;
+  width:250px;
   min-width:60px;
-  max-width:60px;
+  max-width:400px;
   overflow:hidden;
   word-wrap:break-word;
 }
