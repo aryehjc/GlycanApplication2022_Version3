@@ -192,18 +192,9 @@ window.addEventListener( "pageshow", function ( event ) {
 });
 
 
-   
+    $("#btnFetch").hide();
      $("#modal1").hide();
     
-        $("#btnFetch").click(function() {
-      // disable button
-          $("#modal1").show();
-      $(this).prop("disabled", true);
-      // add spinner to button
-      $(this).html(
-        `<span class=aria-hidden="true"></span> Uploading CSV...Please Wait`
-      );
-    });
     
     function readFile(input) {
   if (input.files && input.files[0]) {
@@ -230,12 +221,25 @@ window.addEventListener( "pageshow", function ( event ) {
 function reset(e) {
   e.wrap('<form>').closest('form').get(0).reset();
   e.unwrap();
+          $("#btnFetch").hide();
+
 }
 
 $(".dropzone").change(function() {
   readFile(this);
+  $("#btnFetch").show();
 });
 
+        $("#btnFetch").click(function() {
+      // disable button
+          $("#modal1").show();
+      $(this).prop("disabled", true);
+      // add spinner to button
+      $(this).html(
+        `<span class=aria-hidden="true"></span> Uploading CSV...Please Wait`
+      );
+    });
+    
 $('.dropzone-wrapper').on('dragover', function(e) {
   e.preventDefault();
   e.stopPropagation();
