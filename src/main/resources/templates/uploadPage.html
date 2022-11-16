@@ -72,7 +72,7 @@
                     <div id="manipulate" style=text-align:center;>
                                             <img width="170px" th:src="@{/img/glycans/clipart1500880.png}"/>
                                             <br> <br>
-                        Upload CSV to Server for storage in database. <br> Please ensure correct file type is uploaded! <br> Supports CSV file size up to 500MB. Files larger than 500MB will result in performance issues. 
+                                                    Upload CSV to Server for storage in database. <br> Please ensure correct file type is uploaded! <br> Supports CSV file size up to 500MB. <br> In case of error, please refresh this page.
 </div>
 
                   
@@ -175,6 +175,16 @@ modal {
 </body>
 
 <script>
+    
+window.addEventListener( "pageshow", function ( event ) {
+  var historyTraversal = event.persisted || 
+                         ( typeof window.performance != "undefined" && 
+                              window.performance.getEntriesByType("navigation")[0].type === "back_forward");
+  if ( historyTraversal ) {
+    // Handle page restore.
+    window.location.reload();
+  }
+});
     
   $("#BackButton").on('dragstart drop', function(e){
     e.preventDefault();
