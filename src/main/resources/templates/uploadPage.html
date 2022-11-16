@@ -48,7 +48,7 @@
 
       <div class="row">
         <div class="col-md-12">
-          <button type="submit" class="btn btn-primary">Upload</button>
+          <button type="submit" id="btnFetch" class="btn btn-primary">Upload</button>
         </div>
                                         <div id="modal">
                                   <br>
@@ -58,6 +58,13 @@
         <p> Preparing CSV...</p>
                                         </div><!-- comment -->
       </div>
+                                               <div id="modal1">
+                                  <br>
+                                  </br>
+
+        <img src="http://i.stack.imgur.com/FhHRx.gif"/> 
+        <p> Uploading CSV...</p>
+                                        </div><!-- comment -->
        
       </div>
     </div>
@@ -69,7 +76,7 @@
     </br>
 
                     <div id="manipulate" style=text-align:center;>
-                                            <img width="170px" th:src="@{clipart1500880.png}"/>
+                                            <img width="170px" th:src="@{/img/glycans/clipart1500880.png}"/>
                                             <br> <br>
                         Upload CSV to Server for storage in database. <br> Please ensure correct file type is uploaded! <br> Supports CSV file size up to 500MB. Files larger than 500MB will result in performance issues. 
 </div>
@@ -175,7 +182,25 @@ modal {
 
 <script>
     
+  $('body').on('dragstart drop', function(e){
+    e.preventDefault();
+    return false;
+});
+
+
+    
     $("#modal").hide();
+     $("#modal1").hide();
+    
+        $("#btnFetch").click(function() {
+      // disable button
+          $("#modal1").show();
+      $(this).prop("disabled", true);
+      // add spinner to button
+      $(this).html(
+        `<span class=aria-hidden="true"></span> Uploading CSV...Please Wait`
+      );
+    });
     
     function readFile(input) {
   if (input.files && input.files[0]) {
