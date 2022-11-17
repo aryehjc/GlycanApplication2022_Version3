@@ -7,7 +7,7 @@
 <html lang="en-US" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
 <title>Glycan Management System</title>
 <!-- Compiled and minified CSS -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
 
  
@@ -15,11 +15,31 @@
 <!-- Compiled and minified JavaScript -->
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 
 
 </head>
+
+<!-- Button trigger modal 
+<button class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">
+  Launch demo modal
+</button>
+
+Modal-->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h4 class="modal-title" id="myModalLabel">Confirm Delete</h4>
+      </div>
+      <div class="modal-body">
+<center><p> Are you sure you want to delete? </p><a class="btn btn-primary" id="dataConfirmOK" onclick="$(this).prop("disabled",true)">Yes</a>  <button class="btn" data-dismiss="modal" aria-hidden="true">No</button></center></div>
+
+
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
 
 	<!-- <div id="loadingMask" onclick="return false;" style="width: 100%; height: 100%; position: absolute; background-color: rgba(0,0,0,0);"></div> -->
   <!--  <center> <img width="600px" height="300px" th:src="@{13682.png}"/> </center> , this is how to insert static.-->
@@ -29,20 +49,20 @@
 	<!-- The link which sends GET request to "/showNewGlycanForm"  -->
 
         <center><a th:href="@{/showNewGlycanForm}"
-                   class="btn btn-success">Add New Glycan</a>
+                   class="btn btn-success">ADD NEW GLYCAN</a>
                 
 
                    <a th:href="@{/GlycanDictionary}"
-                      class="btn btn-primary">View Supported Glycan IDs</a>
+                      class="btn btn-primary">VIEW SUPPORTED GLYCAN IDS</a>
                       
                       
                                          <a th:href="@{/uploadPage}"
-                      class="btn btn-warning">Upload CSV File</a>
+                      class="btn btn-warning">UPLOAD CSV FILE</a>
                       
                       
                       <div class="mydelete">
 					<a th:href="@{/deleteAll}"
-                        data-confirm="Delete Glycan entries?" class="btn btn-danger">Delete All Entries</a>
+                        data-confirm="Delete Glycan entries?" class="btn btn-danger">DELETE ALL ENTRIES</a>
                                                         </div>
             <br>
                     		                         <div class="totalpages" th:if="${totalPages > 1}" style="text-align:center">
@@ -116,8 +136,9 @@
             <form th:action="@{/MySQLTableForGlycansAndCCS/1}">
                 <input type="hidden" name="sortField" th:value="${sortField}" />
                 <input type="hidden" name="sortDir" th:value="${sortDir}" />
-    Filter: <input type="text" name="keyword" id="keyword" autofocus style="text-align: center; width: 100%" placeholder="Type here to filter by values..." size="50" th:value="${keyword}" required />
+    Filter: <input type="text" name="keyword" id="keyword" style="text-align: center; width: 100%" placeholder="Type here to filter by values..." size="50" th:value="${keyword}" required />
     &nbsp;
+    <br>
     <input type="submit" value="Search" />
     &nbsp;
     <input type="button" value="Clear" id="btnClear" onclick="clearSearch()" />
@@ -159,7 +180,12 @@
 				 In this case, it is "${listGlycans}".
 			     To show all glycans data in this table, you need to use "th:each" in the thymeleaf template and iterate the glycan of listGlycans -->	
                         <tr th:each="glycan: ${listGlycans}">
-                            <td><img th:src="@{'/img/glycans/' + ${glycan.databaseID} + '.png'}" style="width: 150px" /></td> <!-- This manages to bypass the pagination error where images not pathed properly. Dynamically displays image based on oxford number!, just match property to imgname in static, removed column glycan_photo from sql, add back if needed. Either this or 
+                            
+                            <td>
+                                <a th:href="@{'/img/glycans/' + ${glycan.databaseID} + '.png'}">
+                                <img th:src="@{'/img/glycans/' + ${glycan.databaseID} + '.png'}" style="width: 150px" />
+                            </a>
+                            </td> <!-- This manages to bypass the pagination error where images not pathed properly. Dynamically displays image based on oxford number!, just match property to imgname in static, removed column glycan_photo from sql, add back if needed. Either this or 
                             <td> <a th:href="@{'/img/glycans/' + ${glycan.databaseID} + '.png'}"></a></td> -->
 										<td th:text="${glycan.databaseID}"></td>
                             <td th:text="${glycan.oxford}"></td>
@@ -172,14 +198,14 @@
 						<!-- The link which sends GET request to "/showFormForUpdate/{id}" (id is glycan.id) -->
                                                 <div class="myupdate">
 						<a th:href="@{/showGlycanFormForUpdate/{id}(id=${glycan.id})}"
-							class="waves-effect waves-light btn">Update</a>
+							class="btn btn-primary">Update</a>
                                                 </div>
 					</td>
 					<td>
 						<!-- The link which sends GET request to "/delete/{id}" (id is glycan.id)  -->
                                                 <div class="mydelete">
 						<a th:href="@{/delete/{id}(id=${glycan.id})}"
-							data-confirm="Delete Glycan entry?" class="waves-effect waves-light btn red litghten-2">Delete</a>
+							data-confirm="Delete Glycan entry?" class="btn btn-danger">Delete</a>
                                                         </div>
 					</td>
 				</tr>
@@ -285,6 +311,14 @@
                                                  </div>
         <style>
             
+            
+            input[type="text"], textarea {
+
+  background-color : #FFFFFF; 
+
+}
+
+
             ::placeholder {
   color: red;
   opacity: 1; /* Firefox */
@@ -365,9 +399,16 @@ td
           background-color: #bddd9c;
     }
 
-.modal-body {
-  top: 50px;
-  right: 800px;
+.modal {
+
+
+  width: 750px;
+  margin: auto;
+}
+
+.modal-backdrop {
+
+background: #FFFFFF;
 }
 
 
@@ -399,12 +440,12 @@ $(document).ready(function() {
         $('a[data-confirm]').click(function(ev) {
         var href = $(this).attr('href');
 
-        if (!$('#dataConfirmModal').length) {
-            $('body').append('<div id="dataConfirmModal" style=width:250px;height:150px; class="modal" role="dialog" aria-labelledby="dataConfirmLabel" aria-hidden="true"><div><br></br><center><p> Are you sure you want to delete? </p><a class="btn btn-primary" id="dataConfirmOK" onclick="$(this).prop("disabled",true)">Yes</a>  <button class="btn" data-dismiss="modal" aria-hidden="true">No</button></center></div>');
-        } 
-        $('#dataConfirmModal').find('.modal-body').text($(this).attr('data-confirm')); // not needed for some reason
+     //   if (!$('#dataConfirmModal').length) {
+       //     $('body').append('<div class="modal fade" id="dataConfirmModal" tabindex="-1" role="dialog" aria-labelledby="dataConfirmLabel" aria-hidden="true"><div class="modal-dialog"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal"aria-hidden="true">&times;<button><h4 class="modal-title" id="myModalLabel">Confirm Delete</h4></div><div class="modal-body"><center><p> Are you sure you want to delete? </p><a class="btn btn-primary" id="dataConfirmOK" onclick="$(this).prop("disabled",true)">Yes</a> <button class="btn" data-dismiss="modal" aria-hidden="true">No</button></center></div></div></div></div>');
+       // } 
+      //  $('#myModal').find('.modal-body').text($(this).attr('data-confirm')); // not needed for some reason
         $('#dataConfirmOK').attr('href', href); // must be present for refresh
-        $('#dataConfirmModal').modal({show:true}); // allows href to work (delete all enttry red button)
+        $('#myModal').modal(); // allows href to work (delete all enttry red button)
         return false; // allows href to work
         
         
