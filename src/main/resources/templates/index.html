@@ -211,7 +211,7 @@ Modal-->
                             
                             <td>
                                 <a id="photoButton" th:href="@{'/img/glycans/' + ${glycan.databaseID} + '.png'}">
-                                <img th:src="@{'/img/glycans/' + ${glycan.databaseID} + '.png'}" style="width: 150px" />
+                                <img th:src="@{'/img/glycans/' + ${glycan.databaseID} + '.png'}" style="width: 150px" onerror="this.onerror=null;this.src='/img/glycans/errorMessageWrongExtension.png';"/>
                             </a>
                             </td> <!-- This manages to bypass the pagination error where images not pathed properly. Dynamically displays image based on oxford number!, just match property to imgname in static, removed column glycan_photo from sql, add back if needed. Either this or 
                             <td> <a th:href="@{'/img/glycans/' + ${glycan.databaseID} + '.png'}"></a></td> -->
@@ -464,6 +464,7 @@ background: #000000;
 <br>
 </br>
 <script>
+    
     $("#GlycanLoader1").hide();
     
             $("#dataConfirmOK").click(function() {
@@ -530,4 +531,3 @@ $(document).ready(function() {
 
 </script>
 </html>
- 
