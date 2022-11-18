@@ -39,9 +39,15 @@ Modal-->
         <h4 class="modal-title" id="myModalLabel">Confirm Delete</h4>
       </div>
       <div class="modal-body">
-<center><p> Are you sure you want to delete? </p><a class="btn btn-primary" id="dataConfirmOK" onclick="$(this).prop("disabled",true)">Yes</a>  <button class="btn" data-dismiss="modal" aria-hidden="true">No</button></center></div>
+                                        <div id="GlycanLoader1">
+                                  <br>
+                                  </br>
+        <img class="center1" src="http://i.stack.imgur.com/FhHRx.gif"/> 
+        <p style="text-align:center"> Deleting Entries...</p>
+</div>
+<center><p> Are you sure you want to delete? </p><a class="btn btn-primary" id="dataConfirmOK" >Yes</a>  <button class="btn" data-dismiss="modal" aria-hidden="true">No</button></center></div>
 
-
+<!-- <center><p> Are you sure you want to delete? </p><a class="btn btn-primary" id="dataConfirmOK" onclick="$(this).prop("disabled",true)">Yes</a>  <button class="btn" data-dismiss="modal" aria-hidden="true">No</button></center></div> -->
     </div><!-- /.modal-content -->
   </div><!-- /.modal-dialog -->
 </div><!-- /.modal -->
@@ -423,9 +429,14 @@ td
 
 .modal {
 
-
+  position: absolute;
+  float: left;
+  left: 50%;
+  top: 60%;
+  transform: translate(-50%, -50%);
   width: 750px;
-  margin: auto;
+  overflow:hidden;
+
 }
 
 .modal-backdrop {
@@ -440,6 +451,12 @@ background: #000000;
   width: 50%;
 }
 
+.center1 {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+
+}
 
         </style>
 </body>
@@ -447,6 +464,16 @@ background: #000000;
 <br>
 </br>
 <script>
+    $("#GlycanLoader1").hide();
+    
+            $("#dataConfirmOK").click(function() {
+      // disable button
+              $("#GlycanLoader1").show();
+      $(this).prop("disabled", true);
+      $(this).html(
+        `<span class=aria-hidden="true"></span> Deleting...Please Wait`
+      );
+    });
     
         function clearSearch() {
         window.location = "[[@{/MySQLTableForGlycansAndCCS}]]";
