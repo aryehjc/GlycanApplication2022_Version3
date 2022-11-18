@@ -67,6 +67,7 @@ import javax.persistence.Id;
      * @return the databaseID
      */
     @JsonProperty("Database ID")
+    @JsonAlias("databaseid")
     public String getDatabaseID() {
         return databaseID;
     }
@@ -81,6 +82,8 @@ import javax.persistence.Id;
     /**
      * @return the oxford
      */
+    @JsonProperty("Oxford")
+    @JsonAlias("oxford")
     public String getOxford() {
         return oxford;
     }
@@ -96,6 +99,7 @@ import javax.persistence.Id;
      * @return the neutralmass
      */
     @JsonProperty("Neutral Mass")
+    @JsonAlias("neutralmass")
     public String getNeutralmass() {
         return neutralmass;
     }
@@ -111,7 +115,7 @@ import javax.persistence.Id;
      * @return the observedmz
      */
     @JsonProperty("Observed MZ")
-    @JsonAlias("Observed M/Z")
+    @JsonAlias("observedmz")
     public String getObservedmz() {
         return observedmz;
     }
@@ -126,8 +130,8 @@ import javax.persistence.Id;
     /**
      * @return the ccs1
      */
-
-    @JsonAlias("CS M PLUS 2H CHARGE 2")
+    @JsonProperty("CCS 1")
+    @JsonAlias("ccs1")
     public String getCcs1() {
         return ccs1;
     }
@@ -143,7 +147,7 @@ import javax.persistence.Id;
      * @return the observedmz2
      */
         @JsonProperty("OBSERVED MZ 2")
-    @JsonAlias("OBSERVED M/Z 2")
+        @JsonAlias("observedmz2")
     public String getObservedmz2() {
         return observedmz2;
     }
@@ -158,8 +162,8 @@ import javax.persistence.Id;
     /**
      * @return the ccs2
      */
-
-    @JsonAlias("CCS M PLUS H PLUS NA CHARGE 2")
+    @JsonProperty("CCS 2")
+    @JsonAlias("ccs2")
     public String getCcs2() {
         return ccs2;
     }
