@@ -1,7 +1,9 @@
 package com.example.demo.domain;
 
+import com.fasterxml.jackson.annotation.JsonAlias;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import java.io.Serializable;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;    
@@ -64,6 +66,7 @@ import javax.persistence.Id;
     /**
      * @return the databaseID
      */
+    @JsonProperty("Database ID")
     public String getDatabaseID() {
         return databaseID;
     }
@@ -92,6 +95,7 @@ import javax.persistence.Id;
     /**
      * @return the neutralmass
      */
+    @JsonProperty("Neutral Mass")
     public String getNeutralmass() {
         return neutralmass;
     }
@@ -106,6 +110,8 @@ import javax.persistence.Id;
     /**
      * @return the observedmz
      */
+    @JsonProperty("Observed MZ")
+    @JsonAlias("Observed M/Z")
     public String getObservedmz() {
         return observedmz;
     }
@@ -120,6 +126,8 @@ import javax.persistence.Id;
     /**
      * @return the ccs1
      */
+
+    @JsonAlias("CS M PLUS 2H CHARGE 2")
     public String getCcs1() {
         return ccs1;
     }
@@ -134,6 +142,8 @@ import javax.persistence.Id;
     /**
      * @return the observedmz2
      */
+        @JsonProperty("OBSERVED MZ 2")
+    @JsonAlias("OBSERVED M/Z 2")
     public String getObservedmz2() {
         return observedmz2;
     }
@@ -148,6 +158,8 @@ import javax.persistence.Id;
     /**
      * @return the ccs2
      */
+
+    @JsonAlias("CCS M PLUS H PLUS NA CHARGE 2")
     public String getCcs2() {
         return ccs2;
     }
