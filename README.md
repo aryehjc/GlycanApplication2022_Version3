@@ -23,10 +23,14 @@ as of Oct 17 2022.
 
 15/11 - Filtering done, pagination done
 
-16/11 - Adding loading graphic for upload, popup enlarge images, spaces in title for csv headers. 
+16/11 - Added loading graphic for upload, popup enlarge images, spaces in title for csv headers. 
+
+24/11 - Added prototype for fragmentation function, button popup allows link to fragment samples.
+--> Currently auto upload fragments on app start and allow them to be generated. (Now)
+--> TRY ADD_TRIM_SPACES IN CSVUTILS, dynamic columns (Now 2)
 Remaining steps-
 
-1) Allow CSV to be uploaded with spaces in headers, dynamic columns
+1) TRY ADD_TRIM_SPACES IN CSVUTILS, dynamic columns
 (Latest by Start Jan)
 <br>
 2) Fragmentation function (Latest by Mid Jan)
