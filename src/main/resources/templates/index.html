@@ -96,6 +96,11 @@ Modal-->
                         data-confirm="Delete Glycan entries?" class="btn btn-danger">DELETE ALL ENTRIES</a>
                                                         </div>
             <br>
+                                  <div class="myloader">
+					<a th:href="@{/saveAllGlycans}"
+                        class="btn btn-info">LOAD SAMPLE DATA</a>
+                                                        </div>
+            <br>
                     		                         <div class="totalpages" th:if="${totalPages > 1}" style="text-align:center">
                                                              <br><!-- comment -->
                                                               <div class="TotalPagination" style="text-align:center">   Total Items: [[${totalItems}]] </div>
