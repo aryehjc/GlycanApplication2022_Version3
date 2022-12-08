@@ -13,6 +13,7 @@ import org.springframework.boot.web.embedded.tomcat.ConfigurableTomcatWebServerF
 import org.springframework.context.annotation.Bean;
 import org.springframework.core.env.Environment;
 
+
 @EnableAutoConfiguration(exclude = {ErrorMvcAutoConfiguration.class})
 @SpringBootApplication
 public class DemoApplication {
@@ -45,4 +46,5 @@ public class DemoApplication {
             }
         };
     }
+
 }
