@@ -21,7 +21,7 @@ import javax.persistence.Id;
 @JsonFormat(with = JsonFormat.Feature.ACCEPT_CASE_INSENSITIVE_PROPERTIES)
     public class Glycan implements Serializable {
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.AUTO) //can do AUTO with batch test. Set to IDENTITY when I want default again. 
 	//	By @GeneratedValue, JPA makes a unique key automatically and applies the key to the field having @Id
 	private long id;
         private String databaseID; // maybe convert this to string. 
@@ -49,6 +49,17 @@ import javax.persistence.Id;
 
     }
 
+        // The below constructor was created when I change generationidentity to auto. this will help me with batch inserts.
+        
+        public Glycan(String databaseID, String oxford, String neutralmass, String observedmz, String ccs1, String observedmz2, String ccs2) {
+            this.databaseID = databaseID;
+            this.oxford = oxford;
+            this.neutralmass = neutralmass;
+            this.observedmz = observedmz;
+            this.ccs1 = ccs1;
+            this.observedmz2 = observedmz2;
+            this.ccs2 = ccs2;
+    }
     /**
      * @return the id
      */
