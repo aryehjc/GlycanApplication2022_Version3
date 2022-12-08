@@ -32,7 +32,7 @@ as of Oct 17 2022.
 
 8/12 - Fragment function created with Sample Data Upload available for new users. Creating more fragment images
 
-<strong> Remaining steps- </strong>
+<strong> Remaining steps </strong>
 <ul>
 <li> ADD_TRIM_SPACES IN CSVUTILS, dynamic columns, D3 JS graphs (Latest by 1st week March) </li>
 <li> Add login, security etc, fix CSS </li>
