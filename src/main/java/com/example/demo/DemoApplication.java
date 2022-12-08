@@ -56,6 +56,25 @@ public class DemoApplication {
 public CommandLineRunner loadData(GlycanRepository SampleDataLoadrepository) {
     return (args) -> {
         // Load fragments on startup
+        SampleDataLoadrepository.save(new Glycan("3952", "242.3827", "100", "1462.544433908", "887.8569", "898.8521", "759"));
+        SampleDataLoadrepository.save(new Glycan("4659", "242.3827", "100", "1462.544433908", "887.8569", "898.8521", "759"));
+        SampleDataLoadrepository.save(new Glycan("5081", "242.3827", "100", "1462.544433908", "887.8569", "898.8521", "759"));
+        SampleDataLoadrepository.save(new Glycan("5267", "242.3827", "100", "1462.544433908", "887.8569", "898.8521", "759"));
+        SampleDataLoadrepository.save(new Glycan("5577", "242.3827", "100", "1462.544433908", "887.8569", "898.8521", "759"));
+        SampleDataLoadrepository.save(new Glycan("5897", "242.3827", "100", "1462.544433908", "887.8569", "898.8521", "759"));
+        SampleDataLoadrepository.save(new Glycan("1413", "242.3827", "100", "1462.544433908", "887.8569", "898.8521", "759"));
+        SampleDataLoadrepository.save(new Glycan("1994", "242.3827", "100", "1462.544433908", "887.8569", "898.8521", "759"));
+        SampleDataLoadrepository.save(new Glycan("635", "242.3827", "100", "1462.544433908", "887.8569", "898.8521", "759"));
+        SampleDataLoadrepository.save(new Glycan("636", "242.3827", "100", "1462.544433908", "887.8569", "898.8521", "759"));
+        SampleDataLoadrepository.save(new Glycan("fragment1", "242.3827", "100", "1462.544433908", "887.8569", "898.8521", "759"));
+        SampleDataLoadrepository.save(new Glycan("fragment2", "242.3827", "100", "1462.544433908", "887.8569", "898.8521", "759"));
+        SampleDataLoadrepository.save(new Glycan("1413fragmentA", "242.3827", "100", "1462.544433908", "887.8569", "898.8521", "759"));
+        SampleDataLoadrepository.save(new Glycan("1413fragmentB", "242.3827", "100", "1462.544433908", "887.8569", "898.8521", "759"));
+        SampleDataLoadrepository.save(new Glycan("11697fragmentA", "242.3827", "100", "1462.544433908", "887.8569", "898.8521", "759"));
+        SampleDataLoadrepository.save(new Glycan("11697fragmentB", "242.3827", "100", "1462.544433908", "887.8569", "898.8521", "759"));
+        SampleDataLoadrepository.save(new Glycan("13677fragmentA", "242.3827", "100", "1462.544433908", "887.8569", "898.8521", "759"));
+        SampleDataLoadrepository.save(new Glycan("13677fragmentB", "242.3827", "100", "1462.544433908", "887.8569", "898.8521", "759"));
+        SampleDataLoadrepository.save(new Glycan("13684fragmentA", "242.3827", "100", "1462.544433908", "887.8569", "898.8521", "759"));
         SampleDataLoadrepository.save(new Glycan("fragment1", "242.3827", "100", "1462.544433908", "887.8569", "898.8521", "759"));
         SampleDataLoadrepository.save(new Glycan("fragment2", "242.3827", "100", "1462.544433908", "887.8569", "898.8521", "759"));
         SampleDataLoadrepository.save(new Glycan("1413fragmentA", "242.3827", "100", "1462.544433908", "887.8569", "898.8521", "759"));
