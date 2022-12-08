@@ -32,15 +32,13 @@ as of Oct 17 2022.
 
 8/12 - Fragment function created with Sample Data Upload available for new users. Creating more fragment images
 
-Remaining steps-
-
-1) TRY ADD_TRIM_SPACES IN CSVUTILS, dynamic columns
-(Latest by Start Jan)
-
-2)D3 JS graphs (Latest by 1st week March)
-
+<strong> Remaining steps- </strong>
+<ul>
+ADD_TRIM_SPACES IN CSVUTILS, dynamic columns, D3 JS graphs (Latest by 1st week March)
 Add login, security etc, fix CSS
+</ul>
 
+<strong> Other Notes </strong>
 Headers must be same as listed classes headings in whitelist error for CSV upload.
 Adding dynamic headers!
 getters and setters have to be capital (first letter) even with lowercase java classes. 
