@@ -219,7 +219,7 @@ Modal-->
                             
                             <td>
                                 <a id="photoButton" class="fragmentation" th:href="@{'/img/glycans/' + ${glycan.databaseID} + '.png'}">
-                                <img th:src="@{'/img/glycans/' + ${glycan.databaseID} + '.png'}" style="width: 150px" title="Click to enlarge image" onerror="this.onerror=null;this.src='/img/glycans/errorMessageWrongExtension3.png';"/>
+                                <img th:src="@{'/img/glycans/' + ${glycan.databaseID} + '.png'}" style="width: 150px" id="clicktofragment" title="Click to enlarge image" onerror="this.onerror=null;this.src='/img/glycans/errorMessageWrongExtension3.png';"/>
                                                                     <div class="fragmentButton">
 <button type="button" class="btn btn-success btn-sm" onclick="reply_click(this)" title="Click to fragment glycan" data-product-name="fragment">Fragment</button>
 </div>
@@ -595,7 +595,9 @@ background: #000000;
     
         function reply_click(element)
     {
-    document.getElementById('keyword').value = element.getAttribute('data-product-name');
+    document.getElementById('keyword').value = document.getElementById("clicktofragment").src.split("/").pop().split(".")[0];
+
+
         if ( $( '#keyword' ).val() !== '' ) {
         $( '#filter-form' ).submit();
     }
