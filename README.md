@@ -26,16 +26,16 @@ as of Oct 17 2022.
 16/11 - Added loading graphic for upload, popup enlarge images, spaces in title for csv headers. 
 
 24/11 - Added prototype for fragmentation function, button popup allows link to fragment samples.
---> Currently auto upload fragments on app start and allow them to be generated. (Now)
---> TRY ADD_TRIM_SPACES IN CSVUTILS, dynamic columns (Now 2)
+
+8/12 - Fragment function created with Sample Data Upload available for new users. Creating more fragment images
+
 Remaining steps-
 
 1) TRY ADD_TRIM_SPACES IN CSVUTILS, dynamic columns
 (Latest by Start Jan)
 <br>
-2) Fragmentation function (Latest by Mid Jan)
 <br> 
-3)D3 JS graphs (Latest by 1st week March)
+2)D3 JS graphs (Latest by 1st week March)
 
 Add login, security etc, fix CSS
 
