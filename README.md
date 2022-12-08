@@ -3,7 +3,7 @@ Version 2 of Glycan App with Dynamic Images and Graphics. This is a successor of
 <br>
 </br>
 
-<strong> Changes </strong>
+<strong> Changes from Original Version </strong>
 <br>
 File upload of Glycan removed, glycan can instead be submitted on ID to display image. Fragmentation of glycan function available and CSV Upload to load data into server. and CCS graphics (D3 JS) being currently developed
 as of Oct 17 2022.
