@@ -221,7 +221,7 @@ Modal-->
                                 <a id="photoButton" class="fragmentation" th:href="@{'/img/glycans/' + ${glycan.databaseID} + '.png'}">
                                 <img th:src="@{'/img/glycans/' + ${glycan.databaseID} + '.png'}" style="width: 150px" id="clicktofragment" title="Click to enlarge image" onerror="this.onerror=null;this.src='/img/glycans/errorMessageWrongExtension3.png';"/>
                                                                     <div class="fragmentButton">
-<button type="button" class="btn btn-success btn-sm" onclick="reply_click(this)" title="Click to fragment glycan" data-product-name="fragment">Fragment</button>
+                                                                        <a th:href="@{'/MySQLTableForGlycansAndCCS/' + ${currentPage} + '?sortField=databaseID&sortDir=' + ${reverseSortDir} + '&keyword=' + ${glycan.databaseID} + fragment}" class="btn btn-success btn-sm" title="Click to fragment glycan" data-product-name="fragment">Fragment</a>
 </div>
                             </a>
                             </td> <!-- This manages to bypass the pagination error where images not pathed properly. Dynamically displays image based on oxford number!, just match property to imgname in static, removed column glycan_photo from sql, add back if needed. Either this or 
@@ -519,15 +519,14 @@ background: #000000;
 
 }
 .fragmentButton {
-    display:none;
+  display:none;
 }
 
-.fragmentation:hover .fragmentButton {
+td:hover .fragmentButton {
     
 
-    position:absolute;
-    top:-20px;
-    left:20px;
+    position:relative;
+    top:-100px;
     display:inline-block;
     text-align:center;
     color:white;
@@ -592,22 +591,9 @@ background: #000000;
 <br>
 </br>
 <script>
+     
     
-        function reply_click(element)
-    {
-    document.getElementById('keyword').value = document.getElementById("clicktofragment").src.split("/").pop().split(".")[0];
 
-
-        if ( $( '#keyword' ).val() !== '' ) {
-        $( '#filter-form' ).submit();
-    }
-    }    
-    
-       $('.fragmentButton').click(function (evt) {
-    evt.stopPropagation();
-return false;
-    // Your code here, add logic to autofill filter and then enter, or manual
-});
    
     
     $("#GlycanLoader1").hide();
