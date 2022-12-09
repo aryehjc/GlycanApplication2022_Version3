@@ -34,7 +34,7 @@ as of Oct 17 2022.
 
 <strong> Remaining steps </strong>
 <ul>
-<li> ADD_TRIM_SPACES IN CSVUTILS, dynamic columns, D3 JS graphs (Latest by 1st week March) </li>
+<li> ADD_TRIM_SPACES IN CSVUTILS, dynamic columns, expand fragment logic with CSV reader, D3 JS graphs (Latest by 1st week March) </li>
 <li> Add login, security etc, fix CSS </li>
 </ul>
 
