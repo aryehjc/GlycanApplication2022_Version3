@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<!-- This is for using Thymeleaf -->
+
+
+<head>
+<meta charset="UTF-8">
+<html lang="en-US" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<title>Glycan Management System</title>
+<!-- Compiled and minified CSS -->
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+
+ 
+
+<!-- Compiled and minified JavaScript -->
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+
+</head>
+
+
+    <!--<p th:utext="'This glycan has an alpha2-6 fragment: ' + ${s6}"></p> -->
+    <!--<p th:utext="'This glycan has an alpha2-3 fragment: ' + ${s2xxxxxxxxxxxxxxxx}"></p> -->    
+
+
+
+    <center><font size="+1"><a th:href="@{/MySQLTableForGlycansAndCCS}"
+                                                        class="blue-text">Back</a></font></center>
+    <center>
+                      
+                   <!--   <a th:href="@{/MyCSVUploadPage}"
+                         class="btn btn-warning">Upload CSV</a> see the controller for mapping-->
+                   <center>                      
+                              <div id="GlycanLoader">
+                                  <br>
+                                  </br>
+        <img src="http://i.stack.imgur.com/FhHRx.gif"/> 
+        <p> Generating Fragments...</p>
+</div>
+               
+                  </center>
+
+
+
+
+	<div align="left" style="margin-top: 20px">
+		<table id="MyTable" class="table table-bordered border-primary">
+			<thead>
+				<tr>
+					<th class="not_mapped_style" style="text-align:center">Fragment ID</a></th>
+                                        <th class="not_mapped_style" style="text-align:center">Image</th>
+	
+				</tr>
+                                <td>Siaylated-3</td>
+    <td><img width="200px" th:src="@{/img/glycans/205fragment1.png}"/></td>
+  </tr>
+  <tr>
+    <td>Siaylated-6</td>
+    <td><img width="200px" th:src="@{/img/glycans/205fragment2.png}"/></td>
+  </tr>
+			</thead>
+			<tbody>
+			<!-- You can access model attributes which are added in a Controller(GlycanController.java) with ${attributeName}.
+				 In this case, it is "${listGlycans}".
+			     To show all glycans data in this table, you need to use "th:each" in the thymeleaf template and iterate the glycan of listGlycans -->	
+
+                        </table>
+			</tbody>
+                    
+                   <!-- 	<div>&nbsp;</div>
+	 <div><i>Sorted by [[${sortField}]] in [[${sortDir}]] order</i></div> 
+	<div>&nbsp;</div>
+	<div th:if="${totalPages > 1}">
+		Total Items: [[${totalItems}]]
+		&nbsp;&nbsp;&nbsp;-&nbsp;&nbsp;&nbsp;
+		
+		<a th:if="${currentPage > 1}" th:href="@{'/MySQLTableForGlycansAndCCS/1' + '?sortField=' + ${sortField} + '&sortDir=' + ${sortDir}  + ${keyword != null ? '&keyword=' + keyword : ''}}">First</a>
+		<span th:unless="${currentPage > 1}">First</span>
+		&nbsp;&nbsp;
+		
+		<a th:if="${currentPage > 1}" th:href="@{'/MySQLTableForGlycansAndCCS/' + ${currentPage - 1} + '?sortField=' + ${sortField} + '&sortDir=' + ${sortDir}  + ${keyword != null ? '&keyword=' + keyword : ''}}">Previous</a>
+		<span th:unless="${currentPage > 1}">Previous</span>
+		
+		&nbsp;&nbsp;
+		
+		<span th:each="i: ${#numbers.sequence(1, totalPages)}">
+			<a th:if="${currentPage != i}" th:href="@{'/MySQLTableForGlycansAndCCS/' + ${i} + '?sortField=' + ${sortField} + '&sortDir=' + ${sortDir} + ${keyword != null ? '&keyword=' + keyword : ''}}">[[${i}]]</a>
+			<span th:unless="${currentPage != i}">[[${i}]]</span>
+			&nbsp;
+		</span>
+		
+		<a th:if="${currentPage < totalPages}" th:href="@{'/MySQLTableForGlycansAndCCS/' + ${currentPage + 1} + '?sortField=' + ${sortField} + '&sortDir=' + ${sortDir}  + ${keyword != null ? '&keyword=' + keyword : ''}}">Next</a>
+		<span th:unless="${currentPage < totalPages}">Next</span>
+		&nbsp;&nbsp;
+		
+		<a th:if="${currentPage < totalPages}" th:href="@{'/MySQLTableForGlycansAndCCS/' + ${totalPages} + '?sortField=' + ${sortField} + '&sortDir=' + ${sortDir}  + ${keyword != null ? '&keyword=' + keyword : ''}}">Last</a>
+		<span th:unless="${currentPage < totalPages}">Last</span>
+	</div> --> 
+                    
+	</div>
+ 
+         
+        		                       
+                        
+                                                 </div>
+        <style>
+            
+            
+            input[type="text"], textarea {
+
+  background-color : #FFFFFF; 
+
+}
+
+
+            ::placeholder {
+  color: red;
+  opacity: 1; /* Firefox */
+}
+
+:-ms-input-placeholder { /* Internet Explorer 10-11 */
+ color: red;
+}
+
+::-ms-input-placeholder { /* Microsoft Edge */
+ color: red;
+}
+            
+table td 
+{
+  table-layout:fixed;
+  width:60px;
+  min-width:60px;
+  max-width:60px;
+  overflow:hidden;
+  word-wrap:break-word;
+}
+
+
+            
+            body
+            {
+                
+                background: -webkit-linear-gradient(505deg, rgb(255, 168, 168) 10%, rgb(252, 255, 0) 100%); 
+            }
+            img {
+    transition:transform 0.25s ease;
+    background-repeat: no-repeat;
+  background-position: -600px -200px, 0 0;
+  
+  background-image: -webkit-linear-gradient(
+    top left,
+    rgba(255, 255, 255, 0.2) 0%,
+    rgba(255, 255, 255, 0.2) 37%,
+    rgba(255, 255, 255, 0.8) 45%,
+    rgba(255, 255, 255, 0.0) 50%
+  );
+  background-image: -moz-linear-gradient(
+    0 0,
+    rgba(255, 255, 255, 0.2) 0%,
+    rgba(255, 255, 255, 0.2) 37%,
+    rgba(255, 255, 255, 0.8) 45%,
+    rgba(255, 255, 255, 0.0) 50%
+  );    
+  background-image: -o-linear-gradient(
+    0 0,
+    rgba(255, 255, 255, 0.2) 0%,
+    rgba(255, 255, 255, 0.2) 37%,
+    rgba(255, 255, 255, 0.8) 45%,
+    rgba(255, 255, 255, 0.0) 50%
+  );
+  background-image: linear-gradient(
+    0 0,
+    rgba(255, 255, 255, 0.2) 0%,
+    rgba(255, 255, 255, 0.2) 37%,
+    rgba(255, 255, 255, 0.8) 45%,
+    rgba(255, 255, 255, 0.0) 50%
+  );
+  
+  -moz-background-size: 250% 250%, 100% 100%;
+       background-size: 250% 250%, 100% 100%;
+  
+  -webkit-transition: background-position 0s ease;
+     -moz-transition: background-position 0s ease;       
+       -o-transition: background-position 0s ease;
+          transition: background-position 0s ease;
+}
+
+    tr:hover td {
+        background-color: #bddd9c;
+    }
+
+    
+img:hover {
+    -webkit-transform:scale(1.05);
+    transform:scale(1.05);
+}
+    
+td 
+{
+     text-align:center;
+     z-index: 1;
+}
+
+    tr {
+      background: -webkit-linear-gradient(505deg, rgb(255, 168, 168) 10%, rgb(252, 255, 0) 100%); 
+    }
+    
+
+    
+        tr:hover img{
+        background-color: #bddd9c;
+            -webkit-transform:scale(1.05);
+    transform:scale(1.05);
+      background-position: 0 0, 0 0;
+  
+  -webkit-transition-duration: 0.5s;
+     -moz-transition-duration: 0.5s;
+          transition-duration: 0.5s;
+    }
+    MyTable {
+    table-layout: fixed;
+    }
+  	.hoverTable{
+		width:100%; 
+		border-collapse:collapse; 
+	}
+	.hoverTable td{ 
+		padding:7px; border:#4e95f4 1px solid;
+	}
+	/* Define the default color for all the table rows */
+	.hoverTable tr{
+		background: #b8d1f3;
+	}
+	/* Define the hover highlight color for the table row */
+    .hoverTable tr:hover {
+          background-color: #bddd9c;
+    }
+
+.modal {
+
+  position: fixed;
+  float: left;
+  left: 50%;
+  top: 60%;
+  transform: translate(-50%, -50%);
+  width: 750px;
+  overflow:hidden;
+
+}
+
+.modal-backdrop {
+
+background: #000000;
+}
+
+.center {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
+}
+
+.center1 {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+
+}
+
+.fragmentation {
+        position:relative;
+    display:inline-block;
+
+}
+.fragmentButton {
+  display:none;
+}
+
+td:hover .fragmentButton {
+    
+
+    position:relative;
+    display:inline-block;
+    text-align:center;
+    color:white;
+    padding:12px;
+    font-size:20px;
+}
+
+.btn {
+  background-repeat: no-repeat;
+  background-position: -120px -120px, 0 0;
+  
+  background-image: -webkit-linear-gradient(
+    top left,
+    rgba(255, 255, 255, 0.2) 0%,
+    rgba(255, 255, 255, 0.2) 37%,
+    rgba(255, 255, 255, 0.8) 45%,
+    rgba(255, 255, 255, 0.0) 50%
+  );
+  background-image: -moz-linear-gradient(
+    0 0,
+    rgba(255, 255, 255, 0.2) 0%,
+    rgba(255, 255, 255, 0.2) 37%,
+    rgba(255, 255, 255, 0.8) 45%,
+    rgba(255, 255, 255, 0.0) 50%
+  );    
+  background-image: -o-linear-gradient(
+    0 0,
+    rgba(255, 255, 255, 0.2) 0%,
+    rgba(255, 255, 255, 0.2) 37%,
+    rgba(255, 255, 255, 0.8) 45%,
+    rgba(255, 255, 255, 0.0) 50%
+  );
+  background-image: linear-gradient(
+    0 0,
+    rgba(255, 255, 255, 0.2) 0%,
+    rgba(255, 255, 255, 0.2) 37%,
+    rgba(255, 255, 255, 0.8) 45%,
+    rgba(255, 255, 255, 0.0) 50%
+  );
+  
+  -moz-background-size: 250% 250%, 100% 100%;
+       background-size: 250% 250%, 100% 100%;
+  
+  -webkit-transition: background-position 0s ease;
+     -moz-transition: background-position 0s ease;       
+       -o-transition: background-position 0s ease;
+          transition: background-position 0s ease;
+}
+
+.btn:hover {
+  background-position: 0 0, 0 0;
+  
+  -webkit-transition-duration: 0.5s;
+     -moz-transition-duration: 0.5s;
+          transition-duration: 0.5s;
+}
+        </style>
+        
+        
+</body>
+
+<br>
+</br>
+<script>
+     
+    
+
+   
+    
+    $("#GlycanLoader1").hide();
+    
+            $("#dataConfirmOK").click(function() {
+      // disable button
+              $("#GlycanLoader1").show();
+      $(this).prop("disabled", true);
+      $(this).html(
+        `<span class=aria-hidden="true"></span> Deleting...Please Wait`
+      );
+    });
+    
+        function clearSearch() {
+        window.location = "[[@{/MySQLTableForGlycansAndCCS}]]";
+    }
+
+$('body').on('dragstart drop', function(e){
+    e.preventDefault();
+    return false;
+});
+
+    
+setTimeout(function() {
+  $('#GlycanLoader').hide();
+}, 2000);
+
+        
+$(document).ready(function() {
+    
+        $('a[data-confirm]').click(function(ev) {
+        var href = $(this).attr('href');
+
+     //   if (!$('#dataConfirmModal').length) {
+       //     $('body').append('<div class="modal fade" id="dataConfirmModal" tabindex="-1" role="dialog" aria-labelledby="dataConfirmLabel" aria-hidden="true"><div class="modal-dialog"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal"aria-hidden="true">&times;<button><h4 class="modal-title" id="myModalLabel">Confirm Delete</h4></div><div class="modal-body"><center><p> Are you sure you want to delete? </p><a class="btn btn-primary" id="dataConfirmOK" onclick="$(this).prop("disabled",true)">Yes</a> <button class="btn" data-dismiss="modal" aria-hidden="true">No</button></center></div></div></div></div>');
+       // } 
+      //  $('#myModal').find('.modal-body').text($(this).attr('data-confirm')); // not needed for some reason
+        $('#dataConfirmOK').attr('href', href); // must be present for refresh
+        $('#myModal').modal(); // allows href to work (delete all enttry red button)
+        return false; // allows href to work
+        
+        
+        
+    });
+    
+            $('.table #photoButton').on('click', function (event) {
+                event.preventDefault();
+        var href = $(this).attr('href');
+
+     //   if (!$('#dataConfirmModal').length) {
+       //     $('body').append('<div class="modal fade" id="dataConfirmModal" tabindex="-1" role="dialog" aria-labelledby="dataConfirmLabel" aria-hidden="true"><div class="modal-dialog"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal"aria-hidden="true">&times;<button><h4 class="modal-title" id="myModalLabel">Confirm Delete</h4></div><div class="modal-body"><center><p> Are you sure you want to delete? </p><a class="btn btn-primary" id="dataConfirmOK" onclick="$(this).prop("disabled",true)">Yes</a> <button class="btn" data-dismiss="modal" aria-hidden="true">No</button></center></div></div></div></div>');
+       // } 
+      //  $('#myModal').find('.modal-body').text($(this).attr('data-confirm')); // not needed for some reason
+        $('#photoModal #glycanphotothumbnail').attr('src', href); // must be present for refresh
+        $('#photoModal').modal(); // allows href to work (delete all enttry red button)
+    // allows href to work
+        
+        
+        
+    });
+    
+
+    
+});
+
+
+</script>
+</html>
