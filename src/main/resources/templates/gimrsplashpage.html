@@ -26,27 +26,58 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
 
 </head>
 <body>
+              <a href=""
+                      class="btn btn-primary">About GIM-R</a>
+                      
+                      
+                                         <a href=""
+                      class="btn btn-warning">Help</a>
+                      
     <center><font size="+1"><a th:href="@{/GlycanDatabaseApp}"
                                                         class="blue-text">Back</a></font></center>
     <center>
-    <div class="splashimage"> <img width="300px" th:src="@{/img/glycans/splashicon3.png}"/> </div>
-    <div class="icon1"> <img width="300px" th:src="@{/img/glycans/subtext1.png}"/></div>
-        
+     <div class="icon3"> <img width="300px" th:src="@{/img/glycans/sphere.png}"/></div>
+    <div class="splashimage"> <img width="300px" th:src="@{/img/glycans/gimrsplashbig.png}"/> </div>
+            <div class="icon1"> <img width="300px" th:src="@{/img/glycans/subtext1.png}"/></div>
+        <div class="subtext2">
         <p style="color:violet">Version: 1.0</p>
         <p style="color:violet">Release: 2023 Feb</p><!-- comment -->
         <p style="color:violet">Entries: 1200</p>
-        <center>
-            <center>
-                <div style="float:left;"> </div>
+        </div>     
+
+
+
+    <center>
+
+        <div id="wrapme">
+<div class="pushtoleft">
+                    <div style="float:left;"> 
              <label style="color:green">Mass</label>
-             <input type="number" style="width: 110px;" value="0.000000" min="0" max="999999.999999" step="0.000001" id="num1" class="form-control" name="num1" > </center>
-                   
+             <input type="number" style="width: 110px;" value="0.000000" min="0" max="999999.999999" step="0.000001" id="num1" class="form-control" name="num1" > 
+        </div>
+    <div style="float:left;"> 
 		<label style="color:green">Mass Tolerance</label> 
-                <input type="number" style="width: 110px;" value="0.000000" min="0" max="999999.999999" step="0.000001" id="num2" class="form-control" name="num2" > </center>
-                <br>
-                <button class="pushable"><span class="shadow"></span><span class="edge"></span><span class = "front">Search</span></button>
-                <div class="icon3"> <img width="300px" th:src="@{/img/glycans/sphere.png}"/></div>
+                <input type="number" style="width: 110px;" value="0.000000" min="0" max="999999.999999" step="0.000001" id="num2" class="form-control" name="num2" > 
+   
+                    <br>
+              
+                
+               </div>
+    </div>
+        <div class="mybutton">
+            <br>
+                
+  <button class="pushable"><span class="shadow"></span><span class="edge"></span><span class = "front">Search</span></button>
+        </div>
+
+    </div>
     </center>
+    </center>
+            
+
+        
+    <br>
+   
 </html>
     <style>
         
@@ -134,7 +165,17 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
   }
     html, body {
  min-height: 100%;
-background: -webkit-linear-gradient(505deg, rgb(255, 168, 168) 10%, rgb(252, 255, 0) 100%); 
+background: #ffff99;
+    }
+    #wrapme {
+  display: flex;
+padding-left: 750px;
+}
+#mybutton {
+    padding-left: 10px;
+}
+#pushtoleft {
+    padding-right: 10px;
 }
 splashimage {
     position: absolute;
@@ -144,7 +185,8 @@ splashimage {
     margin-left: -50px;
     width: 100px;
     height: 100px;
-}​
+}
+
 splashimage2 {
     position: absolute;
     top: 50%;
@@ -154,5 +196,6 @@ splashimage2 {
     width: 100px;
     height: 100px;
 }​
+
 
 </style>
