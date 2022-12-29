@@ -101,6 +101,9 @@ Modal-->
                         class="btn btn-info">LOAD SAMPLE DATA</a>
                                                         </div>
             <br>
+                
+                                                
+                
                     		                         <div class="totalpages" th:if="${totalPages > 1}" style="text-align:center">
                                                              <br><!-- comment -->
                                                               <div class="TotalPagination" style="text-align:center">   Total Items: [[${totalItems}]] </div>
@@ -220,13 +223,24 @@ Modal-->
                             <td>
                                 <a id="photoButton" class="fragmentation" th:href="@{'/img/glycans/' + ${glycan.databaseID} + '.png'}">
                                 <img th:src="@{'/img/glycans/' + ${glycan.databaseID} + '.png'}" style="width: 150px" id="clicktofragment" title="Click to enlarge image" onerror="this.onerror=null;this.src='/img/glycans/errorMessageWrongExtension3.png';"/>
-                                                                    <div class="fragmentButton">
-                                                                        <a th:href="@{'/MySQLTableForGlycansAndCCS/' + '1' + '?sortField=databaseID&sortDir=' + ${reverseSortDir} + '&keyword=' + ${glycan.databaseID} + fragment}" class="btn btn-success btn-sm" title="Click to fragment glycan" data-product-name="fragment">Fragment</a>
-</div>
-                            </a>
+                                </a>
+                                
+                                
+                                
+                                <form th:action="@{/fragments}" method="POST" enctype="multipart/form-data">
+   
+
+                                    <div class="fragmentButton">  
+                                        <input name="glycanid" th:value="${glycan.databaseID}" class="btn btn-success btn-sm" title="Click to fragment glycan" style="display:none"></input>                
+                                            
+                                    </div>     
+
+                                    <button class="btn btn-success btn-sm" th:value="${glycan.databaseID}" title="Click to fragment glycan">Fragment</button>
+                                </form>
+                                
                             </td> <!-- This manages to bypass the pagination error where images not pathed properly. Dynamically displays image based on oxford number!, just match property to imgname in static, removed column glycan_photo from sql, add back if needed. Either this or 
                             <td> <a th:href="@{'/img/glycans/' + ${glycan.databaseID} + '.png'}"></a></td> -->
-										<td th:text="${glycan.databaseID}"></td>
+                            <td th:text="${glycan.databaseID}"></td>
                             <td th:text="${glycan.oxford}"></td>
 					<td th:text="${glycan.neutralmass}"></td>
                                         <td th:text="${glycan.observedmz}"></td>
@@ -386,7 +400,7 @@ table td
             body
             {
                 
-                background-color: #ffff99;
+                background: #ffff99;
             }
             img {
     transition:transform 0.25s ease;
@@ -448,7 +462,7 @@ td
 }
 
     tr {
-      background-color: #ffff99;
+      background: #ffff99; 
     }
     
 
