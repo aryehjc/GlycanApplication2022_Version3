@@ -36,14 +36,8 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
     <center><font size="+1"><a th:href="@{/GlycanDatabaseApp}"
                                                         class="blue-text">Back</a></font></center>
     <center>
-     <div class="icon3"> <img width="300px" th:src="@{/img/glycans/sphere.png}"/></div>
-    <div class="splashimage"> <img width="300px" th:src="@{/img/glycans/gimrsplashbig.png}"/> </div>
-            <div class="icon1"> <img width="300px" th:src="@{/img/glycans/subtext1.png}"/></div>
-        <div class="subtext2">
-        <p style="color:violet">Version: 1.0</p>
-        <p style="color:violet">Release: 2023 Feb</p><!-- comment -->
-        <p style="color:violet">Entries: 1200</p>
-        </div>     
+     <div class="icon3"> <img th:src="@{/img/glycans/gimrprototype.png}"/></div>
+
 
 
 
@@ -64,20 +58,22 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
                 
                </div>
     </div>
+
         <div class="mybutton">
             <br>
                 
-  <button class="pushable"><span class="shadow"></span><span class="edge"></span><span class = "front">Search</span></button>
+  <button class="pushable"><span class="shadow" ></span><span class="edge"></span><span class = "front">Search</span></button>
         </div>
-
     </div>
+        
     </center>
     </center>
             
 
         
     <br>
-   
+        <center>  <p> 	Enter desired Mass and Mass Tolerance of Glycan and click Search to generate database. </p> </center>
+        <center>  <p> 	Click "Help" for more information on how to use GIM-R. </p> </center>
 </html>
     <style>
         
@@ -165,11 +161,12 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
   }
     html, body {
  min-height: 100%;
-background: #ffff99;
+background: #ffffff;
     }
     #wrapme {
   display: flex;
 padding-left: 750px;
+column-gap: 10px;
 }
 #mybutton {
     padding-left: 10px;
