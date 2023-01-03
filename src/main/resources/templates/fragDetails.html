@@ -16,13 +16,87 @@
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  
+  <script>
+     
+    
+
+   
+    
+    $("#GlycanLoader1").hide();
+    
+    $("#dataConfirmOK").click(function() {
+    // disable button
+    $("#GlycanLoader1").show();
+    $(this).prop("disabled", true);
+    $(this).html(
+        `<span class=aria-hidden="true"></span> Deleting...Please Wait`
+      );
+    });
+    
+        function clearSearch() {
+        window.location = "[[@{/MySQLTableForGlycansAndCCS}]]";
+    }
+
+$('body').on('dragstart drop', function(e){
+    e.preventDefault();
+    return false;
+});
+
+    
+setTimeout(function() {
+  $('#GlycanLoader').hide();
+}, 2000);
+
+        
+$(document).ready(function() {
+    
+    
+        $('a[data-confirm]').click(function(ev) {
+        var href = $(this).attr('href');
+
+     //   if (!$('#dataConfirmModal').length) {
+       //     $('body').append('<div class="modal fade" id="dataConfirmModal" tabindex="-1" role="dialog" aria-labelledby="dataConfirmLabel" aria-hidden="true"><div class="modal-dialog"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal"aria-hidden="true">&times;<button><h4 class="modal-title" id="myModalLabel">Confirm Delete</h4></div><div class="modal-body"><center><p> Are you sure you want to delete? </p><a class="btn btn-primary" id="dataConfirmOK" onclick="$(this).prop("disabled",true)">Yes</a> <button class="btn" data-dismiss="modal" aria-hidden="true">No</button></center></div></div></div></div>');
+       // } 
+      //  $('#myModal').find('.modal-body').text($(this).attr('data-confirm')); // not needed for some reason
+        $('#dataConfirmOK').attr('href', href); // must be present for refresh
+        $('#myModal').modal(); // allows href to work (delete all enttry red button)
+        return false; // allows href to work
+        
+        
+        
+    });
+    
+            $('.table #photoButton').on('click', function (event) {
+                event.preventDefault();
+        var href = $(this).attr('href');
+
+     //   if (!$('#dataConfirmModal').length) {
+       //     $('body').append('<div class="modal fade" id="dataConfirmModal" tabindex="-1" role="dialog" aria-labelledby="dataConfirmLabel" aria-hidden="true"><div class="modal-dialog"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal"aria-hidden="true">&times;<button><h4 class="modal-title" id="myModalLabel">Confirm Delete</h4></div><div class="modal-body"><center><p> Are you sure you want to delete? </p><a class="btn btn-primary" id="dataConfirmOK" onclick="$(this).prop("disabled",true)">Yes</a> <button class="btn" data-dismiss="modal" aria-hidden="true">No</button></center></div></div></div></div>');
+       // } 
+      //  $('#myModal').find('.modal-body').text($(this).attr('data-confirm')); // not needed for some reason
+        $('#photoModal #glycanphotothumbnail').attr('src', href); // must be present for refresh
+        $('#photoModal').modal(); // allows href to work (delete all enttry red button)
+    // allows href to work
+        
+        
+        
+    });
+    
+
+    
+});
+
+
+</script>
+  
 
 
 </head>
 
 
-    <!--<p th:utext="'This glycan has an alpha2-6 fragment: ' + ${s6}"></p> -->
-    <!--<p th:utext="'This glycan has an alpha2-3 fragment: ' + ${s2xxxxxxxxxxxxxxxx}"></p> -->    
+  <!--  <p th:utext="'This glycan has an alpha2-6 fragment: ' + ${s6}"></p> 
+    <p th:utext="'This glycan has an alpha2-3 fragment: ' + ${s3}"></p>    -->
 
 
 
@@ -48,18 +122,33 @@
 	<div align="center" style="margin-top: 20px">
 		<table id="MyTable" class="table table-bordered border-primary" style="max-width: 70%">
 			<thead>
+                            
+                                
 				<tr>
 					<th class="not_mapped_style" style="text-align:center">Fragment ID</a></th>
                                         <th class="not_mapped_style" style="text-align:center">Image</th>
 	
 				</tr>
+                            
+                            
+                         <!-- evaluated as true for debugging   <p th:utext="'This glycan has an alpha2-6 fragment: ' + ${s6 == 1}"></p>   -->
+                            
+                            <th:block th:if="${s3 == 1}">
+                            <tr>
                                 <td><a th:href="@{/gimrsplashpage}" class="btn btn-primary">Show &alpha; 2-3 distribution</a></td>
-    <td><img width="200px" th:src="@{/img/glycans/205fragment1.png}"/></td>
-  </tr>
-  <tr>
-    <td><a th:href="@{/gimrsplashpage}" class="btn btn-primary">Show &alpha; 2-6 distribution</a></td>
-    <td><img width="200px" th:src="@{/img/glycans/205fragment2.png}"/></td>
-  </tr>
+                                <td><img width="200px" th:src="@{/img/glycans/205fragment1.png}"/></td>
+                            </tr>
+                            </th:block>
+  
+  
+                            <th:block th:if="${s6 == 1}">
+                            <tr>
+                              <td><a th:href="@{/gimrsplashpage}" class="btn btn-primary">Show &alpha; 2-6 distribution</a></td>
+                              <td><img width="200px" th:src="@{/img/glycans/205fragment2.png}"/></td>
+                            </tr>
+                            </th:block>
+                            
+                            
 			</thead>
 			<tbody>
 			<!-- You can access model attributes which are added in a Controller(GlycanController.java) with ${attributeName}.
@@ -104,8 +193,8 @@
          
         		                       
                         
-                                                 </div>
-        <style>
+                                                </div>
+<style>
             
             
             input[type="text"], textarea {
@@ -338,83 +427,13 @@ td:hover .fragmentButton {
      -moz-transition-duration: 0.5s;
           transition-duration: 0.5s;
 }
-        </style>
+</style>
         
         
 </body>
 
 <br>
 </br>
-<script>
-     
-    
-
-   
-    
-    $("#GlycanLoader1").hide();
-    
-            $("#dataConfirmOK").click(function() {
-      // disable button
-              $("#GlycanLoader1").show();
-      $(this).prop("disabled", true);
-      $(this).html(
-        `<span class=aria-hidden="true"></span> Deleting...Please Wait`
-      );
-    });
-    
-        function clearSearch() {
-        window.location = "[[@{/MySQLTableForGlycansAndCCS}]]";
-    }
-
-$('body').on('dragstart drop', function(e){
-    e.preventDefault();
-    return false;
-});
-
-    
-setTimeout(function() {
-  $('#GlycanLoader').hide();
-}, 2000);
-
-        
-$(document).ready(function() {
-    
-        $('a[data-confirm]').click(function(ev) {
-        var href = $(this).attr('href');
-
-     //   if (!$('#dataConfirmModal').length) {
-       //     $('body').append('<div class="modal fade" id="dataConfirmModal" tabindex="-1" role="dialog" aria-labelledby="dataConfirmLabel" aria-hidden="true"><div class="modal-dialog"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal"aria-hidden="true">&times;<button><h4 class="modal-title" id="myModalLabel">Confirm Delete</h4></div><div class="modal-body"><center><p> Are you sure you want to delete? </p><a class="btn btn-primary" id="dataConfirmOK" onclick="$(this).prop("disabled",true)">Yes</a> <button class="btn" data-dismiss="modal" aria-hidden="true">No</button></center></div></div></div></div>');
-       // } 
-      //  $('#myModal').find('.modal-body').text($(this).attr('data-confirm')); // not needed for some reason
-        $('#dataConfirmOK').attr('href', href); // must be present for refresh
-        $('#myModal').modal(); // allows href to work (delete all enttry red button)
-        return false; // allows href to work
-        
-        
-        
-    });
-    
-            $('.table #photoButton').on('click', function (event) {
-                event.preventDefault();
-        var href = $(this).attr('href');
-
-     //   if (!$('#dataConfirmModal').length) {
-       //     $('body').append('<div class="modal fade" id="dataConfirmModal" tabindex="-1" role="dialog" aria-labelledby="dataConfirmLabel" aria-hidden="true"><div class="modal-dialog"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal"aria-hidden="true">&times;<button><h4 class="modal-title" id="myModalLabel">Confirm Delete</h4></div><div class="modal-body"><center><p> Are you sure you want to delete? </p><a class="btn btn-primary" id="dataConfirmOK" onclick="$(this).prop("disabled",true)">Yes</a> <button class="btn" data-dismiss="modal" aria-hidden="true">No</button></center></div></div></div></div>');
-       // } 
-      //  $('#myModal').find('.modal-body').text($(this).attr('data-confirm')); // not needed for some reason
-        $('#photoModal #glycanphotothumbnail').attr('src', href); // must be present for refresh
-        $('#photoModal').modal(); // allows href to work (delete all enttry red button)
-    // allows href to work
-        
-        
-        
-    });
-    
-
-    
-});
 
 
-</script>
 </html>
- 
