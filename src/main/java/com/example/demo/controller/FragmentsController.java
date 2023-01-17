@@ -59,20 +59,19 @@ public class FragmentsController {
         
         
         model.addAttribute("frags", frags);
-       model.addAttribute("s6", this.is_sialyated_6);
-       model.addAttribute("s3", this.is_sialyated_3);
+        model.addAttribute("s6", this.is_sialyated_6);
+        model.addAttribute("s3", this.is_sialyated_3);
         
         // in model object set the sialted_6 and sialated_3 variables to be read by front end and then display in th or js,
         // if it is 0, if it is not 0, if both are 0, then display model and view on the frontend
-    //if 3 = 0, 6= 0 etc. then show and if not show error.
+        //if 3 = 0, 6= 0 etc. then show and if not show error.
         //	shows the update_glycan.html template:
-        if(this.is_sialyated_6 == 1 && this.is_sialyated_3 == 0) {
-            return "fragDetails";
-        }
-        else
-        {
+        if(this.is_sialyated_6 == 0 && this.is_sialyated_3 == 0) {
             return "error-500";
         }
+
+        
+        return "fragDetails"; // this is default and as they don't have a value it gives the normal page.
     }
     
     
