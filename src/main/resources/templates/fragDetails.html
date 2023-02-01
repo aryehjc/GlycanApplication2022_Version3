@@ -95,8 +95,8 @@ $(document).ready(function() {
 </head>
 
 
-  <!--  <p th:utext="'This glycan has an alpha2-6 fragment: ' + ${s6}"></p> 
-    <p th:utext="'This glycan has an alpha2-3 fragment: ' + ${s3}"></p>    -->
+   <p th:utext="'This glycan has an alpha2-6 fragment: ' + ${s6}"></p> 
+    <p th:utext="'This glycan has an alpha2-3 fragment: ' + ${s3}"></p>    
 
 
 
@@ -133,22 +133,26 @@ $(document).ready(function() {
                             
                          <!-- evaluated as true for debugging   <p th:utext="'This glycan has an alpha2-6 fragment: ' + ${s6 == 1}"></p>   -->
                             
+                            
                             <th:block th:if="${s3 == 1}">
                             <tr>
-                                <td><a th:href="@{/gimrsplashpage}" class="btn btn-primary">Show &alpha; 2-3 distribution</a></td>
+                                <td><a th:href="@{/GraphDistributions}" class="btn btn-primary">Show &alpha; 2-3 distribution</a></td>
                                 <td><img width="200px" th:src="@{/img/glycans/205fragment1.png}"/></td>
                             </tr>
                             </th:block>
+                         
   
-  
+                            
                             <th:block th:if="${s6 == 1}">
                             <tr>
-                              <td><a th:href="@{/gimrsplashpage}" class="btn btn-primary">Show &alpha; 2-6 distribution</a></td>
+                              <td><a th:href="@{/GraphDistributions}" class="btn btn-primary">Show &alpha; 2-6 distribution</a></td>
                               <td><img width="200px" th:src="@{/img/glycans/205fragment2.png}"/></td>
                             </tr>
                             </th:block>
+                           
                             
-                            
+
+                         
 			</thead>
 			<tbody>
 			<!-- You can access model attributes which are added in a Controller(GlycanController.java) with ${attributeName}.
@@ -157,7 +161,18 @@ $(document).ready(function() {
 
                         </table>
 			</tbody>
-                    
+            <form th:action="@{/GraphDistributions}" method="post" enctype="multipart/form-data">
+		<div class="row">
+                    <div class="image entry">
+                        <input type="file" id="fileid" name="file"> 
+                            <input type="file" id="fileid2" name="file2"> 
+                        <input type="submit" value="Upload" class="btn btn-primary"><!-- comment -->
+                        <label>Select file and Click Upload</label>
+                    </div>
+                </div>
+            </form>
+                         
+                               
                    <!-- 	<div>&nbsp;</div>
 	 <div><i>Sorted by [[${sortField}]] in [[${sortDir}]] order</i></div> 
 	<div>&nbsp;</div>
