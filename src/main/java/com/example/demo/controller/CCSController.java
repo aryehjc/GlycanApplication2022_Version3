@@ -30,6 +30,9 @@ import javax.security.sasl.Sasl;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpSession;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 /**
  *
  * @author aryeh
@@ -38,10 +41,21 @@ import javax.servlet.http.HttpSession;
 public class CCSController {
 //    @Autowired
    // ResourceLoader loader;
-    
+    FragmentsController fc = new FragmentsController();
     @RequestMapping("/GraphDistributions")
     public String ShowCCSDistribution(Model model,@RequestParam("file") MultipartFile mfile,  @RequestParam("file2") MultipartFile mfile2, HttpSession session) throws Exception {
 
+        
+        
+        
+             //   public String controlMappingFinal1 (
+        //@ModelAttribute("frags") final Object mapping1FormObject, final BindingResult mapping1BindingResult, final Model model) {
+
+   // model.addAttribute("transformationForm", mapping1FormObject);
+/////
+    //return "GraphDistributions";  
+//}
+                
         String sesson_path = session.getServletContext().getRealPath("/");     // this is the location of the directory the file will be placed
         String session_tmp_file = mfile.getOriginalFilename();       // this is the tmepory file name (i think)       
         String session_tmp_file2 = mfile2.getOriginalFilename();
@@ -79,8 +93,22 @@ public class CCSController {
         // these variables are hardcoded to be the location of the pythioon environment with scripts and files
         String hardcoded_python_location = "/home/aryeh/Downloads/demo/plotdistributions/";        
         String python_venv = hardcoded_python_location + "/py39/bin/python3.9";
-        String pythn_script = hardcoded_python_location + "/CCSDistribution.py";
-        String library_location = hardcoded_python_location + "/library_distributions/frags_available.csv";
+        
+        
+        String pythn_script = "";
+      //  if (user uploaded data then do this)
+            pythn_script = hardcoded_python_location + "/CCSDistribution.py";
+      //  if (clicked the library distributioon button - i.e. no user data uploaded)
+        //    pythn_script = hardcoded_python_location + "/CCSLibDistribution.py";
+        
+         //initializing a new controller
+      String library_location = "";
+        if(fc.is_sialyated_3 == 1 && fc.is_sialyated_6 == 0)
+            System.out.println("S3 exists!");
+         library_location = hardcoded_python_location + "/library_distributions/frags_available_s3.csv";        
+        if(fc.is_sialyated_6 == 1 && fc.is_sialyated_3 == 0)
+            System.out.println("S6 exists!");
+         library_location = hardcoded_python_location + "/library_distributions/frags_available_s6.csv";
         ////////////////////////////////
         
         
@@ -125,7 +153,45 @@ public class CCSController {
         
 
     }
-        
-        
-        
 }
+        
+
+//public String controlfromFragmentsMapping1(
+//        @ModelAttribute("frags") final Object mapping1FormObject,
+//        final BindingResult mapping1BindingResult,
+//        final Model model) {
+//
+//    model.addAttribute("FragmentParameter", mapping1FormObject);
+//
+//    return "GraphDistributions";  
+//}
+//
+//
+//public String controlfromFragmentsMapping2(
+//        @ModelAttribute("s3") final Object mapping2FormObject,
+//        final BindingResult mapping1BindingResult,
+//        final Model model) {
+//
+//    model.addAttribute("S3Parameter", mapping2FormObject);
+//    
+//
+//    return "GraphDistributions";  
+//}
+//
+//
+//public String controlfromFragmentsMapping3(
+//        @ModelAttribute("s6") final Object mapping3FormObject,
+//        final BindingResult mapping1BindingResult,
+//        final Model model) {
+//
+//    model.addAttribute("S6Parameter", mapping3FormObject);
+//
+//    return "GraphDistributions";  
+//}
+//
+//        
+//        
+//}
+
+//1 ) tried transferring parameters between controller ..didnt work
+// 2) search more methods and ask later 
