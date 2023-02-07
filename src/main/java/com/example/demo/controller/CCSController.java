@@ -26,6 +26,7 @@ import java.io.*;
 import com.example.demo.utils.PythonUtils;
 import com.graphbuilder.math.func.PowFunction;
 import java.io.InputStreamReader;
+import java.util.Optional;
 import javax.security.sasl.Sasl;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -41,9 +42,9 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 public class CCSController {
 //    @Autowired
    // ResourceLoader loader;
-    FragmentsController fc = new FragmentsController();
+  //  FragmentsController fc = new FragmentsController();
     @RequestMapping("/GraphDistributions")
-    public String ShowCCSDistribution(Model model,@RequestParam("file") MultipartFile mfile,  @RequestParam("file2") MultipartFile mfile2, HttpSession session) throws Exception {
+    public String ShowCCSDistribution(Model model,@RequestParam("file") MultipartFile mfile,  @RequestParam("file2") MultipartFile mfile2, @RequestParam("alpha2-3") Optional<String> alpha23, @RequestParam("alpha2-6") Optional<String> alpha26, HttpSession session) throws Exception {
 
         
         
@@ -103,12 +104,25 @@ public class CCSController {
         
          //initializing a new controller
       String library_location = "";
-        if(fc.is_sialyated_3 == 1 && fc.is_sialyated_6 == 0)
-            System.out.println("S3 exists!");
-         library_location = hardcoded_python_location + "/library_distributions/frags_available_s3.csv";        
-        if(fc.is_sialyated_6 == 1 && fc.is_sialyated_3 == 0)
-            System.out.println("S6 exists!");
-         library_location = hardcoded_python_location + "/library_distributions/frags_available_s6.csv";
+        
+        
+            if(alpha26.isEmpty()) {
+                
+                library_location = hardcoded_python_location + "/library_distributions/frags_available_s3.csv";
+
+                    }
+
+        
+           if(alpha23.isEmpty()) {
+           
+                library_location = hardcoded_python_location + "/library_distributions/frags_available_s6.csv";
+                
+               // System.out.println("S6 exists");
+           }
+
+// figure out how to interchange
+        //only if i put system out println or thread on one of the conditions it works
+        
         ////////////////////////////////
         
         
