@@ -119,7 +119,7 @@ public class CCSController {
                 
                // System.out.println("S6 exists");
            }
-
+//if both need to plot both, ask ian for pythonscript for that situation
 // figure out how to interchange
         //only if i put system out println or thread on one of the conditions it works
         
