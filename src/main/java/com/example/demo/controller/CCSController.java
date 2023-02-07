@@ -34,17 +34,25 @@ import javax.servlet.http.HttpSession;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+
+
+
+
 /**
  *
  * @author aryeh
  */
 @Controller 
 public class CCSController {
+    
+    
+
+    
 //    @Autowired
    // ResourceLoader loader;
   //  FragmentsController fc = new FragmentsController();
     @RequestMapping("/GraphDistributions")
-    public String ShowCCSDistribution(Model model,@RequestParam("file") MultipartFile mfile,  @RequestParam("file2") MultipartFile mfile2, @RequestParam("alpha2-3") Optional<String> alpha23, @RequestParam("alpha2-6") Optional<String> alpha26, HttpSession session) throws Exception {
+    public String ShowCCSDistribution(Model model,@RequestParam("file") MultipartFile mfile,  @RequestParam("file2") MultipartFile mfile2, @RequestParam("alpha2-3") Optional<String> alpha23, @RequestParam("alpha2-6") Optional<String> alpha26, @RequestParam("alpha2326") Optional<String> alpha2326, HttpSession session) throws Exception {
 
         
         
@@ -96,29 +104,34 @@ public class CCSController {
         String python_venv = hardcoded_python_location + "/py39/bin/python3.9";
         
         
-        String pythn_script = "";
-      if (!mfile.isEmpty() && !mfile2.isEmpty())
-         pythn_script = hardcoded_python_location + "/CCSDistribution.py";
-         if (mfile.isEmpty() && mfile2.isEmpty())
-         pythn_script = hardcoded_python_location + "/CCSLibDistribution.py";
+        String pythn_script = "";        
+        pythn_script = hardcoded_python_location + "/CCSDistribution.py";
+        
+         
+         
         // how to do this without combining them, and optional Optional<MultipartFile[]> removes the transferto and originalfilename
          //initializing a new controller
-      String library_location = "";
-        
-        
-            if(alpha26.isEmpty()) {
-                
-                library_location = hardcoded_python_location + "/library_distributions/frags_available_s3.csv";
+        String library_location = "";                
+        if(alpha26.isEmpty()) {
 
-                    }
+            library_location = hardcoded_python_location + "/library_distributions/frags_available_s3.csv";
 
-        
-           if(alpha23.isEmpty()) {
-           
-                library_location = hardcoded_python_location + "/library_distributions/frags_available_s6.csv";
-                
-               // System.out.println("S6 exists");
-           }
+        }
+
+
+       if(alpha23.isEmpty()) {
+
+            library_location = hardcoded_python_location + "/library_distributions/frags_available_s6.csv";
+
+           // System.out.println("S6 exists");
+       }
+       
+       
+       if(alpha23.isEmpty() && alpha26.isEmpty()) { // <- fix this your way
+            library_location = hardcoded_python_location + "/library_distributions/frags_available_s3s6.csv";            
+        }
+       
+       // if(alpha2326.equalsIgnoreCase("s3s6")) for equals string
 //if both need to plot both, ask ian for pythonscript for that situation
 // figure out how to interchange
         //only if i put system out println or thread on one of the conditions it works
@@ -167,9 +180,95 @@ public class CCSController {
         
 
     }
-}
+
+        
+    @RequestMapping("/GraphLibDistributions")
+    public String ShowLibCCSDistribution(Model model, @RequestParam String fragtype, HttpSession session) throws Exception {
+                
+  
+        String sesson_path = session.getServletContext().getRealPath("/");     // this is the location of the directory the file will be placed
+             
+        
+        // create a random directory for this session
+        int min = 1; // Minimum value of range
+        int max = 100000; // Maximum value of range      
+        // Generate random int value from min to max
+        int random_int = (int)Math.floor(Math.random() * (max - min + 1) + min);
+
+        
+        String workdir = sesson_path + "sample_" + random_int + "/";
+        File theDir = new File(workdir);
+        if (!theDir.exists()) {
+            theDir.mkdirs();
+        }
+        else {
+            System.out.println("Report back to front end an error saying this directory already exists (unlikely event");           
+        }
+        
+        // 1. run the python script on tzhe file now knowing that it is located at sesson_path + "/" + session_tmp_file                        
+        
+        // these variables are hardcoded to be the location of the pythioon environment with scripts and files
+        String hardcoded_python_location = "/home/aryeh/Downloads/demo/plotdistributions/";        
+        String python_venv = hardcoded_python_location + "/py39/bin/python3.9";
+        
+        
+        String pythn_script = hardcoded_python_location + "/CCSLibDistribution.py";
+        
+         
+         
+        // how to do this without combining them, and optional Optional<MultipartFile[]> removes the transferto and originalfilename
+         //initializing a new controller
+        String library_location = "";                
+        if(fragtype.equalsIgnoreCase("s3")) {
+            library_location = hardcoded_python_location + "/library_distributions/frags_available_s3.csv";
+        }
+
+       if(fragtype.equalsIgnoreCase("s6")) {
+            library_location = hardcoded_python_location + "/library_distributions/frags_available_s6.csv";
+       }
+        if(fragtype.equalsIgnoreCase("s3s6")) {
+            library_location = hardcoded_python_location + "/library_distributions/frags_available_s3s6.csv";            
+        }
+
+        
+       
+        
+        PythonUtils py  = new PythonUtils();
+        System.out.println("TRYING: " + pythn_script + " " + workdir + " 1 " + library_location);
+        py.executePythonScript(python_venv, new File(pythn_script), " " + workdir + " 1 " + library_location);
+        
+        
+        // read the js returned by the python code 
+        String js_str = "";       
+        BufferedReader readjs = new BufferedReader(new FileReader(workdir + "/js_frags.lib.txt")); 
+        String line = readjs.readLine();
+        while(line!=null) {
+
+            js_str += line;
+
+            line = readjs.readLine();
+        }
+        
+         String div_str = "";
+         
+         // read the div returned by the python code
+         BufferedReader readdiv = new BufferedReader(new FileReader(workdir + "/div_frags.lib.txt"));
+         String line2 = readdiv.readLine();
+         while(line2!=null) {
+             
+             div_str += line2;
+             
+             line2 = readdiv.readLine();
+         }
+                
+        model.addAttribute("js_var", js_str);
+        model.addAttribute("div_var", div_str);
+            
+        return "GraphDistributions";
         
 
+    }
+}
 //public String controlfromFragmentsMapping1(
 //        @ModelAttribute("frags") final Object mapping1FormObject,
 //        final BindingResult mapping1BindingResult,
