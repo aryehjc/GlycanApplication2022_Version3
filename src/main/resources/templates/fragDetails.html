@@ -104,22 +104,24 @@ $(document).ready(function() {
                                                         class="blue-text">Back</a></font></center>
     <center>
                       
-                   <!--   <a th:href="@{/MyCSVUploadPage}"
-                         class="btn btn-warning">Upload CSV</a> see the controller for mapping-->
-                   <center>                      
-                              <div id="GlycanLoader">
-                                  <br>
-                                  </br>
-        <img src="http://i.stack.imgur.com/FhHRx.gif"/> 
-        <p> Generating Fragments...</p>
-</div>
+    <!--   <a th:href="@{/MyCSVUploadPage}"
+          class="btn btn-warning">Upload CSV</a> see the controller for mapping-->
+    <center>                      
+        <div id="GlycanLoader">
+            <br>
+            </br>
+            <img src="http://i.stack.imgur.com/FhHRx.gif"/> 
+            <p> Generating Fragments...</p>
+        </div>
                
-                  </center>
+    </center>
 
 
 
-
-	<div align="center" style="margin-top: 20px">
+    
+		
+	
+        <div align="center" style="margin-top: 20px">
 		<table id="MyTable" class="table table-bordered border-primary" style="max-width: 70%">
 			<thead>
                             
@@ -133,24 +135,38 @@ $(document).ready(function() {
                             
                          <!-- evaluated as true for debugging   <p th:utext="'This glycan has an alpha2-6 fragment: ' + ${s6 == 1}"></p>   -->
                             
-                            
-                            <th:block th:if="${s3 == 1}">
-                            <tr>
-                                <td><input type="submit" value="Plot distribution" class="btn btn-primary"></td>
-                                <td><img width="200px" th:src="@{/img/glycans/205fragment1.png}"/></td>
-                            </tr>
-                            </th:block>
-                         
+                            <form th:action="@{/GraphLibDistributions}" method="post">
+                                <th:block th:if="${s3 == 1 and s6!=1}">
+                                <tr>
+                                    <td><input type="submit" value="Plot library distribution for &alpha;2-3 sialyation" class="btn btn-primary"></td>
+                                    <input name="fragtype" value="s3" style="display:none"></input>
+                                    <td><img width="200px" th:src="@{/img/glycans/205fragment1.png}"/></td>
+                                </tr>
+                                </th:block>
+                            </form>
   
                             
-                            <th:block th:if="${s6 == 1}">
+                            <form th:action="@{/GraphLibDistributions}" method="post">
+                            <th:block th:if="${s6 == 1 and s3!=1}">
                             <tr>
-                              <td><input type="submit" value="Plot distribution" class="btn btn-primary"></td>
-                              <td><img width="200px" th:src="@{/img/glycans/205fragment2.png}"/></td>
+                              <td><input type="submit" value="Plot library distribution for &alpha;2-6 sialyation" class="btn btn-primary"></td>
+                              <input name="fragtype" value="s6" style="display:none"></input>
+                                <td><img width="200px" th:src="@{/img/glycans/205fragment2.png}"/></td>
                             </tr>
                             </th:block>
-                           
+                            </form>
                             
+                         
+                         <form th:action="@{/GraphLibDistributions}" method="post">
+                            <th:block th:if="${s6 == 1 and s3==1}">
+                            <tr>
+                              <td style="max-width: 70%"><input type="submit" value="Plot library distribution for &alpha;2-3 and &alpha;2-6 sialyation" class="btn btn-primary"></td>
+                              <input name="fragtype" value="s3s6" style="display:none"></input>
+                                <td style="max-width: 70%" colspan="2"><img width="200px" th:src="@{/img/glycans/205fragment2.png}"/>
+                                <img width="200px" th:src="@{/img/glycans/205fragment1.png}"/></td>
+                            </tr>
+                            </th:block>
+                            </form>
 
                          
 			</thead>
@@ -161,19 +177,33 @@ $(document).ready(function() {
 
                         </table>
 			</tbody>
-            <form th:action="@{/GraphDistributions}" method="post" enctype="multipart/form-data">
-		<div class="row">
+                    
+                    
+            <form th:action="@{/GraphDistributions}" th:object="${fragments}" method="post" enctype="multipart/form-data">
+                                    
+                <div class="row">
                     <div class="image entry">
-                        <input type="file" id="fileid" name="file"> 
+                        
+                        
+                            <input type="file" id="fileid" name="file"> 
                             <input type="file" id="fileid2" name="file2"> 
-                               <th:block th:if="${s6 == 1}">
-                              Fragment present:  <input type="text" value="alpha2-6" name="alpha2-6" readonly>
-                               </th:block><!-- comment -->
-                               
-                               <th:block th:if="${s3 == 1}">
+                            <th:block th:if="${s6 == 1 and s3!=1}">
+                            Fragment present:  <input type="text" value="alpha2-6" name="alpha2-6" readonly>
+                            <input type="submit" value="Compare user distribution with alpha2-6" class="btn btn-primary"><!-- comment -->
+                             </th:block>
+                        
+                            
+                               <th:block th:if="${s3 == 1 and s6!=1}">
                                Fragment present: <input type="text" value="alpha2-3" name="alpha2-3" readonly>
-                                   </th:block>
-                        <input type="submit" value="Plot distribution" class="btn btn-primary"><!-- comment -->
+                                   
+                                <input type="submit" value="Compare user distribution with alpha2-3" class="btn btn-primary"><!-- comment -->
+                                </th:block>
+                                
+                               <th:block th:if="${s6 == 1 AND s3 == 1}">
+                            Fragment present: <input type="text" value="alpha2-3, alpha2-6" name="alpha2-3alpha2-6" style=>
+                              <input type="submit" value="Plot user library distribution for &alpha;2-3 and &alpha;2-6 sialyation" class="btn btn-primary">
+                              
+                            </th:block>
                         
                     </div>
                 </div>
