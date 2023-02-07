@@ -97,11 +97,11 @@ public class CCSController {
         
         
         String pythn_script = "";
-      //  if (user uploaded data then do this)
-            pythn_script = hardcoded_python_location + "/CCSDistribution.py";
-      //  if (clicked the library distributioon button - i.e. no user data uploaded)
-        //    pythn_script = hardcoded_python_location + "/CCSLibDistribution.py";
-        
+      if (!mfile.isEmpty() && !mfile2.isEmpty())
+         pythn_script = hardcoded_python_location + "/CCSDistribution.py";
+         if (mfile.isEmpty() && mfile2.isEmpty())
+         pythn_script = hardcoded_python_location + "/CCSLibDistribution.py";
+        // how to do this without combining them, and optional Optional<MultipartFile[]> removes the transferto and originalfilename
          //initializing a new controller
       String library_location = "";
         
