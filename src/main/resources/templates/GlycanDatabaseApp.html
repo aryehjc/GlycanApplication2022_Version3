@@ -4,20 +4,91 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to c
 Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this template
 -->
 <html>
+<!DOCTYPE html>
+<!-- This is for using Thymeleaf -->
+
+
 <head>
-<meta charset="ISO-8859-1">
-<title>Glycan App 2022</title>
-
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+<meta charset="UTF-8">
 <html lang="en-US" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<title>Glycan Management System</title>
+<!-- Compiled and minified CSS -->
 
-<link rel="stylesheet" href="style.css" type="text/css"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
 
-                       <style>
+ 
+
+<!-- Compiled and minified JavaScript -->
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.Mobilitycom/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+
+</head>
+<body>
+              <a href=""
+                      class="btn btn-primary">About GIM-R</a>
+                      
+                      
+                                         <a href=""
+                      class="btn btn-warning">Help</a>
+                      
+   
+    <center>
+     <div class="icon3"> <img th:src="@{/img/glycans/gimrprototype.png}"/></div>
 
 
 
-                      .pushable {
+
+    <center>
+
+    <form th:action="@{/MySQLTableForGlycansAndCCS}"> <!-- removed method post, changed to glycandatabaseapp redir -->
+   
+
+        <div id="wrapme">
+
+
+            <div class="pushtoleft">
+                <div style="float:left;"> 
+                    <label style="color:green">Mass</label>
+                    <input type="number" style="width: 170px;" value="0.000000" min="0" max="999999.999999" step="0.000001" id="num1" class="form-control" name="mass" > 
+                </div>
+                <div style="float:left;"> 
+                    <label style="color:green">Mass Tolerance</label> 
+                    <input type="number" style="width: 170px;" value="0.000000" min="0" max="999999.999999" step="0.000001" id="num2" class="form-control" name="tolerance" >
+                </div>
+               <!-- <div style="float:left;"> 
+                    <label style="color:green">Formula</label> 
+                    <input type="text" style="width: 110px;" id="formula" class="form-control" name="formula" > -->
+                    <br>
+                </div>
+            </div>
+
+
+
+            <div class="mybutton">
+                <br>                
+                <button class="pushable"><span class="shadow" ></span><span class="edge"></span><span class = "front">Search</span></button>
+            </div>
+
+        </div>
+    </form>
+        
+        
+        
+        
+    </center>
+    </center>
+            
+
+        
+    <br>
+        <center>  <p> 	Enter desired Mass and Mass Tolerance of Glycan and click Search to generate database. </p> </center>
+        <center>  <p> 	Click "Help" for more information on how to use GIM-R. </p> </center>
+</html>
+    <style>
+        
+            .pushable {
     position: relative;
     border: none;
     background: transparent;
@@ -99,252 +170,40 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
   .pushable:focus:not(:focus-visible) {
     outline: none;
   }
-  
-  img {
-          position: absolute;
-    margin: auto;
-    top: -350px;
-    left: 0;
-    right: 650px;
-    bottom: 0;
-  }
-  
-  
-  .movetoright {
-  position: fixed;
-  left: 63%;
-  bottom: 315px;
-  transform: translate(-50%, -50%);
-  margin: 0 auto;
-    
-  }
-  
-  .mysqlimage {
-  position: fixed;
-  left: 52%;
-  bottom: 450px;
-  transform: translate(-50%, -50%);
-  margin: 0 auto;
-    
-  }
-  .container {
-      float: left;
-      margin:121px 20px 20px 20px;
-      width: 20%;
-      height: 20%;
-  } 
-  
-  
-  .pushthistotheleftform {
-  position: fixed;
-  left: 50%;
-  bottom: 20px;
-  transform: translate(-50%, -50%);
-  margin: 0 auto;
-  }
-  
-  .mytitle {
-  position: fixed;
-  left: 50%;
-  top: 20px;
-  transform: translate(-50%, -50%);
-  margin: 0 auto;
-  }
-  
-  h1 {
-      font-size: 1.7em;
-  }
-  
-  .samplebutton2 {
-  position: fixed;
-  left: 32%;
-  bottom: 318px;
-  transform: translate(-50%, -50%);
-  margin: 0 auto;
-  }
-  
-  
-  .samplebutton {
-  position: fixed;
-  left: 89%;
-  bottom: 313px;
-  transform: translate(-50%, -50%);
-  margin: 0 auto;
-  }
-  
-  
-  .mybouncy {
-        position: fixed;
-  left: 81%;
-  bottom: 500px;
-  transform: translate(-50%, -50%);
-  margin: 0 auto;
-  }
+    html, body {
+ min-height: 100%;
+background: #ffffff;
+    }
+    #wrapme {
+  display: flex;
+padding-left: 750px;
+column-gap: 10px;
+}
+#mybutton {
+    padding-left: 10px;
+}
+#pushtoleft {
+    padding-right: 10px;
+}
+splashimage {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-top: -10px;
+    margin-left: -50px;
+    width: 100px;
+    height: 100px;
+}
 
-  
-  .moveme1 {
-        position: fixed;
-  left: 8%;
-  bottom: 285px;
-  transform: translate(-50%, -50%);
-  margin: 0 auto;
-  font-size: 1.2em;
-  }
-  
-  .moveme2 {
-        position: fixed;
-  left: 32%;
-  bottom: 286px;
-  transform: translate(-50%, -50%);
-  margin: 0 auto;
-    font-size: 1.2em;
-  }
-  
-  .moveme3 {
-        position: fixed;
-  left: 63%;
-  bottom: 286px;
-  transform: translate(-50%, -50%);
-  margin: 0 auto;
-    font-size: 1.2em;
-  }
-  
-  .moveme4 {
-        position: fixed;
-  left: 90%;
-  bottom: 250px;
-  transform: translate(-50%, -50%);
-  margin: 0 auto;
-    font-size: 1.2em;
-  }
-  
-  .shrinkme {
-  }
-  
+splashimage2 {
+    position: absolute;
+    top: 50%;
+    left: 70%;
+    margin-top: -50px;
+    margin-left: -50px;
+    width: 100px;
+    height: 100px;
+}​
+
+
 </style>
-
-
-<!--form th action links to the html page on website --> 
-</head>
-<body>
-    <div class ="mybouncy">
-        <img src="https://media3.giphy.com/media/8K5vaT8LvjrLW/giphy.webp?cid=ecf05e47yvypv662i98pk2yn3kqhzsf0ao5ks4s241rw48zs&rid=giphy.webp&ct=g" width="300" height="400">
-    </div>
-         <img src="https://i.imgur.com/ifS6aWO.png" width="500" height="300">
-        <div class="mysqlimage">
-            <img src="https://i.imgur.com/ngNa5QM.png" width="400" height="250">
-             </div>
-<div class="container">
-	<div class="row">       
-	     <div>
-                 <span class ="mytitle">
-                     <br>
-                     <center><h1>Welcome to GIM-R, Aryeh Chiam&copy; 2022 All Rights Reserved</h1></center>
-                     <center><font size="+1"><a th:href="@{/gimrsplashpage}"
-                                                        class="blue-text" >About GIM-R</a></font></center>
-                 </span>
- 
-                 <br>		
-         <form class="shrinkme" th:action="@{/GlycanDatabaseApp}" th:object="${addition}" method="post">
-             <div style="float:left;">
-             <label>Protons</label>
-		<input type="number" style="width: 110px;" value="0.000000" min="0" max="999999.999999" step="0.000001" id="num1" class="form-control" name="num1" >
-             </div>
-		<label>Sodium Ions</label>
-		<input type="number" style="width: 110px;" value="0.000000" min="0" max="999999.999999" step="0.000001" id="num2" class="form-control" name="num2" >
-		           <div style="float:left;">
-                    <label>Water</label>
-		<input type="number" style="width: 110px;" value="0.000000" min="0" max="999999.999999" step="0.000001" id="num3" class="form-control" name="num3" >
-                           </div>
-                    <label>Hexose</label>
-		<input type="number" style="width: 110px;" value="0.000000" min="0" max="999999.999999" step="0.000001" id="num4" class="form-control" name="num4" >
-		           <div style="float:left;">
-                    <label>HexNac</label>
-                    <input type="number" style="width: 110px;" value="0.000000" min="0" max="999999.999999" step="0.000001" id="num5" class="form-control" name="num5" >
-                           </div>
-                        <label>Fucose</label>
-		<input type="number" style="width: 110px;" value="0.000000" min="0" max="999999.999999" step="0.000001" id="num6" class="form-control" name="num6" >
-		           <div style="float:left;">
-                    <label>NeuAc</label>
-		<input type="number" style="width: 110px;" value="0.000000" min="0" max="999999.999999" step="0.000001" id="num7" class="form-control" name="num7" >
-		
-                           </div>
-                    <label>NeuGc</label>
-		<input type="number" style="width: 110px;" value="0.000000" min="0" max="999999.999999" step="0.000001" id="num8" class="form-control" name="num8" >
-		           <div style="float:left;">
-                    <label>RFMS</label>
-		<input type="number" style="width: 110px;" value="0.000000" min="0.000000" max="999999.999999" step="0.000001" id="num9" class="form-control" name="num9" >
-                           </div>
-                    <label>Charge</label>
-		<input type="number" style="width: 110px;" value="0.000000" min="0.000000" max="999999.999999" step="0.000001" id="num10" class="form-control" name="num10" >
-         <!--                   <div>
-		<label>MyTotal</label>
-		<input type="number" name="MyTotal" min="0.000000" max="999999.999999" step="0.000001" id="MyTotal" class="form-control" value="${addition.Total()}"/> <!-- try to call var to form -->
-	    <!-- </div>  -->
-                    <br>
-                    </br>
-                                    <br>
-                    </br>   
-                                <br>
-                    </br> 
-                    <button class="pushable"><span class="shadow"></span><span class="edge"></span><span class = "front">Calculate N-Glycan Mass</span></button>
-	   </form>
-	</div>
-
-</body>
-
-                <div class ="movetoright">
-                 <form th:action="@{/MySQLTableForGlycansAndCCS}">
-    <center><button class="pushable"><span class="shadow"></span><span class="edge"></span><span class = "front">Create New Glycans</span></button></center>
-                 </form>
-                </div>
-    <div class ="samplebutton">
-    <form th:action="@{/SampleCCSGraphicalData}">
-    <button class="pushable"><span class="shadow"></span><span class="edge"></span><span class = "front">Glycan Resources</span></button>
-        </form>
-    </div>
-    <div class ="samplebutton2">
-             <form th:action="@{/SampleGlycan}">
-    <button class="pushable"><span class="shadow"></span><span class="edge"></span><span class = "front">Display Sample Glycan</span></button>
-             </form>
-    </div>
-    
-    <div class="pushthistotheleftform">
-   <h2>Mass Of N-Glycan</h2>
-        
-   <center><font size = "+2"><p2 th:text="${addition.Total()}"></p2></font></center>
-    </div>
-    <div class="moveme1">
-    <p3>Determine mass of your N-Glycan.</p3>
-    </div>
-        <div class="moveme2">
-        <p4>Example glycan with interactive components.</p4>
-            </div>
-            <div class="moveme3">
-            <p5>Record glycans with different parameters.</p5>
-                </div>
-                <div class="moveme4">
-                <p6>Further resources on Glycan and CCS data.</p6>
-                </div>
-    
-   <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script> -->
-    
-    <!--    <script>
-        // click event on button
-        $("button").click(function(){
-            $(".pushable").text("Adding....")
-  
-            // storing url and time
-            let delay = 10000;
-            let url = "http://localhost:8080/GlycanApp2022/";
-            setTimeout(function(){
-                location = url;
-            },5000)
-        })
-    </script> -->
-    
-</html>
-
-    
-    <!-- edit this with more num parameters and get an sql value.  -->
-   <!-- divide number = readonly placeholder.. same  number parameters and then divide in the add function, comment properly otherwise exception -->
