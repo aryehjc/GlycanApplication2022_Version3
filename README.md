@@ -1,5 +1,5 @@
 # GlycanApplication2022_Version2
-Version 2 of Glycan App with Dynamic Images and Graphics. This is a successor of the first Glycan App on my profile and will be uploaded as a full package once completed in March 2023.
+Version 3 of Glycan App with Dynamic Images and Graphics. This is a successor of the first Glycan App on my profile and will be uploaded as a full package once completed in March 2023.
 <br>
 </br>
 
