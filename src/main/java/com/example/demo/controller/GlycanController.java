@@ -31,6 +31,9 @@ public class GlycanController {
 	public String viewHomePage(Model model) {
 		//	We can use this attribute "listGlycans" to perform server-side rendering of the HTML with using Thymeleaf.
 		//	We set all glycans data to "listGlycans"
+                
+                System.out.println("This method is for reporting all glycans in the SQL database");
+                
                 String keyword = null;
                 return listByPage(model, 1, "id", "asc", keyword);
 
@@ -38,6 +41,9 @@ public class GlycanController {
 		//		shows the index.html template:
 		// return "index";
 	}
+        
+
+
         
         @GetMapping("/MySQLTableForGlycansAndCCS/{pageNumber}")
         public String listByPage(Model model,
@@ -50,7 +56,7 @@ public class GlycanController {
             
             
             //long totalItems = page.getTotalElements();
-            //  int totalPages = page.getTotalPages();
+            //  int totalPages = page.getTotalPages(); 
             
             List<Glycan> listGlycans = page.getContent(); 
             
@@ -72,7 +78,7 @@ public class GlycanController {
 
 	//	showNewGlycanForm
 	@GetMapping("/showNewGlycanForm")
-	// This means that this method will be executed when user sends GET Requests to "/showNewGlycanForm"
+	// This means that this method will be executed when user sends GET Requests to "/showNewGlycanForm" 
 	// In our case,  "http://localhost:8080/showNewGlycanForm"
 	public String showNewGlycanForm(Model model) {
 		Glycan glycan = new Glycan();
@@ -139,6 +145,7 @@ public class GlycanController {
 	//	after delete the glycan data from database, redirect to "/"
 		return "redirect:/MySQLTableForGlycansAndCCS";
 	}
+        
         
         
       @RequestMapping("/GlycanDictionary")
